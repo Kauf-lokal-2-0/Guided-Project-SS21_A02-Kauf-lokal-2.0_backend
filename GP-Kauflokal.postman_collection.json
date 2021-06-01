@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "dca7aada-9fb6-41b5-922c-f7e9ae6db8f4",
+		"name": "GP-Kauflokal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create merchant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"string\",\r\n    \"addresses\": [{\r\n        \"street\":\"testStr\",\r\n        \"houseNr\":\"3a\",\r\n        \"place\":\"Köln\",\r\n        \"zipCode\":\"51148\"\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/merchant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"merchant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllMerchant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/merchant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"merchant"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

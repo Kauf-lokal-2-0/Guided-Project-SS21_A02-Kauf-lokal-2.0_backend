@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "KL_NEWSFEED")
+@Table(name = "NEWSFEED")
 @Data
 public class Newsfeed {
 
@@ -16,6 +16,6 @@ public class Newsfeed {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "V_ID", updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private UUID id;
 }

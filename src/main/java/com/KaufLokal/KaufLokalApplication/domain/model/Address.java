@@ -6,10 +6,10 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity
-@Table(name = "USER")
 @Data
-public class User {
+@Entity
+@Table(name = "ADDRESS")
+public class Address {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -20,8 +20,14 @@ public class User {
     private UUID id;
 
     @Column
-    private String firstName;
+    private String street;
 
     @Column
-    private String secondName;
+    private String houseNr;
+
+    @Column
+    private String place;
+
+    @Column
+    private String zipCode;
 }

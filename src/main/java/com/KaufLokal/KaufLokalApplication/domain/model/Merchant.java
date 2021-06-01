@@ -4,13 +4,15 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.awt.*;
+import java.util.Collection;
 import java.util.UUID;
 
 /**
  * Händler
  */
 @Entity
-@Table(name = "KL_MERCHANT")
+@Table(name = "MERCHANT")
 @Data
 public class Merchant {
 
@@ -19,9 +21,13 @@ public class Merchant {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "V_ID", updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private UUID id;
 
-    @Column(name = "V_STROE_NAME",updatable = true, nullable = true)
-    private String storeName;
+    @Column
+    private String name;
+
+    @OneToMany
+    private Collection<Address> address;
+
 }
