@@ -30,4 +30,7 @@ public class Address {
 
     @Column
     private String zipCode;
+
+    @Column
+    private String country;
 }

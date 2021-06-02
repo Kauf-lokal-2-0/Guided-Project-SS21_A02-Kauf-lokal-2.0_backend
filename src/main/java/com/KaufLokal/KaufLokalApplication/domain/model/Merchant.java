@@ -8,9 +8,6 @@ import java.awt.*;
 import java.util.Collection;
 import java.util.UUID;
 
-/**
- * Händler
- */
 @Entity
 @Table(name = "MERCHANT")
 @Data
@@ -24,8 +21,17 @@ public class Merchant {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
+
+    @Column
+    private String company;
+
+    @Column
+    private Integer offerAmount;
+
+    @Column
+    private Integer merchantScore;
 
     @OneToMany
     private Collection<Address> address;

@@ -18,4 +18,16 @@ public class Coupon {
             strategy = "org.hibernate.id.UUIDGenerator")
     @Column(updatable = false, nullable = false)
     private UUID id;
+
+    @Column(nullable = false)
+    private String couponName;
+
+    @Column(nullable = false)
+    private String couponDescription;
+
+    @Column(nullable = false)
+    private Integer generatedCouponCode;
+
+    @Column
+    private String expiryDate;
 }

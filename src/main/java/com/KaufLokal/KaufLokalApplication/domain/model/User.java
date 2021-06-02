@@ -19,9 +19,14 @@ public class User {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
-    @Column
+    @Column(nullable = false)
     private String firstName;
 
-    @Column
     private String secondName;
+
+    @Column(nullable = false)
+    private String lastName;
+
+    @Column
+    private Integer UserScore;
 }

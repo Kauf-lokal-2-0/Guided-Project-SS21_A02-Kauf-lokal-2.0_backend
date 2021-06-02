@@ -10,5 +10,8 @@ import java.util.UUID;
 public class MerchantDto {
     private UUID id;
     private String name;
+    private String company;
+    private Integer offerAmount;
+    private Integer merchantScore;
     private List<Address> addresses;
 }
