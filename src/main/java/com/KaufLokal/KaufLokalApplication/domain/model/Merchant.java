@@ -30,8 +30,8 @@ public class Merchant {
 
     private Integer merchantScore;
 
-    @OneToMany
-    private Set<Address> address;
+    //@OneToMany
+    //private Set<Address> address;
 
 
 
