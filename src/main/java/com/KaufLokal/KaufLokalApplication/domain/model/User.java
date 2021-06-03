@@ -2,7 +2,6 @@ package com.KaufLokal.KaufLokalApplication.domain.model;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -25,6 +24,5 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = true)
-    private Integer UserScore;
+    private Integer userScore;
 }

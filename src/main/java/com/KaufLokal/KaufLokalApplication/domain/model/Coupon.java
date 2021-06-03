@@ -29,4 +29,6 @@ public class Coupon {
     private Integer generatedCouponCode;
 
     private String expiryDate;
+
+    private Float value;
 }

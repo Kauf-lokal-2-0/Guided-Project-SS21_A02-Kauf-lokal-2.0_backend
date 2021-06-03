@@ -11,4 +11,5 @@ public class CouponDto {
     private String couponDescription;
     private Integer generatedCouponCode;
     private String expiryDate;
+    private Float value;
 }
