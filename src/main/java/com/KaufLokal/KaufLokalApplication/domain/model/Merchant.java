@@ -4,8 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.awt.*;
-import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -24,16 +24,16 @@ public class Merchant {
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String company;
 
-    @Column
     private Integer offerAmount;
 
-    @Column
     private Integer merchantScore;
 
     @OneToMany
-    private Collection<Address> address;
+    private Set<Address> address;
+
+
 
 }

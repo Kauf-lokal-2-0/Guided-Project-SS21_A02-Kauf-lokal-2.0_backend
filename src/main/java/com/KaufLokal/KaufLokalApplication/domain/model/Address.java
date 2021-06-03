@@ -18,19 +18,9 @@ public class Address {
             strategy = "org.hibernate.id.UUIDGenerator")
     @Column(updatable = false, nullable = false)
     private UUID id;
-
-    @Column
     private String street;
-
-    @Column
     private String houseNr;
-
-    @Column
     private String place;
-
-    @Column
     private String zipCode;
-
-    @Column
     private String country;
 }

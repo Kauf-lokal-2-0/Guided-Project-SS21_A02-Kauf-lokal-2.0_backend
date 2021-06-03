@@ -28,6 +28,5 @@ public class Coupon {
     @Column(nullable = false)
     private Integer generatedCouponCode;
 
-    @Column
     private String expiryDate;
 }

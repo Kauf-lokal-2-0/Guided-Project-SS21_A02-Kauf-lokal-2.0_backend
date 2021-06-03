@@ -22,11 +22,9 @@ public class User {
     @Column(nullable = false)
     private String firstName;
 
-    private String secondName;
-
     @Column(nullable = false)
     private String lastName;
 
-    @Column
+    @Column(nullable = true)
     private Integer UserScore;
 }

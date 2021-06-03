@@ -25,18 +25,13 @@ public class Newsfeed {
     @Column(nullable = false)
     private String offerDescription;
 
-    @Column
     private String offerCreatedDate;
 
-    @Column
     private String offerLastUpdate;
 
-    @Column
     private Integer likeAmount;
 
-    @Column
     private Integer shareAmount;
 
-    // comments?
 
 }

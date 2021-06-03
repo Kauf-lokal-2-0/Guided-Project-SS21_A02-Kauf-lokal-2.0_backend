@@ -1,4 +1,4 @@
-package com.KaufLokal.KaufLokalApplication.application.services;
+package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
@@ -20,20 +20,17 @@ public class MerchantService {
         return mapToDto(merchantRepository.findAll());
     }
 
-    public MerchantDto createMerchant(MerchantDto merchantDto)
-    {
+    public MerchantDto createMerchant(MerchantDto merchantDto) {
         return mapToDto(merchantRepository.save(mapToObject(merchantDto)));
     }
 
-    private Merchant mapToObject(MerchantDto merchantDto)
-    {
+    private Merchant mapToObject(MerchantDto merchantDto) {
         Merchant merchant = new Merchant();
         merchant.setName(merchantDto.getName());
         return merchant;
     }
 
-    private List<MerchantDto> mapToDto(List<Merchant> merchants)
-    {
+    private List<MerchantDto> mapToDto(List<Merchant> merchants) {
         List<MerchantDto> merchantDtos = new ArrayList<>();
         for (Merchant merchant: merchants) {
             merchantDtos.add(mapToDto(merchant));
