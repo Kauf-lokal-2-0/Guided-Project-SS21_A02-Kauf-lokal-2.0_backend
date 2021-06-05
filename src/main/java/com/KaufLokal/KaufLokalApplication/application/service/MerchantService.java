@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
@@ -34,6 +33,7 @@ public class MerchantService implements IDefaultService<Merchant,MerchantDto> {
     }
 
     public MerchantDto create(MerchantDto merchantDto) {
+
         return mapToDto(merchantRepository.save(mapDtoToObject(merchantDto)));
     }
 

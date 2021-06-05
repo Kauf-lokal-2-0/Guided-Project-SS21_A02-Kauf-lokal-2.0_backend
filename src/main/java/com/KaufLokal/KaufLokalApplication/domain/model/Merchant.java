@@ -30,9 +30,19 @@ public class Merchant {
 
     private Integer merchantScore;
 
-    //@OneToMany
-    //private Set<Address> address;
+    @Column(nullable = false)
+    private String street;
 
+    @Column(nullable = false)
+    private String houseNr;
 
+    @Column(nullable = false)
+    private String place;
+
+    @Column(nullable = false)
+    private String zipCode;
+
+    @Column(nullable = false)
+    private String country;
 
 }

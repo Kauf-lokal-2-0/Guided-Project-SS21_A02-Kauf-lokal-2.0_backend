@@ -1,5 +1,8 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
+import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
+import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -19,5 +22,7 @@ public interface IDefaultService<T,DtoT> {
 
     DtoT mapToDto(T object);
 
-    T mapDtoToObject(DtoT dtoT, T object);
+    T mapDtoToObject(DtoT dto, T object);
+
+    T mapDtoToObject(DtoT dto);
 }

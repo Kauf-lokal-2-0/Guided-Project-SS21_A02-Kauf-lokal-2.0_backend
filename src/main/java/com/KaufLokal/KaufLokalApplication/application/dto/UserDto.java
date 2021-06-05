@@ -10,5 +10,5 @@ public class UserDto {
     private String firstName;
     private String secondName;
     private String lastName;
-    private Integer UserScore;
+    private Integer userScore;
 }
