@@ -5,12 +5,14 @@ import com.KaufLokal.KaufLokalApplication.domain.model.Product;
 import com.KaufLokal.KaufLokalApplication.domain.repository.ProductRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class ProductService implements IDefaultService<Product, ProductDto>{
 
     @Autowired
@@ -23,7 +25,7 @@ public class ProductService implements IDefaultService<Product, ProductDto>{
     }
 
     @Override
-    public ProductDto findById(UUID id) throws Exception {
+    public ProductDto findById(UUID id) {
         Optional<Product> productOptional = productRepository.findById(id);
         if (productOptional.isPresent())
         {

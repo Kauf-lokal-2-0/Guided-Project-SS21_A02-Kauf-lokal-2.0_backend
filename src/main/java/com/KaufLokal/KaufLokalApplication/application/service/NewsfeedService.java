@@ -5,12 +5,14 @@ import com.KaufLokal.KaufLokalApplication.domain.model.Newsfeed;
 import com.KaufLokal.KaufLokalApplication.domain.repository.NewsFeedRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class NewsfeedService implements IDefaultService<Newsfeed, NewsfeedDto>{
     
     @Autowired
@@ -23,7 +25,7 @@ public class NewsfeedService implements IDefaultService<Newsfeed, NewsfeedDto>{
     }
 
     @Override
-    public NewsfeedDto findById(UUID id) throws Exception {
+    public NewsfeedDto findById(UUID id) {
         Optional<Newsfeed> newsfeedOptional = newsFeedRepository.findById(id);
         if (newsfeedOptional.isPresent())
         {

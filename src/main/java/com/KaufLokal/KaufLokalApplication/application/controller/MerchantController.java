@@ -21,7 +21,7 @@ public class MerchantController {
     }
 
     @GetMapping("/merchant/{id}")
-    public ResponseEntity<MerchantDto> getMerchant(@PathVariable UUID id)  {
+    public ResponseEntity<MerchantDto> getMerchantById(@PathVariable UUID id)  {
         return new ResponseEntity<>(merchantService.findById(id), HttpStatus.OK);
     }
 

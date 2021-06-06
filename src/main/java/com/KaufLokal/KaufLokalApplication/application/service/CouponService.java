@@ -5,12 +5,14 @@ import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
 import com.KaufLokal.KaufLokalApplication.domain.repository.CouponRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class CouponService implements IDefaultService<Coupon, CouponDto>{
 
     @Autowired
@@ -23,7 +25,7 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
     }
 
     @Override
-    public CouponDto findById(UUID id) throws Exception {
+    public CouponDto findById(UUID id) {
         Optional<Coupon> couponOptional = couponRepository.findById(id);
         if (couponOptional.isPresent())
         {
