@@ -6,19 +6,31 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity
-@Table(name = "Product")
 @Data
-public class Product {
+@Entity
+@Table(name = "ADDRESS")
+public class Address {
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "ID", updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private UUID id;
-    private String name;
-    private String description;
-    private Integer price;
+
+    @Column
+    private String street;
+
+    @Column
+    private String houseNr;
+
+    @Column
+    private String place;
+
+    @Column
+    private String zipCode;
+
+    @Column
+    private String country;
 }

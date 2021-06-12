@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import java.util.UUID;
 
 @Data
-public class NewsfeedDto {
+public class OfferDto {
 
     private UUID id;
     private String offerName;

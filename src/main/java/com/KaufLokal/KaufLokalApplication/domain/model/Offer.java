@@ -4,12 +4,15 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Table(name = "NEWSFEED")
 @Data
-public class Newsfeed {
+public class Offer {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -20,18 +23,22 @@ public class Newsfeed {
     private UUID id;
 
     @Column(nullable = false)
-    private String offerName;
+    private String name;
 
     @Column(nullable = false)
-    private String offerDescription;
+    private String description;
 
-    private String offerCreatedDate;
+    private String createdDate;
 
-    private String offerLastUpdate;
+    private String lastUpdate;
 
     private Integer likeAmount;
 
     private Integer shareAmount;
 
+    @OneToMany
+    private Set<Product> products = new HashSet<>();
 
+    @OneToMany
+    private Set<Coupon> coupons = new HashSet<>();
 }

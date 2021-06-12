@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -30,19 +32,10 @@ public class Merchant {
 
     private Integer merchantScore;
 
-    @Column(nullable = false)
-    private String street;
+    @OneToMany
+    private Set<Address> address = new HashSet<>();
 
-    @Column(nullable = false)
-    private String houseNr;
-
-    @Column(nullable = false)
-    private String place;
-
-    @Column(nullable = false)
-    private String zipCode;
-
-    @Column(nullable = false)
-    private String country;
+    @OneToMany
+    private Set<Offer> offers = new HashSet<>();
 
 }
