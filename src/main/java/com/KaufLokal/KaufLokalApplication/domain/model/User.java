@@ -31,4 +31,7 @@ public class User {
 
     @OneToMany
     private Set<Address> address = new HashSet<>();
+
+    @OneToMany
+    private Set<Offer> acceptedOffers = new HashSet<>();
 }

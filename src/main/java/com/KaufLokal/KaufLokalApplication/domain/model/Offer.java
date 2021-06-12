@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "NEWSFEED")
+@Table(name = "OFFER")
 @Data
 public class Offer {
 

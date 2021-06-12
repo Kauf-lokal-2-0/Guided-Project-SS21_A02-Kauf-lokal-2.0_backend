@@ -26,10 +26,10 @@ public class OfferService implements IDefaultService<Offer, OfferDto>{
 
     @Override
     public OfferDto findById(UUID id) {
-        Optional<Offer> newsfeedOptional = offerRepository.findById(id);
-        if (newsfeedOptional.isPresent())
+        Optional<Offer> offerOptional = offerRepository.findById(id);
+        if (offerOptional.isPresent())
         {
-            return mapToDto(newsfeedOptional.get());
+            return mapToDto(offerOptional.get());
         }
         return null;
     }
@@ -41,10 +41,10 @@ public class OfferService implements IDefaultService<Offer, OfferDto>{
 
     @Override
     public OfferDto update(OfferDto offerDto) {
-        Optional<Offer> newsfeedOptional = offerRepository.findById(offerDto.getId());
-        if (newsfeedOptional.isPresent())
+        Optional<Offer> offerOptional = offerRepository.findById(offerDto.getId());
+        if (offerOptional.isPresent())
         {
-            Offer offer = newsfeedOptional.get();
+            Offer offer = offerOptional.get();
             ModelMapper modelMapper = new ModelMapper();
             modelMapper.map(offerDto, offer);
             offerRepository.save(offer);
@@ -55,9 +55,9 @@ public class OfferService implements IDefaultService<Offer, OfferDto>{
 
     @Override
     public void delete(UUID id) {
-        Optional<Offer> newsfeedOptional = offerRepository.findById(id);
-        if (newsfeedOptional.isPresent()) {
-            Offer offer = newsfeedOptional.get();
+        Optional<Offer> offerOptional = offerRepository.findById(id);
+        if (offerOptional.isPresent()) {
+            Offer offer = offerOptional.get();
             offerRepository.delete(offer);
         }
     }
