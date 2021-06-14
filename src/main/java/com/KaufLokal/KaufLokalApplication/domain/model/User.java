@@ -3,7 +3,6 @@ package com.KaufLokal.KaufLokalApplication.domain.model;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -29,8 +28,7 @@ public class User {
 
     private Integer userScore;
 
-    @OneToMany
-    private Set<Address> address = new HashSet<>();
+    private Address address;
 
     @OneToMany
     private Set<Offer> acceptedOffers = new HashSet<>();
