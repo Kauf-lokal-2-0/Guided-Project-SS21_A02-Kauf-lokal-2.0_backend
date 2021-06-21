@@ -26,10 +26,17 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
+    @Column(nullable = false)
+    private String email;
+
     private Integer userScore;
 
     private Address address;
 
     @OneToMany
     private Set<Offer> acceptedOffers = new HashSet<>();
+
+    @ManyToMany
+    private Set<Merchant> favoriteMerchants = new HashSet<>();
+
 }

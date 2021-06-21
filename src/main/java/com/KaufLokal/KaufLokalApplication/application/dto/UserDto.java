@@ -8,7 +8,7 @@ import java.util.UUID;
 public class UserDto {
     private UUID id;
     private String firstName;
-    private String secondName;
     private String lastName;
+    private String email;
     private Integer userScore;
 }
