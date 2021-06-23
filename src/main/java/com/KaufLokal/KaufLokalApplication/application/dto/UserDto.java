@@ -1,5 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
+import com.KaufLokal.KaufLokalApplication.domain.model.Address;
 import lombok.Data;
 
 import java.util.UUID;
@@ -11,4 +12,6 @@ public class UserDto {
     private String lastName;
     private String email;
     private Integer userScore;
+    private String profilePicture;
+    private Address address;
 }

@@ -29,5 +29,7 @@ public class Coupon {
 
     private String expiryDate;
 
+    private Boolean isFavourite;
+
     private Float value;
 }

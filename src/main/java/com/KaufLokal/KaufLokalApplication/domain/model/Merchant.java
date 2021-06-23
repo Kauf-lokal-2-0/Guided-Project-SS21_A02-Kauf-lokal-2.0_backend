@@ -29,10 +29,11 @@ public class Merchant {
 
     private Integer offerAmount;
 
-    private Integer merchantScore;
-
+    private Integer merchantScore; // Gamification
 
     private Address address;
+
+    private String profilePicture;
 
     @OneToMany
     private Set<Offer> offers = new HashSet<>();

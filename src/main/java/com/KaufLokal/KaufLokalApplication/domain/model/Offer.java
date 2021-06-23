@@ -3,9 +3,7 @@ package com.KaufLokal.KaufLokalApplication.domain.model;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "OFFER")
@@ -26,17 +24,20 @@ public class Offer {
     @Column(nullable = false)
     private String description;
 
-    private String createdDate;
+    private Integer starRatingAmount;
 
-    private String lastUpdate;
+    @ElementCollection
+    private List<String> images = new ArrayList<>();
 
-    private Integer likeAmount;
+    private Boolean isStoreOpened;
 
-    private Integer shareAmount;
+    private Boolean isFavourite;
+
+    private String category;
 
     @OneToMany
-    private Set<Product> products = new HashSet<>();
+    private Set<Product> products = new HashSet<>(); // Products which may be displayed in an offer
 
     @OneToMany
-    private Set<Coupon> coupons = new HashSet<>();
+    private Set<Coupon> coupons = new HashSet<>(); // Coupons, which belongs to an offer
 }

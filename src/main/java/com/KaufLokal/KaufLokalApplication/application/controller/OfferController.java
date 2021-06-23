@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@Api(value = "Newsfeed Controller")
+@Api(value = "Offer Controller")
 public class OfferController {
 
     private static final Logger logger = LoggerFactory.getLogger(OfferController.class);
@@ -34,7 +34,7 @@ public class OfferController {
     @ApiOperation(value = "Find Offer by ID")
     @GetMapping("/offer/{id}")
     public ResponseEntity<OfferDto> getOfferById(@PathVariable UUID id)  {
-        logger.debug("GET: getNewsfeedById");
+        logger.debug("GET: getOfferId");
         return new ResponseEntity<>(offerService.findById(id), HttpStatus.OK);
     }
     @ApiOperation(value = "Create an new Offer")
@@ -42,7 +42,7 @@ public class OfferController {
             @ApiResponse(code = 400, message = "Bad Request")})
     @PostMapping("/offer")
     public ResponseEntity<OfferDto> createOffer(@RequestBody OfferDto offerDto) {
-        logger.debug("POST: createNewsfeed");
+        logger.debug("POST: createOffer");
         return new ResponseEntity<>(offerService.create(offerDto), HttpStatus.CREATED);
     }
 

@@ -1,5 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
+import com.KaufLokal.KaufLokalApplication.domain.model.Address;
 import lombok.Data;
 
 import java.util.UUID;
@@ -11,12 +12,6 @@ public class MerchantDto {
     private String company;
     private Integer offerAmount;
     private Integer merchantScore;
-
-    private String street;
-    private String houseNr;
-    private String place;
-    private String zipCode;
-    private String country;
-
-
+    private String profilePicture;
+    private Address address;
 }

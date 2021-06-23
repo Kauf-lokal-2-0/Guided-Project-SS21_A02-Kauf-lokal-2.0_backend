@@ -12,4 +12,5 @@ public class CouponDto {
     private Integer generatedCouponCode;
     private String expiryDate;
     private Float value;
+    private Boolean isFavourite;
 }

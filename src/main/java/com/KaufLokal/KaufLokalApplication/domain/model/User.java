@@ -29,9 +29,11 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    private Integer userScore;
+    private Integer userScore; // Gamification
 
     private Address address;
+
+    private String profilePicture;
 
     @OneToMany
     private Set<Offer> acceptedOffers = new HashSet<>();
