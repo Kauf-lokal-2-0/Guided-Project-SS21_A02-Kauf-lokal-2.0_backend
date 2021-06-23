@@ -29,8 +29,6 @@ public class Offer {
     @ElementCollection
     private List<String> images = new ArrayList<>();
 
-    private Boolean isStoreOpened;
-
     private Boolean isFavourite;
 
     private String category;

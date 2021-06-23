@@ -19,10 +19,10 @@ public class Coupon {
     private UUID id;
 
     @Column(nullable = false)
-    private String couponName;
+    private String name;
 
     @Column(nullable = false)
-    private String couponDescription;
+    private String description;
 
     @Column(nullable = false)
     private Integer generatedCouponCode;

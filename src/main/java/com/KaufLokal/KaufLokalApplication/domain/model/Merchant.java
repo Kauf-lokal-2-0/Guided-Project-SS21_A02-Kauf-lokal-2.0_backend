@@ -37,7 +37,9 @@ public class Merchant {
 
     private String emailAddress;
 
+    private OpeningTime openingTime;
+
     @OneToMany
-    private Set<Offer> offers = new HashSet<>();
+    private Set<Coupon> coupons = new HashSet<>(); // Coupons, which belongs to an offer
 
 }
