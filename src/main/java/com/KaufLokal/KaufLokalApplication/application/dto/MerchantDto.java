@@ -14,4 +14,5 @@ public class MerchantDto {
     private Integer merchantScore;
     private String profilePicture;
     private Address address;
+    private String emailAddress;
 }

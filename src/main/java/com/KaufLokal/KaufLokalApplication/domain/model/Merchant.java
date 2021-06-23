@@ -35,6 +35,8 @@ public class Merchant {
 
     private String profilePicture;
 
+    private String emailAddress;
+
     @OneToMany
     private Set<Offer> offers = new HashSet<>();
 
