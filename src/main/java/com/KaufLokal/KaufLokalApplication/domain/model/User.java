@@ -36,9 +36,9 @@ public class User {
     private String profilePicture;
 
     @OneToMany
-    private Set<Offer> acceptedOffers = new HashSet<>();
-
-    @ManyToMany
     private Set<Merchant> favoriteMerchants = new HashSet<>();
+
+    @OneToMany
+    private Set<Rating> ratings;
 
 }

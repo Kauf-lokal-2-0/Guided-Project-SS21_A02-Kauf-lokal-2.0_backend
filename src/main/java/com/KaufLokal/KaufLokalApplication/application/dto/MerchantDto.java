@@ -1,7 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
-import com.KaufLokal.KaufLokalApplication.domain.model.Address;
-import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
+import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import lombok.Data;
 
 import java.util.Set;
@@ -18,4 +17,7 @@ public class MerchantDto {
     private Address address;
     private String emailAddress;
     private Set<Coupon> coupons;
+    private OpeningTime openingTime;
+    private Set<Rating> ratings;
+    private Set<Product> products;
 }

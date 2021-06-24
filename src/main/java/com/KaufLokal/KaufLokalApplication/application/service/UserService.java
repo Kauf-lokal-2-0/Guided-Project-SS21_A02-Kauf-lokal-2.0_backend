@@ -1,5 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
+import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.User;
 import com.KaufLokal.KaufLokalApplication.domain.repository.UserRepository;

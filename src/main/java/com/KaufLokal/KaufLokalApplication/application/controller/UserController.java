@@ -1,9 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.application.controller;
 
-import com.KaufLokal.KaufLokalApplication.application.dto.OfferDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.ProductDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
-import com.KaufLokal.KaufLokalApplication.application.service.MerchantService;
 import com.KaufLokal.KaufLokalApplication.application.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +30,6 @@ public class UserController {
         logger.debug("GET: getAllUsers");
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
-
 
     @ApiOperation(value = "Get user by ID")
     @GetMapping("/user/{id}")

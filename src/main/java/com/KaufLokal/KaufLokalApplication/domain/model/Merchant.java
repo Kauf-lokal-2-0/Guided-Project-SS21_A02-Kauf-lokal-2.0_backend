@@ -27,9 +27,7 @@ public class Merchant {
     @Column(nullable = false)
     private String company;
 
-    private Integer offerAmount;
-
-    private Integer merchantScore; // Gamification
+    private Integer merchantScore;
 
     private Address address;
 
@@ -41,5 +39,12 @@ public class Merchant {
 
     @OneToMany
     private Set<Coupon> coupons = new HashSet<>(); // Coupons, which belongs to an offer
+
+    @OneToMany
+    private Set<Rating> ratings = new HashSet<>();
+
+    @OneToMany
+    private Set<Product> products = new HashSet<>();
+
 
 }

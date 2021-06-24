@@ -19,5 +19,5 @@ public class Product {
     private UUID id;
     private String name;
     private String description;
-    private Integer price;
+    private Double price;
 }

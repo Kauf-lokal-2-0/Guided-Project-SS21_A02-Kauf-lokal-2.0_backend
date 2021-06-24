@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"string\",\r\n    \"company\":\"company\",\r\n    \"street\":\"testStr\",\r\n    \"houseNr\":\"3a\",\r\n    \"place\":\"Köln\",\r\n    \"zipCode\":\"51148\",\r\n    \"country\":\"DE\"\r\n}",
+							"raw": "{\r\n    \"name\": \"string\",\r\n    \"company\":\"company\",\r\n    \"address\": {\r\n        \"street\":\"testStr\",\r\n        \"houseNr\":\"3a\",\r\n        \"place\":\"Köln\",\r\n        \"zipCode\":\"51148\",\r\n        \"country\":\"DE\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,7 +42,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant/129c8054-6773-4615-b123-2af55f9bd37b",
+							"raw": "http://localhost:8080/merchant/c0dc9670-3475-4385-a980-42f76f6f904e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -50,7 +50,7 @@
 							"port": "8080",
 							"path": [
 								"merchant",
-								"129c8054-6773-4615-b123-2af55f9bd37b"
+								"c0dc9670-3475-4385-a980-42f76f6f904e"
 							]
 						}
 					},

@@ -2,14 +2,14 @@ package com.KaufLokal.KaufLokalApplication.domain.model;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "COUPON")
+@Table(name = "RATING")
 @Data
-public class Coupon {
+public class Rating {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -19,16 +19,6 @@ public class Coupon {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
-    @Column(nullable = false)
-    private String name;
+    private double ratingScore;
 
-    @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = false)
-    private Integer generatedCouponCode;
-
-    private Date expiryDate;
-
-    private Double value;
 }

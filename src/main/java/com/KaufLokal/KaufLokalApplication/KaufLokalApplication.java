@@ -1,20 +1,17 @@
 package com.KaufLokal.KaufLokalApplication;
 
 
-import com.KaufLokal.KaufLokalApplication.domain.model.Address;
-import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
-import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
-import com.KaufLokal.KaufLokalApplication.domain.model.Offer;
-import com.KaufLokal.KaufLokalApplication.domain.repository.CouponRepository;
-import com.KaufLokal.KaufLokalApplication.domain.repository.MerchantRepository;
+import com.KaufLokal.KaufLokalApplication.domain.model.*;
+import com.KaufLokal.KaufLokalApplication.domain.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.ArrayList;
+import java.awt.image.Raster;
+import java.sql.Time;
+import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -25,8 +22,44 @@ public class KaufLokalApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(MerchantRepository merchantRepository , CouponRepository couponRepository) {
+	public CommandLineRunner demo(MerchantRepository merchantRepository ,
+								  CouponRepository couponRepository,
+								  RatingRepository ratingRepository,
+								  UserRepository userRepository,
+								  ProductRepository productRepository
+	) {
 		return (args) -> {
+
+			User user_0 = new User();
+			user_0.setFirstName("Firstname");
+			user_0.setLastName("LastName");
+			user_0.setEmail("test@test.de");
+
+			Rating rating_0 = new Rating();
+			rating_0.setRatingScore(4.5);
+			Rating rating0 = ratingRepository.save(rating_0);
+			Set<Rating> ratingsSet_0 = new HashSet<>();
+			ratingsSet_0.add(rating0);
+			user_0.setRatings(ratingsSet_0);
+			User user0 = userRepository.save(user_0);
+
+			User user_1 = new User();
+			user_1.setFirstName("Firstname2");
+			user_1.setLastName("LastName2");
+			user_1.setEmail("2test@test.de");
+
+			Rating rating_1 = new Rating();
+			rating_1.setRatingScore(3.5);
+			Rating rating1 = ratingRepository.save(rating_1);
+			Set<Rating> ratingSet_1 = new HashSet<>();
+			ratingSet_1.add(rating_1);
+			user_1.setRatings(ratingSet_1);
+
+			User user1 = userRepository.save(user_0);
+
+			Set<Rating> ratingSet = new HashSet<>();
+			ratingSet.add(rating0);
+			ratingSet.add(rating1);
 
 			Coupon coupon = new Coupon();
 			coupon.setName("50Coupon");
@@ -36,21 +69,47 @@ public class KaufLokalApplication {
 			Set<Coupon> couponSet = new HashSet<>();
 			couponSet.add(coupon0);
 
+			Product product_0 = new Product();
+			product_0.setName("Brot");
+			product_0.setDescription("Trokenes Brot");
+			product_0.setPrice(2.00);
+			Product product0 = productRepository.save(product_0);
 
-			Merchant merchant0 = new Merchant();
-			merchant0.setName("Mayersche Gummersbach");
-			merchant0.setCompany("Mayersche Gummersbach");
-			merchant0.setEmailAddress("info-gummersbach@mayersche.de");
+			Set<Product> productSet = new HashSet<>();
+			productSet.add(product0);
+
+			Merchant merchant_0 = new Merchant();
+			merchant_0.setName("Mayersche Gummersbach");
+			merchant_0.setCompany("Mayersche Gummersbach");
+			merchant_0.setEmailAddress("info-gummersbach@mayersche.de");
 			Address address0 = new Address();
 			address0.setStreet("Kaiserstraße");
 			address0.setHouseNr("20");
 			address0.setZipCode("51643");
 			address0.setPlace("Gummersbach");
 			address0.setCountry("Germany");
-			merchant0.setAddress(address0);
-			merchant0.setCoupons(couponSet);
-			merchantRepository.save(merchant0);
+			merchant_0.setAddress(address0);
+			merchant_0.setCoupons(couponSet);
+			merchant_0.setRatings(ratingSet);
+			merchant_0.setProducts(productSet);
 
+			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
+			merchant_0.setOpeningTime(openingTime);
+
+			Merchant merchant0 = merchantRepository.save(merchant_0);
+
+
+			Set<Merchant> merchantSet0 = new HashSet<>();
+			merchantSet0.add(merchant0);
+			user0.setFavoriteMerchants(merchantSet0);
+
+			user0 = userRepository.save(user0);
+
+
+			Set<Merchant> merchantSet = new HashSet<>();
+			merchantSet.add(merchant0);
+			user0.setFavoriteMerchants(merchantSet);
+			userRepository.save(user_0);
 
 			Merchant merchant1 = new Merchant();
 			merchant1.setName("Forum Gummersbach");
