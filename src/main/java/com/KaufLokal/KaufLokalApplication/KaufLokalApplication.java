@@ -1,6 +1,7 @@
 package com.KaufLokal.KaufLokalApplication;
 
 
+import com.KaufLokal.KaufLokalApplication.application.dto.NewsfeedDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.repository.*;
 import org.springframework.boot.CommandLineRunner;
@@ -26,7 +27,8 @@ public class KaufLokalApplication {
 								  CouponRepository couponRepository,
 								  RatingRepository ratingRepository,
 								  UserRepository userRepository,
-								  ProductRepository productRepository
+								  ProductRepository productRepository,
+								  NewsfeedRepository newsfeedRepository
 	) {
 		return (args) -> {
 
@@ -78,6 +80,14 @@ public class KaufLokalApplication {
 			Set<Product> productSet = new HashSet<>();
 			productSet.add(product0);
 
+			Newsfeed newsfeed_0 = new Newsfeed();
+			newsfeed_0.setMessage("Nachricht 1 ");
+			newsfeed_0.setCreated(new Date());
+			newsfeedRepository.save(newsfeed_0);
+
+			Set<Newsfeed> newsfeeds = new HashSet<>();
+			newsfeeds.add(newsfeed_0);
+
 			Merchant merchant_0 = new Merchant();
 			merchant_0.setName("Mayersche Gummersbach");
 			merchant_0.setCompany("Mayersche Gummersbach");
@@ -92,6 +102,7 @@ public class KaufLokalApplication {
 			merchant_0.setCoupons(couponSet);
 			merchant_0.setRatings(ratingSet);
 			merchant_0.setProducts(productSet);
+			merchant_0.setNewsfeeds(newsfeeds);
 
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			merchant_0.setOpeningTime(openingTime);

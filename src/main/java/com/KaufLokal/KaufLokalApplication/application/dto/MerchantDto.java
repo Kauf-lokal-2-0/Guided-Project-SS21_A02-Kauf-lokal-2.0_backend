@@ -20,4 +20,5 @@ public class MerchantDto {
     private OpeningTime openingTime;
     private Set<Rating> ratings;
     private Set<Product> products;
+    private Set<Newsfeed> newsfeeds;
 }

@@ -46,5 +46,7 @@ public class Merchant {
     @OneToMany
     private Set<Product> products = new HashSet<>();
 
+    @OneToMany
+    private Set<Newsfeed> newsfeeds = new HashSet<>();
 
 }
