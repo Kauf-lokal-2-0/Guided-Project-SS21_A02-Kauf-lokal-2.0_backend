@@ -38,7 +38,7 @@ public class Merchant {
     private OpeningTime openingTime;
 
     @OneToMany
-    private Set<Coupon> coupons = new HashSet<>(); // Coupons, which belongs to an offer
+    private Set<Coupon> coupons = new HashSet<>();
 
     @OneToMany
     private Set<Rating> ratings = new HashSet<>();
