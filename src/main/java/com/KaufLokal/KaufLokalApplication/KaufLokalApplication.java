@@ -103,6 +103,7 @@ public class KaufLokalApplication {
 			merchant_0.setRatings(ratingSet);
 			merchant_0.setProducts(productSet);
 			merchant_0.setNewsfeeds(newsfeeds);
+			merchant_0.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
 
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			merchant_0.setOpeningTime(openingTime);
@@ -126,6 +127,7 @@ public class KaufLokalApplication {
 			merchant1.setName("Forum Gummersbach");
 			merchant1.setCompany("Forum Gummersbach");
 			merchant1.setEmailAddress("info@forum-gummersbach.info");
+			merchant1.setProfilePicture("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
 			Address address1 = new Address();
 			address1.setStreet("Steinmüllerallee");
 			address1.setHouseNr("5");
@@ -139,6 +141,7 @@ public class KaufLokalApplication {
 			merchant2.setName("Street One Retail GmbH");
 			merchant2.setCompany("Street One Retail GmbH");
 			merchant2.setEmailAddress("onlineshop@kundenservice.streetone.de");
+			merchant2.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
 			Address address2 = new Address();
 			address2.setStreet("Steinmüllerallee");
 			address2.setHouseNr("5");
@@ -152,6 +155,7 @@ public class KaufLokalApplication {
 			merchant3.setName("Alanya Restaurant Gummersbach");
 			merchant3.setCompany("Alanya Restaurant Gummersbach");
 			merchant3.setEmailAddress("alanya-restaurant@web.de");
+			merchant3.setProfilePicture("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
 			address3.setHouseNr("10-12");
@@ -165,6 +169,7 @@ public class KaufLokalApplication {
 			merchant4.setName("Bergischer Hof");
 			merchant4.setCompany("Bergischer Hof");
 			merchant4.setEmailAddress("info@ic-verwaltungsgruppe.de");
+			merchant4.setProfilePicture("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
 			Address address4 = new Address();
 			address4.setStreet("Kaiserstraße");
 			address4.setHouseNr("35");
@@ -178,6 +183,7 @@ public class KaufLokalApplication {
 			merchant5.setName("Engbers");
 			merchant5.setCompany("Engbers");
 			merchant5.setEmailAddress("shop@engbers.com  ");
+			merchant5.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
 			Address address5 = new Address();
 			address5.setStreet("Steinmüllerallee");
 			address5.setHouseNr("5");
@@ -191,6 +197,7 @@ public class KaufLokalApplication {
 			merchant6.setName("Engbers");
 			merchant6.setCompany("Engbers");
 			merchant6.setEmailAddress("shop@engbers.com");
+			merchant6.setProfilePicture("https://www.forum-hanau.net/wp-content/uploads/sites/3/2015/08/engbers_170630_Forum_Hanau_0159.jpg");
 			Address address6 = new Address();
 			address6.setStreet("Steinmüllerallee");
 			address6.setHouseNr("5");
@@ -204,6 +211,7 @@ public class KaufLokalApplication {
 			merchant7.setName("TAKKO FASHION Gummersbach");
 			merchant7.setCompany("TAKKO FASHION Gummersbach");
 			merchant7.setEmailAddress("support@takko.de");
+			merchant7.setProfilePicture("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
 			Address address7 = new Address();
 			address7.setStreet("Kaiserstraße");
 			address7.setHouseNr("35");
@@ -217,6 +225,7 @@ public class KaufLokalApplication {
 			merchant8.setName("CECIL Partner Store Gummersbach");
 			merchant8.setCompany("CECIL Partner Store Gummersbach");
 			merchant8.setEmailAddress("support@takko.de");
+			merchant8.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
 			Address address8 = new Address();
 			address8.setStreet("Steinmüllerallee");
 			address8.setHouseNr("25");
@@ -230,6 +239,7 @@ public class KaufLokalApplication {
 			merchant9.setName("KULT");
 			merchant9.setCompany("KULT");
 			merchant9.setEmailAddress("info@goergens-gruppe.de");
+			merchant8.setProfilePicture("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
 			Address address9 = new Address();
 			address9.setStreet("Steinmüllerallee");
 			address9.setHouseNr("5");
