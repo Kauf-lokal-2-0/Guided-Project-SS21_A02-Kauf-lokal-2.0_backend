@@ -246,6 +246,75 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "GetAllEventTypes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/event/types",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"event",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllEvents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllMerchantEventsById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/event?merchantId=b61eeb46-2492-4032-9f1a-351cad678546",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "merchantId",
+									"value": "b61eeb46-2492-4032-9f1a-351cad678546"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
