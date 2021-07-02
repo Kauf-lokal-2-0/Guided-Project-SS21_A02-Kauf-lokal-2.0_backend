@@ -53,4 +53,7 @@ public class Merchant {
     @OneToMany
     private Set<Newsfeed> newsfeeds = new HashSet<>();
 
+    @OneToMany
+    private Set<Event> events = new HashSet<>();
+
 }

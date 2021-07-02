@@ -1,8 +1,10 @@
 package com.KaufLokal.KaufLokalApplication.application.controller;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.EventDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.EventTypesDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
 import com.KaufLokal.KaufLokalApplication.application.service.EventService;
+import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -33,12 +35,18 @@ public class EventController {
         return new ResponseEntity<>(eventService.findAll(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Get all event types")
+    @GetMapping("/event/types")
+    public ResponseEntity<List<EventTypesDto>> getAllEventTypes() {
+        logger.debug("GET: getAllEventTypes");
+
+        return new ResponseEntity<>(eventService.getEventTypes(), HttpStatus.OK);
+    }
+
     @ApiOperation(value = "Get all merchant events")
     @GetMapping("/event?merchantId={id}")
     public ResponseEntity<List<EventDto>> getAllMerchantEvents(@PathVariable UUID id) {
         logger.debug("GET: getAllMerchantEvents");
-
-
-        return new ResponseEntity<>(eventService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(eventService.findAllEventsByMerchant(id), HttpStatus.OK);
     }
 }

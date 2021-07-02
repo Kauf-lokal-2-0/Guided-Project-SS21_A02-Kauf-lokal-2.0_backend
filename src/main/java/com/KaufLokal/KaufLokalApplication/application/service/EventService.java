@@ -1,7 +1,11 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 import com.KaufLokal.KaufLokalApplication.application.dto.EventDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.EventTypesDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Event;
+import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
+import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
 import com.KaufLokal.KaufLokalApplication.domain.repository.EventRepository;
+import com.KaufLokal.KaufLokalApplication.domain.repository.MerchantRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,9 @@ public class EventService implements IDefaultService<Event, EventDto>{
     @Autowired
     EventRepository eventRepository;
 
+    @Autowired
+    MerchantRepository merchantRepository;
+
     public List<EventDto> findAll() {
         eventRepository.findAll();
         return mapToDto(eventRepository.findAll());
@@ -31,6 +38,15 @@ public class EventService implements IDefaultService<Event, EventDto>{
         return null;
     }
 
+    public List<EventDto> findAllEventsByMerchant(UUID id)
+    {
+        Optional<Merchant> merchantOptional = merchantRepository.findById(id);
+        if(merchantOptional.isPresent())
+        {
+            return mapToDto(new ArrayList<>(merchantOptional.get().getEvents()));
+        }
+        return null;
+    }
 
 
     public EventDto create(EventDto eventDto) {
@@ -83,5 +99,16 @@ public class EventService implements IDefaultService<Event, EventDto>{
 
     public Event mapDtoToObject(EventDto eventDto) {
         return mapDtoToObject(eventDto, new Event());
+    }
+
+    public List<EventTypesDto> getEventTypes()
+    {
+        List<EventTypesDto> eventTypesDtos = new ArrayList<>();
+        for (EventTypes eventTypes : EventTypes.values()) {
+            EventTypesDto eventTypesDto = new EventTypesDto();
+            eventTypesDto.setEventTypes(eventTypes);
+            eventTypesDtos.add(eventTypesDto);
+        }
+        return eventTypesDtos;
     }
 }

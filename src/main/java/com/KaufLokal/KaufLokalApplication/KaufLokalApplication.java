@@ -28,7 +28,8 @@ public class KaufLokalApplication {
 								  RatingRepository ratingRepository,
 								  UserRepository userRepository,
 								  ProductRepository productRepository,
-								  NewsfeedRepository newsfeedRepository
+								  NewsfeedRepository newsfeedRepository,
+								  EventRepository eventRepository
 	) {
 		return (args) -> {
 
@@ -36,6 +37,14 @@ public class KaufLokalApplication {
 			user_0.setFirstName("Firstname");
 			user_0.setLastName("LastName");
 			user_0.setEmail("test@test.de");
+
+			Event event_0 = new Event();
+			event_0.setCreated(new Date());
+			event_0.setEventTypes(EventTypes.Newsfeed);
+			Event event0 = eventRepository.save(event_0);
+
+			Set<Event> eventSet_0 = new HashSet<>();
+			eventSet_0.add(event0);
 
 			Rating rating_0 = new Rating();
 			rating_0.setRatingScore(4.5);
@@ -105,7 +114,7 @@ public class KaufLokalApplication {
 			merchant_0.setProducts(productSet);
 			merchant_0.setNewsfeeds(newsfeeds);
 			merchant_0.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
-
+			merchant_0.setEvents(eventSet_0);
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			merchant_0.setOpeningTime(openingTime);
 
@@ -254,6 +263,7 @@ public class KaufLokalApplication {
 			address9.setCountry("Germany");
 			merchant9.setAddress(address9);
 			merchantRepository.save(merchant9);
+
 
 		};
 	}
