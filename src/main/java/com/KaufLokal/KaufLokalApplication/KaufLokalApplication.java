@@ -92,6 +92,7 @@ public class KaufLokalApplication {
 			merchant_0.setName("Mayersche Gummersbach");
 			merchant_0.setCompany("Mayersche Gummersbach");
 			merchant_0.setEmailAddress("info-gummersbach@mayersche.de");
+			merchant_0.setWebsiteURL("https://www.thalia.de/");
 			Address address0 = new Address();
 			address0.setStreet("Kaiserstraße");
 			address0.setHouseNr("20");
@@ -127,6 +128,7 @@ public class KaufLokalApplication {
 			merchant1.setName("Forum Gummersbach");
 			merchant1.setCompany("Forum Gummersbach");
 			merchant1.setEmailAddress("info@forum-gummersbach.info");
+			merchant1.setWebsiteURL("https://www.forum-gummersbach.info");
 			merchant1.setProfilePicture("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
 			Address address1 = new Address();
 			address1.setStreet("Steinmüllerallee");
@@ -141,6 +143,7 @@ public class KaufLokalApplication {
 			merchant2.setName("Street One Retail GmbH");
 			merchant2.setCompany("Street One Retail GmbH");
 			merchant2.setEmailAddress("onlineshop@kundenservice.streetone.de");
+			merchant2.setWebsiteURL("https://streetone.de");
 			merchant2.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
 			Address address2 = new Address();
 			address2.setStreet("Steinmüllerallee");
@@ -155,6 +158,7 @@ public class KaufLokalApplication {
 			merchant3.setName("Alanya Restaurant Gummersbach");
 			merchant3.setCompany("Alanya Restaurant Gummersbach");
 			merchant3.setEmailAddress("alanya-restaurant@web.de");
+			merchant3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
 			merchant3.setProfilePicture("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
@@ -169,6 +173,7 @@ public class KaufLokalApplication {
 			merchant4.setName("Bergischer Hof");
 			merchant4.setCompany("Bergischer Hof");
 			merchant4.setEmailAddress("info@ic-verwaltungsgruppe.de");
+			merchant4.setWebsiteURL("ic-verwaltungsgruppe.de");
 			merchant4.setProfilePicture("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
 			Address address4 = new Address();
 			address4.setStreet("Kaiserstraße");
@@ -182,7 +187,8 @@ public class KaufLokalApplication {
 			Merchant merchant5 = new Merchant();
 			merchant5.setName("Engbers");
 			merchant5.setCompany("Engbers");
-			merchant5.setEmailAddress("shop@engbers.com  ");
+			merchant5.setEmailAddress("shop@engbers.com");
+			merchant5.setWebsiteURL("engbers.com");
 			merchant5.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
 			Address address5 = new Address();
 			address5.setStreet("Steinmüllerallee");

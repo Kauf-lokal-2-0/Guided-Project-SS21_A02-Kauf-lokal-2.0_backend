@@ -123,6 +123,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GetAllMerchantsRatings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/merchant/31ebe35c-867d-462b-9b43-014ed8960a55/rating",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"merchant",
+								"31ebe35c-867d-462b-9b43-014ed8960a55",
+								"rating"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

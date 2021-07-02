@@ -37,6 +37,10 @@ public class Merchant {
 
     private OpeningTime openingTime;
 
+    private String websiteURL;
+
+    private String color;
+
     @OneToMany
     private Set<Coupon> coupons = new HashSet<>();
 

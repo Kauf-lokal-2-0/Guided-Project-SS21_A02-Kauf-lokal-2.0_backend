@@ -21,4 +21,6 @@ public class MerchantDto {
     private Set<Rating> ratings;
     private Set<Product> products;
     private Set<Newsfeed> newsfeeds;
+    private String websiteURL;
+    private String color;
 }
