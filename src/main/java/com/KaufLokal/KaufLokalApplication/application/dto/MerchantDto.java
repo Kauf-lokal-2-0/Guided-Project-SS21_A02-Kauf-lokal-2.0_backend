@@ -14,14 +14,16 @@ public class MerchantDto {
     private Integer offerAmount;
     private Integer merchantScore;
     private String profilePicture;
+    private String websiteURL;
+    private String color;
+    private MerchantCategory category;
     private Address address;
     private String emailAddress;
-    private Set<Coupon> coupons;
     private OpeningTime openingTime;
+    private Set<Coupon> coupons;
     private Set<Rating> ratings;
     private Set<Product> products;
     private Set<Message> messages;
     private Set<Event> events;
-    private String websiteURL;
-    private String color;
+
 }

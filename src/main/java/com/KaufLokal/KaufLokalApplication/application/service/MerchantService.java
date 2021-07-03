@@ -1,11 +1,9 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
-import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.EventDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
+import com.KaufLokal.KaufLokalApplication.domain.model.MerchantCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.MerchantRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,4 +149,14 @@ public class MerchantService implements IDefaultService<Merchant,MerchantDto> {
         return mapDtoToObject(merchantDto, new Merchant());
     }
 
+    public List<MerchantCategoryDto> getCategories()
+    {
+        List<MerchantCategoryDto> merchantCategoriesDto = new ArrayList<>();
+        for (MerchantCategory merchantCategory : MerchantCategory.values()) {
+            MerchantCategoryDto merchantCategoryDto = new MerchantCategoryDto();
+            merchantCategoryDto.setMerchantCategory(merchantCategory);
+            merchantCategoriesDto.add(merchantCategoryDto);
+        }
+        return merchantCategoriesDto;
+    }
 }

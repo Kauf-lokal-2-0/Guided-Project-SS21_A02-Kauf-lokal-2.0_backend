@@ -2,9 +2,7 @@ package com.KaufLokal.KaufLokalApplication.application.controller;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.EventDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.EventTypesDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
 import com.KaufLokal.KaufLokalApplication.application.service.EventService;
-import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;

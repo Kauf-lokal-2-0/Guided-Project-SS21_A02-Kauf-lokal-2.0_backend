@@ -100,6 +100,7 @@ public class KaufLokalApplication {
 			merchant_0.setCompany("Mayersche Gummersbach");
 			merchant_0.setEmailAddress("info-gummersbach@mayersche.de");
 			merchant_0.setWebsiteURL("https://www.thalia.de/");
+			merchant_0.setCategory(MerchantCategory.General);
 			Address address0 = new Address();
 			address0.setStreet("Kaiserstraße");
 			address0.setHouseNr("20");
@@ -167,6 +168,7 @@ public class KaufLokalApplication {
 			merchant3.setEmailAddress("alanya-restaurant@web.de");
 			merchant3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
 			merchant3.setProfilePicture("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
+			merchant3.setCategory(MerchantCategory.Restaurant);
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
 			address3.setHouseNr("10-12");

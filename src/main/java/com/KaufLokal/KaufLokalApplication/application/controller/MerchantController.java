@@ -1,9 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.controller;
 
-import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.RatingDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -96,9 +93,16 @@ public class MerchantController {
 
     @ApiOperation(value = "Get all messages")
     @GetMapping("/merchant/{id}/message")
-    public ResponseEntity<List<MessageDto>> getAllMessagessByMerchantId(@PathVariable UUID id)
+    public ResponseEntity<List<MessageDto>> getAllMessagesByMerchantId(@PathVariable UUID id)
     {
         MerchantDto merchant = merchantService.findById(id);
         return new ResponseEntity<>(messageService.mapToDto(new ArrayList<>(merchant.getMessages())), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Get all merchant categories")
+    @GetMapping("/merchant/categories")
+    public ResponseEntity<List<MerchantCategoryDto>> getAllCategories() {
+        logger.debug("GET: getAllMerchantCategories");
+        return new ResponseEntity<>(merchantService.getCategories(), HttpStatus.OK);
     }
 }

@@ -41,6 +41,8 @@ public class Merchant {
 
     private String color;
 
+    private MerchantCategory category;
+
     @OneToMany
     private Set<Coupon> coupons = new HashSet<>();
 
