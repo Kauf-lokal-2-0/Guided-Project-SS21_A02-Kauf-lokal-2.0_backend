@@ -8,9 +8,9 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "NEWSFEED")
+@Table(name = "MESSAGE")
 @Data
-public class Newsfeed {
+public class Message {
 
     @Id
     @GeneratedValue(generator = "UUID")

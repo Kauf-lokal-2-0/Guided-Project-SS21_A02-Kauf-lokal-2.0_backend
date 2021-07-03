@@ -1,7 +1,6 @@
 package com.KaufLokal.KaufLokalApplication;
 
 
-import com.KaufLokal.KaufLokalApplication.application.dto.NewsfeedDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.repository.*;
 import org.springframework.boot.CommandLineRunner;
@@ -9,8 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.awt.image.Raster;
-import java.sql.Time;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +25,7 @@ public class KaufLokalApplication {
 								  RatingRepository ratingRepository,
 								  UserRepository userRepository,
 								  ProductRepository productRepository,
-								  NewsfeedRepository newsfeedRepository,
+								  MessageRepository messageRepository,
 								  EventRepository eventRepository
 	) {
 		return (args) -> {
@@ -40,7 +37,8 @@ public class KaufLokalApplication {
 
 			Event event_0 = new Event();
 			event_0.setCreated(new Date());
-			event_0.setEventTypes(EventTypes.Newsfeed);
+			event_0.setEventTypes(EventTypes.Message);
+			event_0.setCreated(new Date());
 			Event event0 = eventRepository.save(event_0);
 
 			Set<Event> eventSet_0 = new HashSet<>();
@@ -75,7 +73,7 @@ public class KaufLokalApplication {
 			Coupon coupon = new Coupon();
 			coupon.setName("50Coupon");
 			coupon.setDescription("50 % discount");
-			coupon.setGeneratedCouponCode(456);
+			coupon.setCouponCode(456);
 			Coupon coupon0 = couponRepository.save(coupon);
 			Set<Coupon> couponSet = new HashSet<>();
 			couponSet.add(coupon0);
@@ -89,13 +87,13 @@ public class KaufLokalApplication {
 			Set<Product> productSet = new HashSet<>();
 			productSet.add(product0);
 
-			Newsfeed newsfeed_0 = new Newsfeed();
-			newsfeed_0.setMessage("Nachricht 1 ");
-			newsfeed_0.setCreated(new Date());
-			newsfeedRepository.save(newsfeed_0);
+			Message message_0 = new Message();
+			message_0.setMessage("Nachricht 1 ");
+			message_0.setCreated(new Date());
+			messageRepository.save(message_0);
 
-			Set<Newsfeed> newsfeeds = new HashSet<>();
-			newsfeeds.add(newsfeed_0);
+			Set<Message> messages = new HashSet<>();
+			messages.add(message_0);
 
 			Merchant merchant_0 = new Merchant();
 			merchant_0.setName("Mayersche Gummersbach");
@@ -112,7 +110,7 @@ public class KaufLokalApplication {
 			merchant_0.setCoupons(couponSet);
 			merchant_0.setRatings(ratingSet);
 			merchant_0.setProducts(productSet);
-			merchant_0.setNewsfeeds(newsfeeds);
+			merchant_0.setMessages(messages);
 			merchant_0.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
 			merchant_0.setEvents(eventSet_0);
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");

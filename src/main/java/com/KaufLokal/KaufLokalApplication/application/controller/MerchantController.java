@@ -1,6 +1,8 @@
 package com.KaufLokal.KaufLokalApplication.application.controller;
 
+import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.RatingDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
 import io.swagger.annotations.Api;
@@ -29,6 +31,9 @@ public class MerchantController {
     @Autowired
     RatingService ratingService;
 
+    @Autowired
+    MessageService messageService;
+
     @ApiOperation(value = "Get all merchant")
     @GetMapping("/merchant")
     public ResponseEntity<List<MerchantDto>> getAllMerchant() {
@@ -49,6 +54,7 @@ public class MerchantController {
         logger.debug("POST: createMerchant");
         return new ResponseEntity<>(merchantService.create(merchantDto), HttpStatus.CREATED);
     }
+
     @ApiOperation(value = "Update an merchant")
     @PutMapping("/merchant")
     public ResponseEntity<MerchantDto> updateMerchant(@RequestBody MerchantDto merchantDto) {
@@ -70,5 +76,29 @@ public class MerchantController {
     {
         MerchantDto merchant = merchantService.findById(id);
         return new ResponseEntity<>(ratingService.mapToDto(new ArrayList<>(merchant.getRatings())), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Add coupon to merchant")
+    @PostMapping("/merchant/{id}/coupon")
+    public ResponseEntity<MerchantDto> addCoupon(@PathVariable UUID id, @RequestBody CouponDto couponDto)
+    {
+        MerchantDto merchantDto = merchantService.addCoupon(id,couponDto);
+        return new ResponseEntity<>(merchantDto, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Add message to merchant")
+    @PostMapping("/merchant/{id}/message")
+    public ResponseEntity<MerchantDto> addMessage(@PathVariable UUID id, @RequestBody MessageDto messageDto)
+    {
+        MerchantDto merchantDto = merchantService.addMessage(id,messageDto);
+        return new ResponseEntity<>(merchantDto, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Get all messages")
+    @GetMapping("/merchant/{id}/message")
+    public ResponseEntity<List<MessageDto>> getAllMessagessByMerchantId(@PathVariable UUID id)
+    {
+        MerchantDto merchant = merchantService.findById(id);
+        return new ResponseEntity<>(messageService.mapToDto(new ArrayList<>(merchant.getMessages())), HttpStatus.OK);
     }
 }

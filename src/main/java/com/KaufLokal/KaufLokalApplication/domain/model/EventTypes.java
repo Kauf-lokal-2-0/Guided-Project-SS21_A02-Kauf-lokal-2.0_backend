@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public enum EventTypes {
     Copon,
-    Newsfeed;
+    Message;
 }
 
 

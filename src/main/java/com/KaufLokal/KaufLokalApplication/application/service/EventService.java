@@ -48,7 +48,6 @@ public class EventService implements IDefaultService<Event, EventDto>{
         return null;
     }
 
-
     public EventDto create(EventDto eventDto) {
 
         return mapToDto(eventRepository.save(mapDtoToObject(eventDto)));

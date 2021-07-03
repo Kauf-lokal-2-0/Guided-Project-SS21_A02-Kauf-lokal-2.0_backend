@@ -51,7 +51,7 @@ public class Merchant {
     private Set<Product> products = new HashSet<>();
 
     @OneToMany
-    private Set<Newsfeed> newsfeeds = new HashSet<>();
+    private Set<Message> messages = new HashSet<>();
 
     @OneToMany
     private Set<Event> events = new HashSet<>();

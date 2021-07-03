@@ -1,22 +1,25 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
+import com.KaufLokal.KaufLokalApplication.domain.model.Event;
+import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.repository.CouponRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CouponService implements IDefaultService<Coupon, CouponDto>{
 
     @Autowired
     private CouponRepository couponRepository;
+
+    @Autowired
+    private EventService eventService;
 
     @Override
     public List<CouponDto> findAll() {
