@@ -1,5 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 

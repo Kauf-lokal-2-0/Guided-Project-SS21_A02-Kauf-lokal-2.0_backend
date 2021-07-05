@@ -16,4 +16,17 @@ public class Address {
     private String zipCode;
 
     private String country;
+
+    public Address() {
+    }
+
+    public Address(String street, String houseNr, String place, String zipCode, String country) {
+        this.street = street;
+        this.houseNr = houseNr;
+        this.place = place;
+        this.zipCode = zipCode;
+        this.country = country;
+
+
+    }
 }

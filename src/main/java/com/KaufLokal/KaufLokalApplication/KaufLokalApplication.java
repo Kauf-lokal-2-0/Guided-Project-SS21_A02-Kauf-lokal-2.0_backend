@@ -2,6 +2,8 @@ package com.KaufLokal.KaufLokalApplication;
 
 
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.MerchantCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -37,7 +39,7 @@ public class KaufLokalApplication {
 
 			Event event_0 = new Event();
 			event_0.setCreated(new Date());
-			event_0.setEventTypes(EventTypes.Message);
+			event_0.setEventTypes(EventTypes.MESSAGE);
 			event_0.setCreated(new Date());
 			Event event0 = eventRepository.save(event_0);
 
@@ -100,7 +102,7 @@ public class KaufLokalApplication {
 			merchant_0.setCompany("Mayersche Gummersbach");
 			merchant_0.setEmailAddress("info-gummersbach@mayersche.de");
 			merchant_0.setWebsiteURL("https://www.thalia.de/");
-			merchant_0.setCategory(MerchantCategory.General);
+			merchant_0.setCategory(MerchantCategory.GENERAL);
 			Address address0 = new Address();
 			address0.setStreet("Kaiserstraße");
 			address0.setHouseNr("20");
@@ -168,7 +170,7 @@ public class KaufLokalApplication {
 			merchant3.setEmailAddress("alanya-restaurant@web.de");
 			merchant3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
 			merchant3.setProfilePicture("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
-			merchant3.setCategory(MerchantCategory.Restaurant);
+			merchant3.setCategory(MerchantCategory.RESTAURANT);
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
 			address3.setHouseNr("10-12");

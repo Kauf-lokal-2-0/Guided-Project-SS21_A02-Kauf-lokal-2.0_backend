@@ -7,5 +7,5 @@ import java.util.UUID;
 @Data
 public class RatingDto {
     private UUID id;
-    private double ratingScore;
+    private Double ratingScore;
 }

@@ -2,7 +2,7 @@ package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Event;
-import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Message;
 import com.KaufLokal.KaufLokalApplication.domain.repository.MessageRepository;
 import org.modelmapper.ModelMapper;
@@ -40,7 +40,7 @@ public class MessageService implements IDefaultService<Message, MessageDto>{
     public MessageDto create(MessageDto messageDto) {
         MessageDto messageDto1 = mapToDto(messageRepository.save(mapDtoToObject(messageDto)));
         Event event = new Event();
-        event.setEventTypes(EventTypes.Copon);
+        event.setEventTypes(EventTypes.COUPON);
         event.setCreated(new Date());
         eventService.create(eventService.mapToDto(event));
         return messageDto1;

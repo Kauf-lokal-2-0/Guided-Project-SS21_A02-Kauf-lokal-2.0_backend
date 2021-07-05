@@ -1,6 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
-import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import lombok.Data;
 
 import java.util.Date;

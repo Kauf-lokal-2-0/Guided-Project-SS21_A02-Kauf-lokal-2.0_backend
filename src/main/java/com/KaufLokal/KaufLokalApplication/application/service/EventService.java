@@ -2,7 +2,7 @@ package com.KaufLokal.KaufLokalApplication.application.service;
 import com.KaufLokal.KaufLokalApplication.application.dto.EventDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.EventTypesDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Event;
-import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
 import com.KaufLokal.KaufLokalApplication.domain.repository.EventRepository;
 import com.KaufLokal.KaufLokalApplication.domain.repository.MerchantRepository;

@@ -1,10 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
-import com.KaufLokal.KaufLokalApplication.domain.model.Event;
-import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.repository.CouponRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.*;
-import com.KaufLokal.KaufLokalApplication.domain.model.EventTypes;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
-import com.KaufLokal.KaufLokalApplication.domain.model.MerchantCategory;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.MerchantCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.MerchantRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +82,7 @@ public class MerchantService implements IDefaultService<Merchant,MerchantDto> {
             merchantRepository.save(merchantOptional.get());
 
             EventDto eventDto = new EventDto();
-            eventDto.setEventTypes(EventTypes.Copon);
+            eventDto.setEventTypes(EventTypes.COUPON);
             eventDto.setCreated(new Date());
             eventService.create(eventDto);
 
@@ -111,7 +111,7 @@ public class MerchantService implements IDefaultService<Merchant,MerchantDto> {
             merchantRepository.save(merchantOptional.get());
 
             EventDto eventDto = new EventDto();
-            eventDto.setEventTypes(EventTypes.Message);
+            eventDto.setEventTypes(EventTypes.MESSAGE);
             eventDto.setCreated(new Date());
             eventService.create(eventDto);
 

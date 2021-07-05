@@ -45,10 +45,18 @@ public class UserController {
         return new ResponseEntity<>(userService.create(userDto), HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "Update an product")
+    @ApiOperation(value = "Update an User")
     @PutMapping("/user")
-    public ResponseEntity<UserDto> updateProduct(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
         logger.debug("PUT: User");
         return new ResponseEntity<>(userService.update(userDto), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Delete an User")
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<Void> deleteUser(UUID id){
+        logger.debug("DELETE: User");
+        userService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
