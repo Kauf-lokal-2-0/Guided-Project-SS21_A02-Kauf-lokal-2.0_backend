@@ -69,16 +69,12 @@ public class MerchantService implements IDefaultService<Merchant,MerchantDto> {
 
     public MerchantDto addCoupon(UUID merchantId, CouponDto couponDto)
     {
-       CouponDto couponDto1 = couponService.findById(couponDto.getId());
-       if(couponDto1 == null)
-       {
-           //TODO throw Exception.
-       }
-
         Optional<Merchant> merchantOptional = merchantRepository.findById(merchantId);
         if (merchantOptional.isPresent())
         {
-            merchantOptional.get().getCoupons().add(couponService.mapDtoToObject(couponDto1));
+
+
+            merchantOptional.get().getCoupons().add(couponService.mapDtoToObject(couponService.create(couponDto)));
             merchantRepository.save(merchantOptional.get());
 
             EventDto eventDto = new EventDto();
@@ -98,16 +94,10 @@ public class MerchantService implements IDefaultService<Merchant,MerchantDto> {
 
     public MerchantDto addMessage(UUID merchantId, MessageDto messageDto)
     {
-        MessageDto messageDto1 = messageService.findById(messageDto.getId());
-        if(messageDto1 == null)
-        {
-            //TODO throw Exception.
-        }
-
         Optional<Merchant> merchantOptional = merchantRepository.findById(merchantId);
         if (merchantOptional.isPresent())
         {
-            merchantOptional.get().getMessages().add(messageService.mapDtoToObject(messageDto));
+            merchantOptional.get().getMessages().add(messageService.mapDtoToObject(messageService.create(messageDto)));
             merchantRepository.save(merchantOptional.get());
 
             EventDto eventDto = new EventDto();

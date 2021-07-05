@@ -37,8 +37,6 @@ public class MessageController {
         return new ResponseEntity<>(messageService.findById(id), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Create an new message")
-    @PostMapping("/message")
     public ResponseEntity<MessageDto> createMessage(@RequestBody MessageDto messageDto) {
         logger.debug("POST: createMessage");
         return new ResponseEntity<>(messageService.create(messageDto), HttpStatus.CREATED);

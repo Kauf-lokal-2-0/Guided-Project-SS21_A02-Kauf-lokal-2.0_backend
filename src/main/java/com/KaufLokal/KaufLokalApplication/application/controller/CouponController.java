@@ -36,8 +36,6 @@ public class CouponController {
         return new ResponseEntity<>(couponService.findById(id), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Create a new coupon")
-    @PostMapping("/coupon")
     public ResponseEntity<CouponDto> createCoupon(@RequestBody CouponDto couponDto) {
         logger.debug("POST: createCoupon");
         return new ResponseEntity<>(couponService.create(couponDto), HttpStatus.CREATED);

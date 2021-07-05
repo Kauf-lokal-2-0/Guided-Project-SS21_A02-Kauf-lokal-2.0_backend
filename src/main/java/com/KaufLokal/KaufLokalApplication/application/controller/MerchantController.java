@@ -31,6 +31,9 @@ public class MerchantController {
     @Autowired
     MessageService messageService;
 
+    @Autowired
+    CouponService couponService;
+
     @ApiOperation(value = "Get all merchant")
     @GetMapping("/merchant")
     public ResponseEntity<List<MerchantDto>> getAllMerchant() {
@@ -79,7 +82,7 @@ public class MerchantController {
     @PostMapping("/merchant/{id}/coupon")
     public ResponseEntity<MerchantDto> addCoupon(@PathVariable UUID id, @RequestBody CouponDto couponDto)
     {
-        MerchantDto merchantDto = merchantService.addCoupon(id,couponDto);
+        MerchantDto merchantDto = merchantService.addCoupon(id,couponService.create(couponDto));
         return new ResponseEntity<>(merchantDto, HttpStatus.OK);
     }
 
@@ -87,7 +90,7 @@ public class MerchantController {
     @PostMapping("/merchant/{id}/message")
     public ResponseEntity<MerchantDto> addMessage(@PathVariable UUID id, @RequestBody MessageDto messageDto)
     {
-        MerchantDto merchantDto = merchantService.addMessage(id,messageDto);
+        MerchantDto merchantDto = merchantService.addMessage(id,messageService.create(messageDto));
         return new ResponseEntity<>(merchantDto, HttpStatus.OK);
     }
 
