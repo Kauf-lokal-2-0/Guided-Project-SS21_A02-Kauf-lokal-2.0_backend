@@ -43,19 +43,19 @@ public class Merchant {
 
     private MerchantCategory category;
 
-    @OneToMany
-    private Set<Coupon> coupons = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Coupon> coupons;
 
     @OneToMany
-    private Set<Rating> ratings = new HashSet<>();
+    private Set<Rating> ratings;
 
     @OneToMany
-    private Set<Product> products = new HashSet<>();
+    private Set<Product> products;
 
     @OneToMany
-    private Set<Message> messages = new HashSet<>();
+    private Set<Message> messages;
 
     @OneToMany
-    private Set<Event> events = new HashSet<>();
+    private Set<Event> events;
 
 }
