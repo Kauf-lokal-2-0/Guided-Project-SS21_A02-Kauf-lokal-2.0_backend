@@ -1,23 +1,22 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
-import com.KaufLokal.KaufLokalApplication.domain.model.enums.MerchantCategory;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import lombok.Data;
 
 import java.util.Set;
 import java.util.UUID;
 
 @Data
-public class MerchantDto {
+public class VendorDto {
     private UUID id;
     private String name;
-    private String company;
     private Integer offerAmount;
     private Integer merchantScore;
     private String profilePicture;
     private String websiteURL;
     private String color;
-    private MerchantCategory category;
+    private VendorCategory category;
     private Address address;
     private String emailAddress;
     private OpeningTime openingTime;

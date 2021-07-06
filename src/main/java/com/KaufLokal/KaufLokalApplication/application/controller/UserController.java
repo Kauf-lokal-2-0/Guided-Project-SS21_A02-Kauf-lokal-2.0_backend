@@ -1,6 +1,5 @@
 package com.KaufLokal.KaufLokalApplication.application.controller;
 
-import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
 import com.KaufLokal.KaufLokalApplication.application.service.UserService;
 import io.swagger.annotations.Api;

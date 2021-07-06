@@ -3,9 +3,9 @@ import com.KaufLokal.KaufLokalApplication.application.dto.EventDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.EventTypesDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Event;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
-import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
+import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.repository.EventRepository;
-import com.KaufLokal.KaufLokalApplication.domain.repository.MerchantRepository;
+import com.KaufLokal.KaufLokalApplication.domain.repository.VendorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class EventService implements IDefaultService<Event, EventDto>{
     EventRepository eventRepository;
 
     @Autowired
-    MerchantRepository merchantRepository;
+    VendorRepository vendorRepository;
 
     public List<EventDto> findAll() {
         eventRepository.findAll();
@@ -40,7 +40,7 @@ public class EventService implements IDefaultService<Event, EventDto>{
 
     public List<EventDto> findAllEventsByMerchant(UUID id)
     {
-        Optional<Merchant> merchantOptional = merchantRepository.findById(id);
+        Optional<Vendor> merchantOptional = vendorRepository.findById(id);
         if(merchantOptional.isPresent())
         {
             return mapToDto(new ArrayList<>(merchantOptional.get().getEvents()));

@@ -3,7 +3,7 @@ package com.KaufLokal.KaufLokalApplication;
 
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
-import com.KaufLokal.KaufLokalApplication.domain.model.enums.MerchantCategory;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +22,7 @@ public class KaufLokalApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(MerchantRepository merchantRepository ,
+	public CommandLineRunner demo(VendorRepository vendorRepository,
 								  CouponRepository couponRepository,
 								  RatingRepository ratingRepository,
 								  UserRepository userRepository,
@@ -97,174 +97,170 @@ public class KaufLokalApplication {
 			Set<Message> messages = new HashSet<>();
 			messages.add(message_0);
 
-			Merchant merchant_0 = new Merchant();
-			merchant_0.setName("Mayersche Gummersbach");
-			merchant_0.setCompany("Mayersche Gummersbach");
-			merchant_0.setEmailAddress("info-gummersbach@mayersche.de");
-			merchant_0.setWebsiteURL("https://www.thalia.de/");
-			merchant_0.setCategory(MerchantCategory.GENERAL);
+			Vendor vendor_0 = new Vendor();
+			vendor_0.setName("Mayersche Gummersbach");
+			vendor_0.setEmailAddress("info-gummersbach@mayersche.de");
+			vendor_0.setWebsiteURL("https://www.thalia.de/");
+			vendor_0.setCategory(VendorCategory.GENERAL);
 			Address address0 = new Address();
 			address0.setStreet("Kaiserstraße");
 			address0.setHouseNr("20");
 			address0.setZipCode("51643");
 			address0.setPlace("Gummersbach");
 			address0.setCountry("Germany");
-			merchant_0.setAddress(address0);
-			merchant_0.setCoupons(couponSet);
-			merchant_0.setRatings(ratingSet);
-			merchant_0.setProducts(productSet);
-			merchant_0.setMessages(messages);
-			merchant_0.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
-			merchant_0.setEvents(eventSet_0);
+			vendor_0.setAddress(address0);
+			vendor_0.setCoupons(couponSet);
+			vendor_0.setColor("#FFFFFF");
+			vendor_0.setRatings(ratingSet);
+			vendor_0.setProducts(productSet);
+			vendor_0.setMessages(messages);
+			vendor_0.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
+			vendor_0.setEvents(eventSet_0);
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
-			merchant_0.setOpeningTime(openingTime);
+			vendor_0.setOpeningTime(openingTime);
 
-			Merchant merchant0 = merchantRepository.save(merchant_0);
+			Vendor vendor0 = vendorRepository.save(vendor_0);
 
 
-			Set<Merchant> merchantSet0 = new HashSet<>();
-			merchantSet0.add(merchant0);
-			user0.setFavoriteMerchants(merchantSet0);
+			Set<Vendor> vendorSet0 = new HashSet<>();
+			vendorSet0.add(vendor0);
+			user0.setFavoriteVendors(vendorSet0);
 
 			user0 = userRepository.save(user0);
 
 
-			Set<Merchant> merchantSet = new HashSet<>();
-			merchantSet.add(merchant0);
-			user0.setFavoriteMerchants(merchantSet);
+			Set<Vendor> vendorSet = new HashSet<>();
+			vendorSet.add(vendor0);
+			user0.setFavoriteVendors(vendorSet);
 			userRepository.save(user_0);
 
-			Merchant merchant1 = new Merchant();
-			merchant1.setName("Forum Gummersbach");
-			merchant1.setCompany("Forum Gummersbach");
-			merchant1.setEmailAddress("info@forum-gummersbach.info");
-			merchant1.setWebsiteURL("https://www.forum-gummersbach.info");
-			merchant1.setProfilePicture("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
+			Vendor vendor1 = new Vendor();
+			vendor1.setName("Forum Gummersbach");
+			vendor1.setEmailAddress("info@forum-gummersbach.info");
+			vendor1.setColor("#e2a363");
+			vendor1.setWebsiteURL("https://www.forum-gummersbach.info");
+			vendor1.setProfilePicture("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
 			Address address1 = new Address();
 			address1.setStreet("Steinmüllerallee");
 			address1.setHouseNr("5");
 			address1.setZipCode("51643");
 			address1.setPlace("Gummersbach");
 			address1.setCountry("Germany");
-			merchant1.setAddress(address1);
-			merchantRepository.save(merchant1);
+			vendor1.setAddress(address1);
+			vendorRepository.save(vendor1);
 
-			Merchant merchant2 = new Merchant();
-			merchant2.setName("Street One Retail GmbH");
-			merchant2.setCompany("Street One Retail GmbH");
-			merchant2.setEmailAddress("onlineshop@kundenservice.streetone.de");
-			merchant2.setWebsiteURL("https://streetone.de");
-			merchant2.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
+			Vendor vendor2 = new Vendor();
+			vendor2.setName("Street One Retail GmbH");
+			vendor2.setEmailAddress("onlineshop@kundenservice.streetone.de");
+			vendor2.setWebsiteURL("https://streetone.de");
+			vendor2.setColor("#FD0000");
+			vendor2.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
 			Address address2 = new Address();
 			address2.setStreet("Steinmüllerallee");
 			address2.setHouseNr("5");
 			address2.setZipCode("51643");
 			address2.setPlace("Gummersbach");
 			address2.setCountry("Germany");
-			merchant2.setAddress(address2);
-			merchantRepository.save(merchant2);
+			vendor2.setAddress(address2);
+			vendorRepository.save(vendor2);
 
-			Merchant merchant3 = new Merchant();
-			merchant3.setName("Alanya Restaurant Gummersbach");
-			merchant3.setCompany("Alanya Restaurant Gummersbach");
-			merchant3.setEmailAddress("alanya-restaurant@web.de");
-			merchant3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
-			merchant3.setProfilePicture("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
-			merchant3.setCategory(MerchantCategory.RESTAURANT);
+			Vendor vendor3 = new Vendor();
+			vendor3.setName("Alanya Restaurant Gummersbach");
+			vendor3.setEmailAddress("alanya-restaurant@web.de");
+			vendor3.setColor("#610505");
+			vendor3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
+			vendor3.setProfilePicture("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
+			vendor3.setCategory(VendorCategory.RESTAURANT);
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
 			address3.setHouseNr("10-12");
 			address3.setZipCode("51643");
 			address3.setPlace("Gummersbach");
 			address3.setCountry("Germany");
-			merchant3.setAddress(address3);
-			merchantRepository.save(merchant3);
+			vendor3.setAddress(address3);
+			vendorRepository.save(vendor3);
 
-			Merchant merchant4 = new Merchant();
-			merchant4.setName("Bergischer Hof");
-			merchant4.setCompany("Bergischer Hof");
-			merchant4.setEmailAddress("info@ic-verwaltungsgruppe.de");
-			merchant4.setWebsiteURL("ic-verwaltungsgruppe.de");
-			merchant4.setProfilePicture("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
+			Vendor vendor4 = new Vendor();
+			vendor4.setName("Bergischer Hof");
+			vendor4.setEmailAddress("info@ic-verwaltungsgruppe.de");
+			vendor4.setWebsiteURL("ic-verwaltungsgruppe.de");
+			vendor4.setColor("#A5C715");
+			vendor4.setProfilePicture("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
 			Address address4 = new Address();
 			address4.setStreet("Kaiserstraße");
 			address4.setHouseNr("35");
 			address4.setZipCode("51643");
 			address4.setPlace("Gummersbach");
 			address4.setCountry("Germany");
-			merchant4.setAddress(address4);
-			merchantRepository.save(merchant4);
+			vendor4.setAddress(address4);
+			vendorRepository.save(vendor4);
 
-			Merchant merchant5 = new Merchant();
-			merchant5.setName("Engbers");
-			merchant5.setCompany("Engbers");
-			merchant5.setEmailAddress("shop@engbers.com");
-			merchant5.setWebsiteURL("engbers.com");
-			merchant5.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
+			Vendor vendor5 = new Vendor();
+			vendor5.setName("Engbers");
+			vendor5.setEmailAddress("shop@engbers.com");
+			vendor5.setWebsiteURL("engbers.com");
+			vendor5.setColor("#056118");
+			vendor5.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
 			Address address5 = new Address();
 			address5.setStreet("Steinmüllerallee");
 			address5.setHouseNr("5");
 			address5.setZipCode("51643");
 			address5.setPlace("Gummersbach");
 			address5.setCountry("Germany");
-			merchant5.setAddress(address5);
-			merchantRepository.save(merchant5);
+			vendor5.setAddress(address5);
+			vendorRepository.save(vendor5);
 
-			Merchant merchant6 = new Merchant();
-			merchant6.setName("Engbers");
-			merchant6.setCompany("Engbers");
-			merchant6.setEmailAddress("shop@engbers.com");
-			merchant6.setProfilePicture("https://www.forum-hanau.net/wp-content/uploads/sites/3/2015/08/engbers_170630_Forum_Hanau_0159.jpg");
+			Vendor vendor6 = new Vendor();
+			vendor6.setName("Engbers");
+			vendor6.setEmailAddress("shop@engbers.com");
+			vendor6.setProfilePicture("https://www.forum-hanau.net/wp-content/uploads/sites/3/2015/08/engbers_170630_Forum_Hanau_0159.jpg");
 			Address address6 = new Address();
 			address6.setStreet("Steinmüllerallee");
 			address6.setHouseNr("5");
 			address6.setZipCode("51643");
 			address6.setPlace("Gummersbach");
 			address6.setCountry("Germany");
-			merchant6.setAddress(address6);
-			merchantRepository.save(merchant6);
+			vendor6.setAddress(address6);
+			vendorRepository.save(vendor6);
 
-			Merchant merchant7 = new Merchant();
-			merchant7.setName("TAKKO FASHION Gummersbach");
-			merchant7.setCompany("TAKKO FASHION Gummersbach");
-			merchant7.setEmailAddress("support@takko.de");
-			merchant7.setProfilePicture("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
+			Vendor vendor7 = new Vendor();
+			vendor7.setName("TAKKO FASHION Gummersbach");
+			vendor7.setEmailAddress("support@takko.de");
+			vendor7.setProfilePicture("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
 			Address address7 = new Address();
 			address7.setStreet("Kaiserstraße");
 			address7.setHouseNr("35");
 			address7.setZipCode("51643");
 			address7.setPlace("Gummersbach");
 			address7.setCountry("Germany");
-			merchant7.setAddress(address7);
-			merchantRepository.save(merchant7);
+			vendor7.setAddress(address7);
+			vendorRepository.save(vendor7);
 
-			Merchant merchant8 = new Merchant();
-			merchant8.setName("CECIL Partner Store Gummersbach");
-			merchant8.setCompany("CECIL Partner Store Gummersbach");
-			merchant8.setEmailAddress("support@takko.de");
-			merchant8.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
+			Vendor vendor8 = new Vendor();
+			vendor8.setName("CECIL Partner Store Gummersbach");
+			vendor8.setEmailAddress("support@takko.de");
+			vendor8.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
 			Address address8 = new Address();
 			address8.setStreet("Steinmüllerallee");
 			address8.setHouseNr("25");
 			address8.setZipCode("51643");
 			address8.setPlace("Gummersbach");
 			address8.setCountry("Germany");
-			merchant8.setAddress(address8);
-			merchantRepository.save(merchant8);
+			vendor8.setAddress(address8);
+			vendorRepository.save(vendor8);
 
-			Merchant merchant9 = new Merchant();
-			merchant9.setName("KULT");
-			merchant9.setCompany("KULT");
-			merchant9.setEmailAddress("info@goergens-gruppe.de");
-			merchant8.setProfilePicture("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
+			Vendor vendor9 = new Vendor();
+			vendor9.setName("KULT");
+			vendor9.setEmailAddress("info@goergens-gruppe.de");
+			vendor8.setProfilePicture("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
 			Address address9 = new Address();
 			address9.setStreet("Steinmüllerallee");
 			address9.setHouseNr("5");
 			address9.setZipCode("51643");
 			address9.setPlace("Gummersbach");
 			address9.setCountry("Germany");
-			merchant9.setAddress(address9);
-			merchantRepository.save(merchant9);
+			vendor9.setAddress(address9);
+			vendorRepository.save(vendor9);
 
 
 		};

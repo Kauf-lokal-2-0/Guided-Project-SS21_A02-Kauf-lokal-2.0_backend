@@ -1,6 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import com.KaufLokal.KaufLokalApplication.domain.model.enums.MerchantCategory;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -11,7 +11,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "MERCHANT")
 @Data
-public class Merchant {
+public class Vendor {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -23,9 +23,6 @@ public class Merchant {
 
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private String company;
 
     private Integer merchantScore;
 
@@ -41,7 +38,7 @@ public class Merchant {
 
     private String color;
 
-    private MerchantCategory category;
+    private VendorCategory category;
 
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Coupon> coupons;
@@ -58,12 +55,11 @@ public class Merchant {
     @OneToMany
     private Set<Event> events;
 
-    public Merchant() {
+    public Vendor() {
     }
 
-    public Merchant(String name, String company, Integer merchantScore, Address address, String profilePicture, String emailAddress, OpeningTime openingTime, String websiteURL, String color, MerchantCategory category, Set<Coupon> coupons, Set<Rating> ratings, Set<Product> products, Set<Message> messages, Set<Event> events) {
+    public Vendor(String name, Integer merchantScore, Address address, String profilePicture, String emailAddress, OpeningTime openingTime, String websiteURL, String color, VendorCategory category, Set<Coupon> coupons, Set<Rating> ratings, Set<Product> products, Set<Message> messages, Set<Event> events) {
         this.name = name;
-        this.company = company;
         this.merchantScore = merchantScore;
         this.address = address;
         this.profilePicture = profilePicture;

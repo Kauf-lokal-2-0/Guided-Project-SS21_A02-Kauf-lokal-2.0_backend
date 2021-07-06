@@ -1,7 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
 import com.KaufLokal.KaufLokalApplication.domain.model.Address;
-import com.KaufLokal.KaufLokalApplication.domain.model.Merchant;
+import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.model.Rating;
 import lombok.Data;
 
@@ -18,5 +18,5 @@ public class UserDto {
     private String profilePicture;
     private Address address;
     private Set<Rating> ratings;
-    private Set<Merchant> favoriteMerchants;
+    private Set<Vendor> favoriteVendors;
 }

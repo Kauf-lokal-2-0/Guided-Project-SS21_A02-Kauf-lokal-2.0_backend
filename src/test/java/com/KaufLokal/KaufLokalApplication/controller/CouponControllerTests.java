@@ -2,7 +2,6 @@ package com.KaufLokal.KaufLokalApplication.controller;
 
 import com.KaufLokal.KaufLokalApplication.application.controller.CouponController;
 import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

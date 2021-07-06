@@ -1,9 +1,9 @@
 package com.KaufLokal.KaufLokalApplication.controller;
 
 import com.KaufLokal.KaufLokalApplication.application.controller.CouponController;
-import com.KaufLokal.KaufLokalApplication.application.controller.MerchantController;
+import com.KaufLokal.KaufLokalApplication.application.controller.VendorController;
 import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
-import com.KaufLokal.KaufLokalApplication.application.dto.MerchantDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.VendorDto;
 import com.KaufLokal.KaufLokalApplication.application.service.CouponService;
 import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
 import org.junit.jupiter.api.Test;
@@ -12,18 +12,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class MerchantControllerTests {
+public class VendorControllerTests {
 
     @Autowired
-    private MerchantController merchantController;
+    private VendorController vendorController;
 
     @Autowired
     private CouponController couponController;
@@ -34,16 +32,16 @@ public class MerchantControllerTests {
     @Test
     void testController() {
 
-        MerchantDto merchantDto = new MerchantDto();
-        merchantDto.setName("Name of Merchant");
-        merchantDto.setCompany("Company of Merchant");
+        VendorDto vendorDto = new VendorDto();
+        vendorDto.setName("Name of Merchant");
+        vendorDto.setCompany("Company of Merchant");
 
-        ResponseEntity<MerchantDto> createdMerchantDto = merchantController.createMerchant(merchantDto);
+        ResponseEntity<VendorDto> createdMerchantDto = vendorController.createMerchant(vendorDto);
         assertThat(createdMerchantDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-        MerchantDto updateMerchant = createdMerchantDto.getBody();
+        VendorDto updateMerchant = createdMerchantDto.getBody();
         updateMerchant.setCompany("New Company of merchant");
-        ResponseEntity<MerchantDto> updatedMerchant = merchantController.updateMerchant(updateMerchant);
+        ResponseEntity<VendorDto> updatedMerchant = vendorController.updateMerchant(updateMerchant);
 
         assertThat(updatedMerchant.getBody().getCompany()).isEqualTo(updateMerchant.getCompany());
 
@@ -59,14 +57,14 @@ public class MerchantControllerTests {
         couponSet.add(couponService.mapDtoToObject(createdCouponDto.getBody()));
 
         updatedMerchant.getBody().setCoupons(couponSet);
-        ResponseEntity<MerchantDto> merchantDtoWithCoupon = merchantController.updateMerchant(updatedMerchant.getBody());
+        ResponseEntity<VendorDto> merchantDtoWithCoupon = vendorController.updateMerchant(updatedMerchant.getBody());
         for (Coupon coupon: merchantDtoWithCoupon.getBody().getCoupons() ) {
             assertThat(coupon.getCouponCode()).isEqualTo(couponDto.getCouponCode());
         }
 
 
 
-        merchantController.deleteMerchant(updatedMerchant.getBody().getId());
+        vendorController.deleteMerchant(updatedMerchant.getBody().getId());
 
 
 

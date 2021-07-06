@@ -1,10 +1,9 @@
 package com.KaufLokal.KaufLokalApplication.controller;
 
 import com.KaufLokal.KaufLokalApplication.application.controller.UserController;
-import com.KaufLokal.KaufLokalApplication.application.dto.ProductDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
-import com.KaufLokal.KaufLokalApplication.domain.model.enums.MerchantCategory;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +24,7 @@ public class UserControllerTest {
     private Address address = new Address("Straße","HausNr","Ort", "PLZ","Land");
 
     private Set<Rating> ratings = new HashSet<>();
-    private Set<Merchant> merchants = new HashSet<>();
+    private Set<Vendor> vendors = new HashSet<>();
     private Set<Coupon> coupons = new HashSet<>();
     private Set<Product> products = new HashSet<>();
     private Set<Message> messages = new HashSet<>();
@@ -44,8 +43,8 @@ public class UserControllerTest {
         userDto.setAddress(address);
         ratings.add(new Rating(5.0));
         userDto.setRatings(ratings);
-        merchants.add(new Merchant("EIN NAME", "EINE FIRMA", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", MerchantCategory.RESTAURANT, coupons, ratings, products, messages, events));
-        userDto.setFavoriteMerchants(merchants);
+        vendors.add(new Vendor("EIN NAME", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", VendorCategory.RESTAURANT, coupons, ratings, products, messages, events));
+        userDto.setFavoriteVendors(vendors);
 
         ResponseEntity<UserDto> createUserDto = userController.createUser(userDto);
         assertThat(createUserDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);
