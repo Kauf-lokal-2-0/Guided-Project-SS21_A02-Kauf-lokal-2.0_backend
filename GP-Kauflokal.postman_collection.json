@@ -42,7 +42,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant/c0dc9670-3475-4385-a980-42f76f6f904e",
+							"raw": "http://localhost:8080/merchant/fcfd232d-079d-460a-8a33-f6d4cd4b97cd",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -50,7 +50,7 @@
 							"port": "8080",
 							"path": [
 								"merchant",
-								"c0dc9670-3475-4385-a980-42f76f6f904e"
+								"fcfd232d-079d-460a-8a33-f6d4cd4b97cd"
 							]
 						}
 					},
@@ -173,7 +173,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"e332dede-1d42-45e0-b79f-0c5aa2fb8151\",\r\n    \"name\": \"string\",\r\n    \"description\": \"company\",\r\n    \"couponCode\": 12345,\r\n    \"expiryDate\": null,\r\n    \"value\": null\r\n}",
+							"raw": "{\r\n    \"name\": \"string\",\r\n    \"description\": \"company\",\r\n    \"couponCode\": 12345,\r\n    \"expiryDate\": \"2021-07-03T09:09:26.447+00:00\",\r\n    \"value\": 50.0\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,7 +181,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/merchant/a492cb5a-7565-4ae7-bfea-b1d3120f790e/coupon",
+							"raw": "http://localhost:8080/merchant/d7c49a8d-52c6-4a84-8bfe-7e36ea1ca7bf/coupon",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -189,7 +189,7 @@
 							"port": "8080",
 							"path": [
 								"merchant",
-								"a492cb5a-7565-4ae7-bfea-b1d3120f790e",
+								"d7c49a8d-52c6-4a84-8bfe-7e36ea1ca7bf",
 								"coupon"
 							]
 						}
@@ -199,9 +199,30 @@
 				{
 					"name": "AddMessage",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/merchant/ceddd854-3095-4d80-a4b2-1135f2d6b64d/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"merchant",
+								"ceddd854-3095-4d80-a4b2-1135f2d6b64d",
+								"message"
+							]
+						}
 					},
 					"response": []
 				},
@@ -400,34 +421,6 @@
 			"name": "Coupon",
 			"item": [
 				{
-					"name": "CreateCoupon",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"string\",\r\n    \"description\":\"company\",\r\n    \"couponCode\":\"12345\",\r\n    \"expiryDate\":\"2021-07-03T09:09:26.447+00:00\",\r\n    \"value\": \"50\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/coupon",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"coupon"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "GetAllCoupons",
 					"request": {
 						"method": "GET",
@@ -519,34 +512,6 @@
 		{
 			"name": "Message",
 			"item": [
-				{
-					"name": "CreateMessage",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"message\": \"string\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/message",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"message"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "GetAllMessages",
 					"request": {
