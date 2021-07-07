@@ -25,13 +25,13 @@ public class MessageControllerTest {
         ResponseEntity<MessageDto> createdMessageDto = messageController.createMessage(messageDto);
         assertThat(createdMessageDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-        MessageDto updateMerchant = createdMessageDto.getBody();
-        updateMerchant.setMessage("Message2");
-        ResponseEntity<MessageDto> updatedMerchant = messageController.updateMessage(updateMerchant);
+        MessageDto updateVendor = createdMessageDto.getBody();
+        updateVendor.setMessage("Message2");
+        ResponseEntity<MessageDto> updatedVendor = messageController.updateMessage(updateVendor);
 
-        assertThat(updatedMerchant.getBody().getMessage()).isEqualTo(updateMerchant.getMessage());
+        assertThat(updatedVendor.getBody().getMessage()).isEqualTo(updateVendor.getMessage());
 
-        messageController.deleteMessage(updatedMerchant.getBody().getId());
+        messageController.deleteMessage(updatedVendor.getBody().getId());
 
     }
 }

@@ -32,10 +32,10 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
     }
 
     public VendorDto findById(UUID id)  {
-        Optional<Vendor> merchantOptional = vendorRepository.findById(id);
-        if (merchantOptional.isPresent())
+        Optional<Vendor> vendorOptional = vendorRepository.findById(id);
+        if (vendorOptional.isPresent())
         {
-            return mapToDto(merchantOptional.get());
+            return mapToDto(vendorOptional.get());
         }
         return null;
     }
@@ -47,10 +47,10 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
 
     public VendorDto update(VendorDto vendorDto) {
 
-        Optional<Vendor> merchantOptional = vendorRepository.findById(vendorDto.getId());
-        if (merchantOptional.isPresent())
+        Optional<Vendor> vendorOptional = vendorRepository.findById(vendorDto.getId());
+        if (vendorOptional.isPresent())
         {
-            Vendor vendor = merchantOptional.get();
+            Vendor vendor = vendorOptional.get();
             ModelMapper modelMapper = new ModelMapper();
             modelMapper.map(vendorDto, vendor);
             vendorRepository.save(vendor);
@@ -60,29 +60,29 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
     }
 
     public void delete(UUID id) {
-        Optional<Vendor> merchantOptional = vendorRepository.findById(id);
-        if (merchantOptional.isPresent()) {
-            Vendor vendor = merchantOptional.get();
+        Optional<Vendor> vendorOptional = vendorRepository.findById(id);
+        if (vendorOptional.isPresent()) {
+            Vendor vendor = vendorOptional.get();
             vendorRepository.delete(vendor);
         }
     }
 
-    public VendorDto addCoupon(UUID merchantId, CouponDto couponDto)
+    public VendorDto addCoupon(UUID vendorId, CouponDto couponDto)
     {
-        Optional<Vendor> merchantOptional = vendorRepository.findById(merchantId);
-        if (merchantOptional.isPresent())
+        Optional<Vendor> vendorOptional = vendorRepository.findById(vendorId);
+        if (vendorOptional.isPresent())
         {
 
 
-            merchantOptional.get().getCoupons().add(couponService.mapDtoToObject(couponService.create(couponDto)));
-            vendorRepository.save(merchantOptional.get());
+            vendorOptional.get().getCoupons().add(couponService.mapDtoToObject(couponService.create(couponDto)));
+            vendorRepository.save(vendorOptional.get());
 
             EventDto eventDto = new EventDto();
             eventDto.setEventTypes(EventTypes.COUPON);
             eventDto.setCreated(new Date());
             eventService.create(eventDto);
 
-            return mapToDto(merchantOptional.get());
+            return mapToDto(vendorOptional.get());
         }
         else
         {
@@ -92,20 +92,20 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
     }
 
 
-    public VendorDto addMessage(UUID merchantId, MessageDto messageDto)
+    public VendorDto addMessage(UUID vendorId, MessageDto messageDto)
     {
-        Optional<Vendor> merchantOptional = vendorRepository.findById(merchantId);
-        if (merchantOptional.isPresent())
+        Optional<Vendor> vendorOptional = vendorRepository.findById(vendorId);
+        if (vendorOptional.isPresent())
         {
-            merchantOptional.get().getMessages().add(messageService.mapDtoToObject(messageService.create(messageDto)));
-            vendorRepository.save(merchantOptional.get());
+            vendorOptional.get().getMessages().add(messageService.mapDtoToObject(messageService.create(messageDto)));
+            vendorRepository.save(vendorOptional.get());
 
             EventDto eventDto = new EventDto();
             eventDto.setEventTypes(EventTypes.MESSAGE);
             eventDto.setCreated(new Date());
             eventService.create(eventDto);
 
-            return mapToDto(merchantOptional.get());
+            return mapToDto(vendorOptional.get());
         }
         else
         {
@@ -141,12 +141,12 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
 
     public List<VendorCategoryDto> getCategories()
     {
-        List<VendorCategoryDto> merchantCategoriesDto = new ArrayList<>();
+        List<VendorCategoryDto> vendorCategoriesDto = new ArrayList<>();
         for (VendorCategory vendorCategory : VendorCategory.values()) {
             VendorCategoryDto vendorCategoryDto = new VendorCategoryDto();
             vendorCategoryDto.setVendorCategory(vendorCategory);
-            merchantCategoriesDto.add(vendorCategoryDto);
+            vendorCategoriesDto.add(vendorCategoryDto);
         }
-        return merchantCategoriesDto;
+        return vendorCategoriesDto;
     }
 }

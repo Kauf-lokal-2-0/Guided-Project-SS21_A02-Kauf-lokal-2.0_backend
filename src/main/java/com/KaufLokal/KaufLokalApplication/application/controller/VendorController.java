@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@Api(value = "Merchant Controller")
+@Api(value = "Vendor Controller")
 public class VendorController {
 
     private static final Logger logger = LoggerFactory.getLogger(VendorController.class);
@@ -35,43 +35,43 @@ public class VendorController {
 
     @ApiOperation(value = "Get all vendor")
     @GetMapping("/vendor")
-    public ResponseEntity<List<VendorDto>> getAllMerchant() {
-        logger.debug("GET: getAllMerchant");
+    public ResponseEntity<List<VendorDto>> getAllVendor() {
+        logger.debug("GET: getAllVendor");
         return new ResponseEntity<>(vendorService.findAll(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Get vendor by ID")
     @GetMapping("/vendor/{id}")
-    public ResponseEntity<VendorDto> getMerchantById(@PathVariable UUID id)  {
-        logger.debug("GET: getMerchantById");
+    public ResponseEntity<VendorDto> getVendorById(@PathVariable UUID id)  {
+        logger.debug("GET: getVendorById");
         return new ResponseEntity<>(vendorService.findById(id), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Create an new vendor")
     @PostMapping("/vendor")
-    public ResponseEntity<VendorDto> createMerchant(@RequestBody VendorDto vendorDto) {
-        logger.debug("POST: createMerchant");
+    public ResponseEntity<VendorDto> createVendor(@RequestBody VendorDto vendorDto) {
+        logger.debug("POST: createVendor");
         return new ResponseEntity<>(vendorService.create(vendorDto), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Update an vendor")
     @PutMapping("/vendor")
-    public ResponseEntity<VendorDto> updateMerchant(@RequestBody VendorDto vendorDto) {
-        logger.debug("PUT: updateMerchant");
+    public ResponseEntity<VendorDto> updateVendor(@RequestBody VendorDto vendorDto) {
+        logger.debug("PUT: updateVendor");
         return new ResponseEntity<>(vendorService.update(vendorDto), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Delete an vendor")
     @DeleteMapping("/vendor/{id}")
-    public ResponseEntity<Void> deleteMerchant(@PathVariable UUID id) {
-        logger.debug("DELETE: deleteMerchant");
+    public ResponseEntity<Void> deleteVendor(@PathVariable UUID id) {
+        logger.debug("DELETE: deleteVendor");
         vendorService.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @ApiOperation(value = "Get all vendor")
     @GetMapping("/vendor/{id}/rating")
-    public ResponseEntity<List<RatingDto>> getAllRatingsByMerchantId(@PathVariable UUID id)
+    public ResponseEntity<List<RatingDto>> getAllRatingsByVendorId(@PathVariable UUID id)
     {
         VendorDto vendor = vendorService.findById(id);
         return new ResponseEntity<>(ratingService.mapToDto(new ArrayList<>(vendor.getRatings())), HttpStatus.OK);
@@ -95,7 +95,7 @@ public class VendorController {
 
     @ApiOperation(value = "Get all messages")
     @GetMapping("/vendor/{id}/message")
-    public ResponseEntity<List<MessageDto>> getAllMessagesByMerchantId(@PathVariable UUID id)
+    public ResponseEntity<List<MessageDto>> getAllMessagesByVendorId(@PathVariable UUID id)
     {
         VendorDto vendor = vendorService.findById(id);
         return new ResponseEntity<>(messageService.mapToDto(new ArrayList<>(vendor.getMessages())), HttpStatus.OK);
@@ -104,7 +104,7 @@ public class VendorController {
     @ApiOperation(value = "Get all vendor categories")
     @GetMapping("/vendor/categories")
     public ResponseEntity<List<VendorCategoryDto>> getAllCategories() {
-        logger.debug("GET: getAllMerchantCategories");
+        logger.debug("GET: getAllVendorCategories");
         return new ResponseEntity<>(vendorService.getCategories(), HttpStatus.OK);
     }
 }

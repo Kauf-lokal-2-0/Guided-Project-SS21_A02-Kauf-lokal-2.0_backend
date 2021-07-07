@@ -41,10 +41,10 @@ public class EventController {
         return new ResponseEntity<>(eventService.getEventTypes(), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Get all merchant events")
-    @GetMapping("/event?merchantId={id}")
-    public ResponseEntity<List<EventDto>> getAllMerchantEvents(@PathVariable UUID id) {
-        logger.debug("GET: getAllMerchantEvents");
-        return new ResponseEntity<>(eventService.findAllEventsByMerchant(id), HttpStatus.OK);
+    @ApiOperation(value = "Get all vendor events")
+    @GetMapping("/event?vendorId={id}")
+    public ResponseEntity<List<EventDto>> getAllVendorEvents(@PathVariable UUID id) {
+        logger.debug("GET: getAllVendorEvents");
+        return new ResponseEntity<>(eventService.findAllEventsByVendor(id), HttpStatus.OK);
     }
 }

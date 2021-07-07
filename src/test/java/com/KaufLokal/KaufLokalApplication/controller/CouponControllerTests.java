@@ -20,19 +20,19 @@ public class CouponControllerTests {
     void testController() {
         CouponDto couponDto = new CouponDto();
         couponDto.setName("Name of Coupon");
-        couponDto.setDescription("Company of Merchant");
+        couponDto.setDescription("Company of Vendor");
         couponDto.setCouponCode(123456);
 
         ResponseEntity<CouponDto> createdCouponDto = couponController.createCoupon(couponDto);
         assertThat(createdCouponDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-        CouponDto updateMerchant = createdCouponDto.getBody();
-        updateMerchant.setName("New Name of Coupon");
-        ResponseEntity<CouponDto> updatedMerchant = couponController.updateCoupon(updateMerchant);
+        CouponDto updateVendor = createdCouponDto.getBody();
+        updateVendor.setName("New Name of Coupon");
+        ResponseEntity<CouponDto> updatedVendor = couponController.updateCoupon(updateVendor);
 
-        assertThat(updatedMerchant.getBody().getName()).isEqualTo(updateMerchant.getName());
+        assertThat(updatedVendor.getBody().getName()).isEqualTo(updateVendor.getName());
 
-        couponController.deleteCoupon(updatedMerchant.getBody().getId());
+        couponController.deleteCoupon(updatedVendor.getBody().getId());
 
     }
 

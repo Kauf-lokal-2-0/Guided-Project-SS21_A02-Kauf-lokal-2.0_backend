@@ -33,22 +33,21 @@ public class VendorControllerTests {
     void testController() {
 
         VendorDto vendorDto = new VendorDto();
-        vendorDto.setName("Name of Merchant");
-        vendorDto.setCompany("Company of Merchant");
+        vendorDto.setName("Name of Vendor");
 
-        ResponseEntity<VendorDto> createdMerchantDto = vendorController.createMerchant(vendorDto);
-        assertThat(createdMerchantDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        ResponseEntity<VendorDto> createdVendorDto = vendorController.createVendor(vendorDto);
+        assertThat(createdVendorDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-        VendorDto updateMerchant = createdMerchantDto.getBody();
-        updateMerchant.setCompany("New Company of merchant");
-        ResponseEntity<VendorDto> updatedMerchant = vendorController.updateMerchant(updateMerchant);
+        VendorDto updateVendor = createdVendorDto.getBody();
+        updateVendor.setName("New name of Vendor");
+        ResponseEntity<VendorDto> updatedVendor = vendorController.updateVendor(updateVendor);
 
-        assertThat(updatedMerchant.getBody().getCompany()).isEqualTo(updateMerchant.getCompany());
+        assertThat(updatedVendor.getBody().getName()).isEqualTo(updateVendor.getName());
 
         //Create Coupon
         CouponDto couponDto = new CouponDto();
         couponDto.setName("Name of Coupon");
-        couponDto.setDescription("Company of Merchant");
+        couponDto.setDescription("Company of Vendor");
         couponDto.setCouponCode(123456);
         ResponseEntity<CouponDto> createdCouponDto = couponController.createCoupon(couponDto);
         assertThat(createdCouponDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);
@@ -56,15 +55,15 @@ public class VendorControllerTests {
         Set<Coupon> couponSet = new HashSet<>();
         couponSet.add(couponService.mapDtoToObject(createdCouponDto.getBody()));
 
-        updatedMerchant.getBody().setCoupons(couponSet);
-        ResponseEntity<VendorDto> merchantDtoWithCoupon = vendorController.updateMerchant(updatedMerchant.getBody());
-        for (Coupon coupon: merchantDtoWithCoupon.getBody().getCoupons() ) {
+        updatedVendor.getBody().setCoupons(couponSet);
+        ResponseEntity<VendorDto> vendorDtoWithCoupon = vendorController.updateVendor(updatedVendor.getBody());
+        for (Coupon coupon: vendorDtoWithCoupon.getBody().getCoupons() ) {
             assertThat(coupon.getCouponCode()).isEqualTo(couponDto.getCouponCode());
         }
 
 
 
-        vendorController.deleteMerchant(updatedMerchant.getBody().getId());
+        vendorController.deleteVendor(updatedVendor.getBody().getId());
 
 
 

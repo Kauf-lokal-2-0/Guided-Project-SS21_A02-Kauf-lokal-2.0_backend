@@ -38,12 +38,12 @@ public class EventService implements IDefaultService<Event, EventDto>{
         return null;
     }
 
-    public List<EventDto> findAllEventsByMerchant(UUID id)
+    public List<EventDto> findAllEventsByVendor(UUID id)
     {
-        Optional<Vendor> merchantOptional = vendorRepository.findById(id);
-        if(merchantOptional.isPresent())
+        Optional<Vendor> vendorOptional = vendorRepository.findById(id);
+        if(vendorOptional.isPresent())
         {
-            return mapToDto(new ArrayList<>(merchantOptional.get().getEvents()));
+            return mapToDto(new ArrayList<>(vendorOptional.get().getEvents()));
         }
         return null;
     }

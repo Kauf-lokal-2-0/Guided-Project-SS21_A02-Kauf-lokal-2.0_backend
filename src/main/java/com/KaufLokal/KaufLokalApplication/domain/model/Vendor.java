@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "MERCHANT")
+@Table(name = "VENDOR")
 @Data
 public class Vendor {
 
@@ -24,7 +24,7 @@ public class Vendor {
     @Column(nullable = false)
     private String name;
 
-    private Integer merchantScore;
+    private Integer vendorScore;
 
     private Address address;
 
@@ -58,9 +58,9 @@ public class Vendor {
     public Vendor() {
     }
 
-    public Vendor(String name, Integer merchantScore, Address address, String profilePicture, String emailAddress, OpeningTime openingTime, String websiteURL, String color, VendorCategory category, Set<Coupon> coupons, Set<Rating> ratings, Set<Product> products, Set<Message> messages, Set<Event> events) {
+    public Vendor(String name, Integer vendorScore, Address address, String profilePicture, String emailAddress, OpeningTime openingTime, String websiteURL, String color, VendorCategory category, Set<Coupon> coupons, Set<Rating> ratings, Set<Product> products, Set<Message> messages, Set<Event> events) {
         this.name = name;
-        this.merchantScore = merchantScore;
+        this.vendorScore = vendorScore;
         this.address = address;
         this.profilePicture = profilePicture;
         this.emailAddress = emailAddress;
