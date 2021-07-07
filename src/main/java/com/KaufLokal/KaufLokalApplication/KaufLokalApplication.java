@@ -46,6 +46,11 @@ public class KaufLokalApplication {
 			Set<Event> eventSet_0 = new HashSet<>();
 			eventSet_0.add(event0);
 
+			Set<String> detailImagesForumGummersbach = new HashSet<>();
+			detailImagesForumGummersbach.add("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
+			detailImagesForumGummersbach.add("https://www.prolicht.at/media/2641/prolicht_glorious_sl_neverending_02_forum_gummersbach_2015_hero.jpg?crop=0,0.27740740740740744,0,0.18697337962962962&cropmode=percentage&width=1920&height=865&rnd=131562682170000000");
+			detailImagesForumGummersbach.add("https://www.ehs-ingenieure.de/wp-content/uploads/2015/09/bf37dd7ed7.jpg");
+
 			Rating rating_0 = new Rating();
 			rating_0.setRatingScore(4.5);
 			Rating rating0 = ratingRepository.save(rating_0);
@@ -114,7 +119,7 @@ public class KaufLokalApplication {
 			vendor_0.setRatings(ratingSet);
 			vendor_0.setProducts(productSet);
 			vendor_0.setMessages(messages);
-			vendor_0.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
+			vendor_0.setLogo("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
 			vendor_0.setEvents(eventSet_0);
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
@@ -139,7 +144,8 @@ public class KaufLokalApplication {
 			vendor1.setEmailAddress("info@forum-gummersbach.info");
 			vendor1.setColor("#e2a363");
 			vendor1.setWebsiteURL("https://www.forum-gummersbach.info");
-			vendor1.setProfilePicture("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
+			vendor1.setLogo("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
+			vendor1.setDetailImages(detailImagesForumGummersbach);
 			Address address1 = new Address();
 			address1.setStreet("Steinmüllerallee");
 			address1.setHouseNr("5");
@@ -154,7 +160,7 @@ public class KaufLokalApplication {
 			vendor2.setEmailAddress("onlineshop@kundenservice.streetone.de");
 			vendor2.setWebsiteURL("https://streetone.de");
 			vendor2.setColor("#FD0000");
-			vendor2.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
+			vendor2.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
 			Address address2 = new Address();
 			address2.setStreet("Steinmüllerallee");
 			address2.setHouseNr("5");
@@ -169,7 +175,7 @@ public class KaufLokalApplication {
 			vendor3.setEmailAddress("alanya-restaurant@web.de");
 			vendor3.setColor("#610505");
 			vendor3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
-			vendor3.setProfilePicture("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
+			vendor3.setLogo("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
 			vendor3.setCategory(VendorCategory.RESTAURANT);
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
@@ -185,7 +191,7 @@ public class KaufLokalApplication {
 			vendor4.setEmailAddress("info@ic-verwaltungsgruppe.de");
 			vendor4.setWebsiteURL("ic-verwaltungsgruppe.de");
 			vendor4.setColor("#A5C715");
-			vendor4.setProfilePicture("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
+			vendor4.setLogo("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
 			Address address4 = new Address();
 			address4.setStreet("Kaiserstraße");
 			address4.setHouseNr("35");
@@ -200,7 +206,7 @@ public class KaufLokalApplication {
 			vendor5.setEmailAddress("shop@engbers.com");
 			vendor5.setWebsiteURL("engbers.com");
 			vendor5.setColor("#056118");
-			vendor5.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
+			vendor5.setLogo("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
 			Address address5 = new Address();
 			address5.setStreet("Steinmüllerallee");
 			address5.setHouseNr("5");
@@ -213,7 +219,7 @@ public class KaufLokalApplication {
 			Vendor vendor6 = new Vendor();
 			vendor6.setName("Engbers");
 			vendor6.setEmailAddress("shop@engbers.com");
-			vendor6.setProfilePicture("https://www.forum-hanau.net/wp-content/uploads/sites/3/2015/08/engbers_170630_Forum_Hanau_0159.jpg");
+			vendor6.setLogo("https://www.forum-hanau.net/wp-content/uploads/sites/3/2015/08/engbers_170630_Forum_Hanau_0159.jpg");
 			Address address6 = new Address();
 			address6.setStreet("Steinmüllerallee");
 			address6.setHouseNr("5");
@@ -226,7 +232,7 @@ public class KaufLokalApplication {
 			Vendor vendor7 = new Vendor();
 			vendor7.setName("TAKKO FASHION Gummersbach");
 			vendor7.setEmailAddress("support@takko.de");
-			vendor7.setProfilePicture("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
+			vendor7.setLogo("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
 			Address address7 = new Address();
 			address7.setStreet("Kaiserstraße");
 			address7.setHouseNr("35");
@@ -239,7 +245,7 @@ public class KaufLokalApplication {
 			Vendor vendor8 = new Vendor();
 			vendor8.setName("CECIL Partner Store Gummersbach");
 			vendor8.setEmailAddress("support@takko.de");
-			vendor8.setProfilePicture("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
+			vendor8.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
 			Address address8 = new Address();
 			address8.setStreet("Steinmüllerallee");
 			address8.setHouseNr("25");
@@ -252,7 +258,7 @@ public class KaufLokalApplication {
 			Vendor vendor9 = new Vendor();
 			vendor9.setName("KULT");
 			vendor9.setEmailAddress("info@goergens-gruppe.de");
-			vendor8.setProfilePicture("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
+			vendor8.setLogo("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
 			Address address9 = new Address();
 			address9.setStreet("Steinmüllerallee");
 			address9.setHouseNr("5");
@@ -261,12 +267,6 @@ public class KaufLokalApplication {
 			address9.setCountry("Germany");
 			vendor9.setAddress(address9);
 			vendorRepository.save(vendor9);
-
-
 		};
 	}
-
-
-
-
 }

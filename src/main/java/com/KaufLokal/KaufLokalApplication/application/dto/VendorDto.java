@@ -13,13 +13,14 @@ public class VendorDto {
     private String name;
     private Integer offerAmount;
     private Integer vendorScore;
-    private String profilePicture;
+    private String logo;
     private String websiteURL;
     private String color;
     private VendorCategory category;
     private Address address;
     private String emailAddress;
     private OpeningTime openingTime;
+    private Set<String> detailImages;
     private Set<Coupon> coupons;
     private Set<Rating> ratings;
     private Set<Product> products;

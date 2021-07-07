@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
 
@@ -28,7 +29,7 @@ public class Vendor {
 
     private Address address;
 
-    private String profilePicture;
+    private String logo;
 
     private String emailAddress;
 
@@ -39,6 +40,9 @@ public class Vendor {
     private String color;
 
     private VendorCategory category;
+
+    @ElementCollection
+    private Set<String> detailImages;
 
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Coupon> coupons;
@@ -58,11 +62,16 @@ public class Vendor {
     public Vendor() {
     }
 
-    public Vendor(String name, Integer vendorScore, Address address, String profilePicture, String emailAddress, OpeningTime openingTime, String websiteURL, String color, VendorCategory category, Set<Coupon> coupons, Set<Rating> ratings, Set<Product> products, Set<Message> messages, Set<Event> events) {
+    public Vendor(String name, Integer vendorScore, Address address, String logo,
+                  String emailAddress, OpeningTime openingTime, String websiteURL,
+                  String color, VendorCategory category, Set<Coupon> coupons,
+                  Set<Rating> ratings, Set<Product> products, Set<Message> messages,
+                  Set<Event> events, Set<String> detailImages) {
         this.name = name;
         this.vendorScore = vendorScore;
         this.address = address;
-        this.profilePicture = profilePicture;
+        this.logo = logo;
+        this.detailImages = detailImages;
         this.emailAddress = emailAddress;
         this.openingTime = openingTime;
         this.websiteURL = websiteURL;

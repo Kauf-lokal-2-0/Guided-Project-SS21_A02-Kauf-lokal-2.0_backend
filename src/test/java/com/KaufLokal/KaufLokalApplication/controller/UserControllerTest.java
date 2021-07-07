@@ -29,6 +29,7 @@ public class UserControllerTest {
     private Set<Product> products = new HashSet<>();
     private Set<Message> messages = new HashSet<>();
     private Set<Event> events = new HashSet<>();
+    private Set<String> detailImages = new HashSet<>();
 
 
 
@@ -43,7 +44,7 @@ public class UserControllerTest {
         userDto.setAddress(address);
         ratings.add(new Rating(5.0));
         userDto.setRatings(ratings);
-        vendors.add(new Vendor("EIN NAME", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", VendorCategory.RESTAURANT, coupons, ratings, products, messages, events));
+        vendors.add(new Vendor("EIN NAME", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", VendorCategory.RESTAURANT, coupons, ratings, products, messages, events,detailImages));
         userDto.setFavoriteVendors(vendors);
 
         ResponseEntity<UserDto> createUserDto = userController.createUser(userDto);
