@@ -6,10 +6,10 @@
 	},
 	"item": [
 		{
-			"name": "Merchant",
+			"name": "Vendor",
 			"item": [
 				{
-					"name": "CreateMerchant",
+					"name": "CreateVendor",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -23,33 +23,33 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/merchant",
+							"raw": "http://localhost:8080/vendor",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant"
+								"vendor"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "GetMerchant",
+					"name": "GetVendor",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant/fcfd232d-079d-460a-8a33-f6d4cd4b97cd",
+							"raw": "http://localhost:8080/vendor/fcfd232d-079d-460a-8a33-f6d4cd4b97cd",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								"fcfd232d-079d-460a-8a33-f6d4cd4b97cd"
 							]
 						}
@@ -57,32 +57,32 @@
 					"response": []
 				},
 				{
-					"name": "GetAllMerchants",
+					"name": "GetAllVendors",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant",
+							"raw": "http://localhost:8080/vendor",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant"
+								"vendor"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "UpdateMerchant",
+					"name": "UpdateVendor",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"129c8054-6773-4615-b123-2af55f9bd37b\",\r\n    \"name\": \"string2\",\r\n    \"company\": \"e\",\r\n    \"offerAmount\": null,\r\n    \"merchantScore\": null,\r\n    \"addresses\": null\r\n}",
+							"raw": "{\r\n    \"id\": \"129c8054-6773-4615-b123-2af55f9bd37b\",\r\n    \"name\": \"string2\",\r\n    \"company\": \"e\",\r\n    \"offerAmount\": null,\r\n    \"vendorScore\": null,\r\n    \"addresses\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,14 +90,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/merchant/",
+							"raw": "http://localhost:8080/vendor/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								""
 							]
 						}
@@ -105,19 +105,19 @@
 					"response": []
 				},
 				{
-					"name": "DeleteMerchant",
+					"name": "DeleteVendor",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant/f587e791-0553-43aa-a2fe-f923e49c04d5",
+							"raw": "http://localhost:8080/vendor/f587e791-0553-43aa-a2fe-f923e49c04d5",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								"f587e791-0553-43aa-a2fe-f923e49c04d5"
 							]
 						}
@@ -125,19 +125,19 @@
 					"response": []
 				},
 				{
-					"name": "GetAllMerchantsRatings",
+					"name": "GetAllVendorsRatings",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant/31ebe35c-867d-462b-9b43-014ed8960a55/rating",
+							"raw": "http://localhost:8080/vendor/31ebe35c-867d-462b-9b43-014ed8960a55/rating",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								"31ebe35c-867d-462b-9b43-014ed8960a55",
 								"rating"
 							]
@@ -146,19 +146,19 @@
 					"response": []
 				},
 				{
-					"name": "GetAllMerchantsMessages",
+					"name": "GetAllVendorsMessages",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant/18fbd4b6-e79d-4e9d-a727-b695a5bb65e8/message",
+							"raw": "http://localhost:8080/vendor/18fbd4b6-e79d-4e9d-a727-b695a5bb65e8/message",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								"18fbd4b6-e79d-4e9d-a727-b695a5bb65e8",
 								"message"
 							]
@@ -181,14 +181,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/merchant/d7c49a8d-52c6-4a84-8bfe-7e36ea1ca7bf/coupon",
+							"raw": "http://localhost:8080/vendor/d7c49a8d-52c6-4a84-8bfe-7e36ea1ca7bf/coupon",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								"d7c49a8d-52c6-4a84-8bfe-7e36ea1ca7bf",
 								"coupon"
 							]
@@ -211,14 +211,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/merchant/ceddd854-3095-4d80-a4b2-1135f2d6b64d/message",
+							"raw": "http://localhost:8080/vendor/ceddd854-3095-4d80-a4b2-1135f2d6b64d/message",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								"ceddd854-3095-4d80-a4b2-1135f2d6b64d",
 								"message"
 							]
@@ -232,14 +232,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/merchant/categories",
+							"raw": "http://localhost:8080/vendor/categories",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"merchant",
+								"vendor",
 								"categories"
 							]
 						}
@@ -391,12 +391,12 @@
 					"response": []
 				},
 				{
-					"name": "GetAllMerchantEventsById",
+					"name": "GetAllVendorEventsById",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/event?merchantId=a492cb5a-7565-4ae7-bfea-b1d3120f790e",
+							"raw": "http://localhost:8080/event?vendorId=a492cb5a-7565-4ae7-bfea-b1d3120f790e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -407,7 +407,7 @@
 							],
 							"query": [
 								{
-									"key": "merchantId",
+									"key": "vendorId",
 									"value": "a492cb5a-7565-4ae7-bfea-b1d3120f790e"
 								}
 							]
