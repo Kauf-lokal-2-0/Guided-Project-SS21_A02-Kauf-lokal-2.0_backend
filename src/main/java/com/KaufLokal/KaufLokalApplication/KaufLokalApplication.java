@@ -71,7 +71,6 @@ public class KaufLokalApplication {
 			ratingSet_1.add(rating_1);
 			user_1.setRatings(ratingSet_1);
 
-			User user1 = userRepository.save(user_0);
 
 			Set<Rating> ratingSet = new HashSet<>();
 			ratingSet.add(rating0);
@@ -84,6 +83,9 @@ public class KaufLokalApplication {
 			Coupon coupon0 = couponRepository.save(coupon);
 			Set<Coupon> couponSet = new HashSet<>();
 			couponSet.add(coupon0);
+
+			user0.setFavoriteCoupons(couponSet);
+			User user1 = userRepository.save(user_0);
 
 			Product product_0 = new Product();
 			product_0.setName("Brot");

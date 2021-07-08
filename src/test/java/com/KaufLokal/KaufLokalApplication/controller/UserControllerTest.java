@@ -45,7 +45,7 @@ public class UserControllerTest {
         ratings.add(new Rating(5.0));
         userDto.setRatings(ratings);
         vendors.add(new Vendor("EIN NAME", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", VendorCategory.RESTAURANT, coupons, ratings, products, messages, events,detailImages));
-        userDto.setFavoriteVendors(vendors);
+        //userDto.setFavoriteVendors(vendors);
 
         ResponseEntity<UserDto> createUserDto = userController.createUser(userDto);
         assertThat(createUserDto.getStatusCode()).isEqualTo(HttpStatus.CREATED);

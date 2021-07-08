@@ -1,7 +1,9 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
+import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
 import com.KaufLokal.KaufLokalApplication.domain.model.User;
+import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +71,15 @@ public class UserService implements IDefaultService<User, UserDto>{
         ModelMapper modelMapper = new ModelMapper();
         UserDto userDto = new UserDto();
         modelMapper.map(user,userDto);
+
+        for (Vendor vendor: user.getFavoriteVendors()) {
+            userDto.getFavoriteVendorsIDs().add(vendor.getId());
+        }
+
+        for (Coupon coupon: user.getFavoriteCoupons()) {
+            userDto.getFavoriteCouponIDs().add(coupon.getId());
+        }
+
         return userDto;
     }
 

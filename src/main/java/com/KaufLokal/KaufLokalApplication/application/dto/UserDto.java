@@ -5,6 +5,7 @@ import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.model.Rating;
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,5 +19,6 @@ public class UserDto {
     private String profilePicture;
     private Address address;
     private Set<Rating> ratings;
-    private Set<Vendor> favoriteVendors;
+    private Set<UUID> favoriteVendorsIDs = new HashSet<>();
+    private Set<UUID> favoriteCouponIDs = new HashSet<>();
 }

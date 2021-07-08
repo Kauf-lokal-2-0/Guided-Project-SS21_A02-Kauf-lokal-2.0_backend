@@ -39,6 +39,9 @@ public class User {
     private Set<Vendor> favoriteVendors = new HashSet<>();
 
     @OneToMany
+    private Set<Coupon> favoriteCoupons = new HashSet<>();
+
+    @OneToMany
     private Set<Rating> ratings;
 
 }
