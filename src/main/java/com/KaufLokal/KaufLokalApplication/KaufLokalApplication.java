@@ -46,10 +46,41 @@ public class KaufLokalApplication {
 			Set<Event> eventSet_0 = new HashSet<>();
 			eventSet_0.add(event0);
 
+			Set<String> detailImagesMayerscheGummersbach = new HashSet<>();
+			detailImagesMayerscheGummersbach.add("https://lh5.googleusercontent.com/p/AF1QipPWXgoi-dUHFzzMMXVTG2mzWMNUrCNBo7nGQMPZ=w1080-k-no");
+			detailImagesMayerscheGummersbach.add("https://www.schreibwerkstatt-gm.de/wp-content/gallery/2019-lesung-mayersche/190912-04.JPG");
+			detailImagesMayerscheGummersbach.add("https://www.schreibwerkstatt-gm.de/wp-content/gallery/2019-lesung-mayersche/190912-14.JPG");
+
 			Set<String> detailImagesForumGummersbach = new HashSet<>();
 			detailImagesForumGummersbach.add("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
 			detailImagesForumGummersbach.add("https://www.prolicht.at/media/2641/prolicht_glorious_sl_neverending_02_forum_gummersbach_2015_hero.jpg?crop=0,0.27740740740740744,0,0.18697337962962962&cropmode=percentage&width=1920&height=865&rnd=131562682170000000");
 			detailImagesForumGummersbach.add("https://www.ehs-ingenieure.de/wp-content/uploads/2015/09/bf37dd7ed7.jpg");
+
+			Set<String> detailImagesStreetOneRetailGmbH = new HashSet<>();
+			detailImagesStreetOneRetailGmbH.add("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022-700x466.jpg");
+			detailImagesStreetOneRetailGmbH.add("https://www.innenstadt-pinneberg.de/media/1003/innenstadt_pinneberg_rathauspassage_street_one.700.0.jpg");
+			detailImagesStreetOneRetailGmbH.add("https://www.forum-hanau.net/wp-content/uploads/sites/3/2015/08/street-one_170630_Forum_Hanau_0153-700x466.jpg");
+
+			Set<String> detailImagesAlanyaRestaurantGummersbach = new HashSet<>();
+			detailImagesAlanyaRestaurantGummersbach.add("https://doenerbudenalexhome.files.wordpress.com/2019/05/img_20190420_175238074_burst000_cover.jpg");
+			detailImagesAlanyaRestaurantGummersbach.add("https://doenerbudenalexhome.files.wordpress.com/2019/05/img_20190420_173515899_burst001.jpg");
+			detailImagesAlanyaRestaurantGummersbach.add("https://doenerbudenalexhome.files.wordpress.com/2019/05/img_20190420_173511011_burst002.jpg");
+
+			Set<String> detailImagesBergischerHof = new HashSet<>();
+			detailImagesBergischerHof.add("https://www.news-on-tour.de/wp-content/uploads/2014/06/ekz-bergischer-hof_ntoi_gummersbach.jpg");
+			detailImagesBergischerHof.add("https://www.rundschau-online.de/image/36765080/8x3/2000/750/a1890773f4eb6eb27aed77f8d3d993c1/Ic/bergischer-hof3.jpg");
+
+			Set<String> detailImagesEngbers = new HashSet<>();
+			detailImagesEngbers.add("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/engbers_170927_Forum_Gummersbach_0156-700x467.jpg");
+
+			Set<String> detailImagesTakkoFashionGummersbach = new HashSet<>();
+			detailImagesTakkoFashionGummersbach.add("https://www.troisdorf.city/var/ezdemo_site/storage/images/unternehmen-geschaefte-mehr/takko-fashion-gmbh/1032151-8-ger-DE/Takko-Fashion-GmbH_koe_eyecatcher.jpg");
+
+			Set<String> detailImagesCecilPartnerStoreGummersbach = new HashSet<>();
+			detailImagesCecilPartnerStoreGummersbach.add("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427-700x394.jpg");
+
+			Set<String> detailImagesKult = new HashSet<>();
+			detailImagesKult.add("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Kult_170927_Forum_Gummersbach_0062-700x466.jpg");
 
 			Rating rating_0 = new Rating();
 			rating_0.setRatingScore(4.5);
@@ -122,6 +153,7 @@ public class KaufLokalApplication {
 			vendor_0.setProducts(productSet);
 			vendor_0.setMessages(messages);
 			vendor_0.setLogo("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
+			vendor_0.setDetailImages(detailImagesMayerscheGummersbach);
 			vendor_0.setEvents(eventSet_0);
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
@@ -163,6 +195,7 @@ public class KaufLokalApplication {
 			vendor2.setWebsiteURL("https://streetone.de");
 			vendor2.setColor("#FD0000");
 			vendor2.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
+			vendor2.setDetailImages(detailImagesStreetOneRetailGmbH);
 			Address address2 = new Address();
 			address2.setStreet("Steinmüllerallee");
 			address2.setHouseNr("5");
@@ -178,6 +211,7 @@ public class KaufLokalApplication {
 			vendor3.setColor("#610505");
 			vendor3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
 			vendor3.setLogo("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
+			vendor3.setDetailImages(detailImagesAlanyaRestaurantGummersbach);
 			vendor3.setCategory(VendorCategory.RESTAURANT);
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
@@ -194,6 +228,7 @@ public class KaufLokalApplication {
 			vendor4.setWebsiteURL("ic-verwaltungsgruppe.de");
 			vendor4.setColor("#A5C715");
 			vendor4.setLogo("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
+			vendor4.setDetailImages(detailImagesBergischerHof);
 			Address address4 = new Address();
 			address4.setStreet("Kaiserstraße");
 			address4.setHouseNr("35");
@@ -209,6 +244,7 @@ public class KaufLokalApplication {
 			vendor5.setWebsiteURL("engbers.com");
 			vendor5.setColor("#056118");
 			vendor5.setLogo("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
+			vendor5.setDetailImages(detailImagesEngbers);
 			Address address5 = new Address();
 			address5.setStreet("Steinmüllerallee");
 			address5.setHouseNr("5");
@@ -219,12 +255,13 @@ public class KaufLokalApplication {
 			vendorRepository.save(vendor5);
 
 			Vendor vendor6 = new Vendor();
-			vendor6.setName("Engbers");
-			vendor6.setEmailAddress("shop@engbers.com");
-			vendor6.setLogo("https://www.forum-hanau.net/wp-content/uploads/sites/3/2015/08/engbers_170630_Forum_Hanau_0159.jpg");
+			vendor6.setName("TAKKO FASHION Gummersbach");
+			vendor6.setEmailAddress("support@takko.de");
+			vendor6.setLogo("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
+			vendor6.setDetailImages(detailImagesTakkoFashionGummersbach);
 			Address address6 = new Address();
-			address6.setStreet("Steinmüllerallee");
-			address6.setHouseNr("5");
+			address6.setStreet("Kaiserstraße");
+			address6.setHouseNr("35");
 			address6.setZipCode("51643");
 			address6.setPlace("Gummersbach");
 			address6.setCountry("Germany");
@@ -232,12 +269,13 @@ public class KaufLokalApplication {
 			vendorRepository.save(vendor6);
 
 			Vendor vendor7 = new Vendor();
-			vendor7.setName("TAKKO FASHION Gummersbach");
+			vendor7.setName("CECIL Partner Store Gummersbach");
 			vendor7.setEmailAddress("support@takko.de");
-			vendor7.setLogo("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
+			vendor7.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
+			vendor7.setDetailImages(detailImagesCecilPartnerStoreGummersbach);
 			Address address7 = new Address();
-			address7.setStreet("Kaiserstraße");
-			address7.setHouseNr("35");
+			address7.setStreet("Steinmüllerallee");
+			address7.setHouseNr("25");
 			address7.setZipCode("51643");
 			address7.setPlace("Gummersbach");
 			address7.setCountry("Germany");
@@ -245,30 +283,18 @@ public class KaufLokalApplication {
 			vendorRepository.save(vendor7);
 
 			Vendor vendor8 = new Vendor();
-			vendor8.setName("CECIL Partner Store Gummersbach");
-			vendor8.setEmailAddress("support@takko.de");
-			vendor8.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
+			vendor8.setName("KULT");
+			vendor8.setEmailAddress("info@goergens-gruppe.de");
+			vendor8.setLogo("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
+			vendor8.setDetailImages(detailImagesKult);
 			Address address8 = new Address();
 			address8.setStreet("Steinmüllerallee");
-			address8.setHouseNr("25");
+			address8.setHouseNr("5");
 			address8.setZipCode("51643");
 			address8.setPlace("Gummersbach");
 			address8.setCountry("Germany");
 			vendor8.setAddress(address8);
 			vendorRepository.save(vendor8);
-
-			Vendor vendor9 = new Vendor();
-			vendor9.setName("KULT");
-			vendor9.setEmailAddress("info@goergens-gruppe.de");
-			vendor8.setLogo("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
-			Address address9 = new Address();
-			address9.setStreet("Steinmüllerallee");
-			address9.setHouseNr("5");
-			address9.setZipCode("51643");
-			address9.setPlace("Gummersbach");
-			address9.setCountry("Germany");
-			vendor9.setAddress(address9);
-			vendorRepository.save(vendor9);
 		};
 	}
 }
