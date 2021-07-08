@@ -181,7 +181,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/vendor/d7c49a8d-52c6-4a84-8bfe-7e36ea1ca7bf/coupon",
+							"raw": "http://localhost:8080/vendor/82876d2b-6912-4648-a29f-1c22e459ce12/coupon",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -189,7 +189,7 @@
 							"port": "8080",
 							"path": [
 								"vendor",
-								"d7c49a8d-52c6-4a84-8bfe-7e36ea1ca7bf",
+								"82876d2b-6912-4648-a29f-1c22e459ce12",
 								"coupon"
 							]
 						}
@@ -211,7 +211,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/vendor/ceddd854-3095-4d80-a4b2-1135f2d6b64d/message",
+							"raw": "http://localhost:8080/vendor/82876d2b-6912-4648-a29f-1c22e459ce12/message",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -219,7 +219,7 @@
 							"port": "8080",
 							"path": [
 								"vendor",
-								"ceddd854-3095-4d80-a4b2-1135f2d6b64d",
+								"82876d2b-6912-4648-a29f-1c22e459ce12",
 								"message"
 							]
 						}
