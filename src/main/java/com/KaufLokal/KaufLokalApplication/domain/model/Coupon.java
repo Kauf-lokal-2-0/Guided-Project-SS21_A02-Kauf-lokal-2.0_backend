@@ -31,4 +31,6 @@ public class Coupon {
     private Date expiryDate;
 
     private Double value;
+
+    private Date created;
 }

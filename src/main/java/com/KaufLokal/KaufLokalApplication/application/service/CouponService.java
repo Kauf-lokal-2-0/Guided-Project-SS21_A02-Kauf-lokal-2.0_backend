@@ -36,6 +36,7 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
 
     @Override
     public CouponDto create(CouponDto couponDto) {
+        couponDto.setCreated(new Date());
         return mapToDto(couponRepository.save(mapDtoToObject(couponDto)));
     }
 

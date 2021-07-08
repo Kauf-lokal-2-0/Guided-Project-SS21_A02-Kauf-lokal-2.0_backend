@@ -10,5 +10,7 @@ import java.util.UUID;
 public class EventDto {
     private UUID id;
     private EventTypes eventTypes;
+    private UUID refId;
+    private UUID vendorId;
     private Date created;
 }

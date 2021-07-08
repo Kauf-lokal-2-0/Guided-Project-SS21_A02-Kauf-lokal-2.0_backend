@@ -1,6 +1,8 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.*;
+import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
+import com.KaufLokal.KaufLokalApplication.domain.model.Message;
 import com.KaufLokal.KaufLokalApplication.domain.model.OpeningTime;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
@@ -76,13 +78,15 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
         if (vendorOptional.isPresent())
         {
 
-
-            vendorOptional.get().getCoupons().add(couponService.mapDtoToObject(couponService.create(couponDto)));
+            Coupon coupon = couponService.mapDtoToObject(couponService.create(couponDto));
+            vendorOptional.get().getCoupons().add(coupon);
             vendorRepository.save(vendorOptional.get());
 
             EventDto eventDto = new EventDto();
             eventDto.setEventTypes(EventTypes.COUPON);
             eventDto.setCreated(new Date());
+            eventDto.setRefId(coupon.getId());
+            eventDto.setVendorId(vendorId);
             eventService.create(eventDto);
 
             return mapToDto(vendorOptional.get());
@@ -100,12 +104,15 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
         Optional<Vendor> vendorOptional = vendorRepository.findById(vendorId);
         if (vendorOptional.isPresent())
         {
-            vendorOptional.get().getMessages().add(messageService.mapDtoToObject(messageService.create(messageDto)));
+            Message message = messageService.mapDtoToObject(messageService.create(messageDto));
+            vendorOptional.get().getMessages().add(message);
             vendorRepository.save(vendorOptional.get());
 
             EventDto eventDto = new EventDto();
             eventDto.setEventTypes(EventTypes.MESSAGE);
             eventDto.setCreated(new Date());
+            eventDto.setRefId(message.getId());
+            eventDto.setVendorId(vendorId);
             eventService.create(eventDto);
 
             return mapToDto(vendorOptional.get());
@@ -203,7 +210,7 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
          {
             return false;
          }
-         
+
          String[] times = actualOpeningTime.split("-");
          if(times.length == 2)
          {
