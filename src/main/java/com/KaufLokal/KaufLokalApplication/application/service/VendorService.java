@@ -1,6 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.*;
+import com.KaufLokal.KaufLokalApplication.domain.model.OpeningTime;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
@@ -9,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -126,6 +129,18 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
         ModelMapper modelMapper = new ModelMapper();
         VendorDto vendorDto = new VendorDto();
         modelMapper.map(vendor, vendorDto);
+
+        if(vendorDto.getOpeningTime() != null)
+        {
+            try {
+                vendorDto.getOpeningTime().setIsOpen(isOpen(vendorDto.getOpeningTime()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
         return vendorDto;
     }
 
@@ -149,4 +164,59 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
         }
         return vendorCategoriesDto;
     }
+
+
+     private boolean isOpen(OpeningTime openingTime) throws ParseException {
+
+         Calendar calendar = Calendar.getInstance();
+         calendar.setTime(new Date());
+
+         String actualOpeningTime = "";
+
+         switch (calendar.get(Calendar.DAY_OF_WEEK)){
+             case Calendar.MONDAY:
+                 actualOpeningTime = openingTime.getMonday();
+                 break;
+             case Calendar.TUESDAY:
+                 actualOpeningTime = openingTime.getTuesday();
+                 break;
+             case Calendar.WEDNESDAY:
+                 actualOpeningTime = openingTime.getWednesday();
+                 break;
+             case Calendar.THURSDAY:
+                 actualOpeningTime = openingTime.getThursday();
+                 break;
+             case Calendar.FRIDAY:
+                 actualOpeningTime = openingTime.getFriday();
+                 break;
+             case Calendar.SATURDAY:
+                 actualOpeningTime = openingTime.getSaturday();
+                 break;
+             case Calendar.SUNDAY:
+                 actualOpeningTime = openingTime.getSunday();
+                 break;
+             default:
+                return false;
+         }
+
+         if(actualOpeningTime.equalsIgnoreCase("Closed"))
+         {
+            return false;
+         }
+         
+         String[] times = actualOpeningTime.split("-");
+         if(times.length == 2)
+         {
+             String openTime = times[0];
+             String closeTime = times[1];
+             Date openTimeDate = new SimpleDateFormat("HH:mm").parse(openTime);
+             Date closeTimeDate = new SimpleDateFormat("HH:mm").parse(closeTime);
+             Calendar currentTime = Calendar.getInstance();
+             currentTime.set(1970,0,1);
+             Date currentTimeDate = currentTime.getTime();
+
+             return currentTimeDate.after(openTimeDate) && currentTimeDate.before(closeTimeDate);
+         }
+         return false;
+     }
 }
