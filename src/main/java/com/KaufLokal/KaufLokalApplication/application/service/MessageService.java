@@ -38,12 +38,8 @@ public class MessageService implements IDefaultService<Message, MessageDto>{
 
     @Override
     public MessageDto create(MessageDto messageDto) {
-        MessageDto messageDto1 = mapToDto(messageRepository.save(mapDtoToObject(messageDto)));
-        Event event = new Event();
-        event.setEventTypes(EventTypes.COUPON);
-        event.setCreated(new Date());
-        eventService.create(eventService.mapToDto(event));
-        return messageDto1;
+        messageDto.setCreated(new Date());
+        return mapToDto(messageRepository.save(mapDtoToObject(messageDto)));
     }
 
     @Override

@@ -13,4 +13,5 @@ public class CouponDto {
     private Integer couponCode;
     private Date expiryDate;
     private Float value;
+    private Date created;
 }

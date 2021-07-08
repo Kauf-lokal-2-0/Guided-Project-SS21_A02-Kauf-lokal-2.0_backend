@@ -25,5 +25,9 @@ public class Event {
 
     private EventTypes eventTypes;
 
+    private UUID refId;
+
+    private UUID vendorId;
+
     private Date created;
 }

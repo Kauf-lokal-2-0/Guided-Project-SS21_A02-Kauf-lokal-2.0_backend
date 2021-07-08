@@ -89,7 +89,7 @@ public class VendorController {
     @PostMapping("/vendor/{id}/message")
     public ResponseEntity<VendorDto> addMessage(@PathVariable UUID id, @RequestBody MessageDto messageDto)
     {
-        VendorDto vendorDto = vendorService.addMessage(id,messageService.create(messageDto));
+        VendorDto vendorDto = vendorService.addMessage(id,messageDto);
         return new ResponseEntity<>(vendorDto, HttpStatus.OK);
     }
 
