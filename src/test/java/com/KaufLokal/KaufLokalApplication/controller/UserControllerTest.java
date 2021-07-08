@@ -42,7 +42,7 @@ public class UserControllerTest {
         userDto.setUserScore(1);
         userDto.setProfilePicture("EINLINK");
         userDto.setAddress(address);
-        ratings.add(new Rating(5.0));
+        ratings.add(new Rating(5.0f));
         userDto.setRatings(ratings);
         vendors.add(new Vendor("EIN NAME", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", VendorCategory.RESTAURANT, coupons, ratings, products, messages, events,detailImages));
         //userDto.setFavoriteVendors(vendors);
