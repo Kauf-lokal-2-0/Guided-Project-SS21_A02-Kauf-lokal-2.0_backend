@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"129c8054-6773-4615-b123-2af55f9bd37b\",\r\n    \"name\": \"string2\",\r\n    \"company\": \"e\",\r\n    \"offerAmount\": null,\r\n    \"vendorScore\": null,\r\n    \"addresses\": null\r\n}",
+							"raw": "{\r\n    \"id\": \"129c8054-6773-4615-b123-2af55f9bd37b\",\r\n    \"name\": \"string2\",\r\n    \"company\": \"e\",\r\n    \"offerAmount\": null,\r\n    \"merchantScore\": null,\r\n    \"addresses\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -391,12 +391,12 @@
 					"response": []
 				},
 				{
-					"name": "GetAllVendorEventsById",
+					"name": "GetAllMerchantEventsById",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/event?vendorId=a492cb5a-7565-4ae7-bfea-b1d3120f790e",
+							"raw": "http://localhost:8080/event?merchantId=a492cb5a-7565-4ae7-bfea-b1d3120f790e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -407,7 +407,7 @@
 							],
 							"query": [
 								{
-									"key": "vendorId",
+									"key": "merchantId",
 									"value": "a492cb5a-7565-4ae7-bfea-b1d3120f790e"
 								}
 							]
