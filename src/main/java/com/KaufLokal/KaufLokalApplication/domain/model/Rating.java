@@ -19,7 +19,7 @@ public class Rating {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
-    private float ratingScore;
+    private double ratingScore;
 
     public Rating() {
     }

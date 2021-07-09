@@ -101,25 +101,16 @@ public class RatingService implements IDefaultService<Rating, RatingDto> {
 
     /**
      *
-     * @param dto Das
-     * @return
+     * @return den durchschnitt aller ratingScores.
      */
-    public Float getArithmeticMeanRating(RatingDto dto){
-        return getRatingCount() / this.getMaxRatingScore();
+    public double getArithmeticMeanRating(){
+        return this.findAll().stream().mapToDouble(RatingDto::getRatingScore).average().orElse(Double.NaN);
     }
-
-    private float getMaxRatingScore(){
-       List<RatingDto> ratings = this.findAll();
-       float sum = 0f;
-        for (RatingDto ratingDto : ratings) {
-            sum = ratingDto.getRatingScore();
-        }
-        return sum;
-    }
-
-
-
-
-
 
 }
+
+
+
+
+
+
