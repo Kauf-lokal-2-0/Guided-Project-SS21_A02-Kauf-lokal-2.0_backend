@@ -1,6 +1,8 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
+import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.VendorDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
 import com.KaufLokal.KaufLokalApplication.domain.model.User;
 import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
@@ -19,6 +21,12 @@ public class UserService implements IDefaultService<User, UserDto>{
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CouponService couponService;
+
+    @Autowired
+    private VendorService vendorService;
 
     @Override
     public List<UserDto> findAll() {
@@ -52,6 +60,39 @@ public class UserService implements IDefaultService<User, UserDto>{
             return mapToDto(user);
         }
         return dto;
+    }
+
+    public UserDto addCouponAsFavorites(UUID id, CouponDto couponDto) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent())
+        {
+            CouponDto couponDto1 = couponService.findById(couponDto.getId());
+            userOptional.get().getFavoriteCoupons().add(couponService.mapDtoToObject(couponDto1));
+
+            return update(mapToDto(userOptional.get()));
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public UserDto addVendorAsFavorites(UUID id, VendorDto vendorDto) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent())
+        {
+            VendorDto vendorDto1 = vendorService.findById(vendorDto.getId());
+            userOptional.get().getFavoriteVendors().add(vendorService.mapDtoToObject(vendorDto1));
+            return update(mapToDto(userOptional.get()));
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public User mapDtoToObject(UserDto userDto) {
+        return mapDtoToObject(userDto, new User());
     }
 
     @Override
@@ -89,7 +130,4 @@ public class UserService implements IDefaultService<User, UserDto>{
         return user;
     }
 
-    public User mapDtoToObject(UserDto userDto) {
-        return mapDtoToObject(userDto, new User());
-    }
 }

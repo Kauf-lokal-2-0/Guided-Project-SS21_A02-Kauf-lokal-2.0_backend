@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dca7aada-9fb6-41b5-922c-f7e9ae6db8f4",
+		"_postman_id": "61deee28-95f1-4a25-ad80-5dcf64c83372",
 		"name": "GP-Kauflokal",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -181,7 +181,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/vendor/82876d2b-6912-4648-a29f-1c22e459ce12/coupon",
+							"raw": "http://localhost:8080/vendor/e7f16085-d543-4e90-a709-8d7a9ee9cea7/coupon",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -189,7 +189,7 @@
 							"port": "8080",
 							"path": [
 								"vendor",
-								"82876d2b-6912-4648-a29f-1c22e459ce12",
+								"e7f16085-d543-4e90-a709-8d7a9ee9cea7",
 								"coupon"
 							]
 						}
@@ -341,6 +341,66 @@
 							"port": "8080",
 							"path": [
 								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddCouponAsFavorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"98ed4387-ba3b-4fd9-b53e-1862471303bc\",\r\n    \"name\": \"string\",\r\n    \"description\": \"company\",\r\n    \"couponCode\": 12345,\r\n    \"expiryDate\": \"2021-07-03T09:09:26.447+00:00\",\r\n    \"value\": 50.0,\r\n    \"created\": \"2021-07-09T08:06:08.746+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/cdb85338-7ad3-45ff-8998-05e819b8bc2f/coupon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"cdb85338-7ad3-45ff-8998-05e819b8bc2f",
+								"coupon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddVendorAsFavorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"e7f16085-d543-4e90-a709-8d7a9ee9cea7\",\r\n    \"name\": \"string\",\r\n    \"offerAmount\": null,\r\n    \"vendorScore\": null,\r\n    \"logo\": null,\r\n    \"websiteURL\": null,\r\n    \"color\": null,\r\n    \"category\": null,\r\n    \"address\": {\r\n        \"street\": \"testStr\",\r\n        \"houseNr\": \"3a\",\r\n        \"place\": \"Köln\",\r\n        \"zipCode\": \"51148\",\r\n        \"country\": \"DE\"\r\n    },\r\n    \"emailAddress\": null,\r\n    \"openingTime\": null,\r\n    \"detailImages\": null,\r\n    \"coupons\": null,\r\n    \"ratings\": null,\r\n    \"products\": null,\r\n    \"messages\": null,\r\n    \"events\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/cdb85338-7ad3-45ff-8998-05e819b8bc2f/vendor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"cdb85338-7ad3-45ff-8998-05e819b8bc2f",
+								"vendor"
 							]
 						}
 					},
