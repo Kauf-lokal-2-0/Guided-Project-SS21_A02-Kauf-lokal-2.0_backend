@@ -99,7 +99,11 @@ public class RatingService implements IDefaultService<Rating, RatingDto> {
         return this.findAll().size();
     }
 
-    public double getArithmeticMeanRating(RatingDto dto){
+    /**
+     *
+     * @return den durchschnitt aller ratingScores.
+     */
+    public double getArithmeticMeanRating(){
         return this.findAll().stream().mapToDouble(RatingDto::getRatingScore).average().orElse(Double.NaN);
     }
 
