@@ -46,7 +46,7 @@ public class RatingController {
 
     @ApiOperation(value = "Arithmetic mean of all ratings" )
     @GetMapping("/rating/arithmetic")
-    public Double getArithmeticMeanRating(RatingDto dto){
-        return ratingService.getArithmeticMeanRating(dto);
+    public Double getArithmeticMeanRating(){
+        return ratingService.getArithmeticMeanRating();
     }
 }
