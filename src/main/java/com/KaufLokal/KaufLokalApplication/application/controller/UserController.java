@@ -1,6 +1,8 @@
 package com.KaufLokal.KaufLokalApplication.application.controller;
 
+import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
+import com.KaufLokal.KaufLokalApplication.application.dto.VendorDto;
 import com.KaufLokal.KaufLokalApplication.application.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -49,6 +51,21 @@ public class UserController {
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
         logger.debug("PUT: User");
         return new ResponseEntity<>(userService.update(userDto), HttpStatus.OK);
+    }
+
+
+    @ApiOperation(value = "Add Coupon as Favorite")
+    @PostMapping("/user/{id}/coupon")
+    public ResponseEntity<UserDto> addCouponAsFavorites(@PathVariable UUID id, @RequestBody CouponDto couponDto) {
+        logger.debug("POST: Add Coupon as Favorite");
+        return new ResponseEntity<>(userService.addCouponAsFavorites(id,couponDto), HttpStatus.CREATED);
+    }
+
+    @ApiOperation(value = "Add Coupon as Favorite")
+    @PostMapping("/user/{id}/vendor")
+    public ResponseEntity<UserDto> addVendorAsFavorites(@PathVariable UUID id, @RequestBody VendorDto vendorDto) {
+        logger.debug("POST: Add Coupon as Favorite");
+        return new ResponseEntity<>(userService.addVendorAsFavorites(id,vendorDto), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Delete an User")
