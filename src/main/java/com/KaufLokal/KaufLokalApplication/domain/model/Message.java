@@ -20,7 +20,12 @@ public class Message {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
+    private String title;
+
+    @Column(nullable = false)
     private String message;
+
+    private String imageURL;
 
     private Date created;
 

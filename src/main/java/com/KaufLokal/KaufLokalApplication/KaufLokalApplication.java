@@ -83,7 +83,7 @@ public class KaufLokalApplication {
 			detailImagesKult.add("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Kult_170927_Forum_Gummersbach_0062-700x466.jpg");
 
 			Rating rating_0 = new Rating();
-			rating_0.setRatingScore(4.5);
+			rating_0.setRatingScore(4.5f);
 			Rating rating0 = ratingRepository.save(rating_0);
 			Set<Rating> ratingsSet_0 = new HashSet<>();
 			ratingsSet_0.add(rating0);
@@ -96,7 +96,7 @@ public class KaufLokalApplication {
 			user_1.setEmail("2test@test.de");
 
 			Rating rating_1 = new Rating();
-			rating_1.setRatingScore(3.5);
+			rating_1.setRatingScore(3.5f);
 			Rating rating1 = ratingRepository.save(rating_1);
 			Set<Rating> ratingSet_1 = new HashSet<>();
 			ratingSet_1.add(rating_1);

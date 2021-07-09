@@ -8,6 +8,8 @@ import java.util.UUID;
 @Data
 public class MessageDto {
     private UUID id;
+    private String title;
     private String message;
+    private String imageURL;
     private Date created;
 }
