@@ -11,7 +11,6 @@ import java.util.UUID;
 public class VendorDto {
     private UUID id;
     private String name;
-    private Integer offerAmount;
     private double vendorScore;
     private String logo;
     private String websiteURL;
