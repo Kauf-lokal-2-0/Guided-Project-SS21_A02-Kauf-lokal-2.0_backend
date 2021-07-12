@@ -1,8 +1,10 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
+import com.KaufLokal.KaufLokalApplication.application.controller.VendorController;
 import com.KaufLokal.KaufLokalApplication.application.dto.RatingDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Product;
 import com.KaufLokal.KaufLokalApplication.domain.model.Rating;
+import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.repository.RatingRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class RatingService implements IDefaultService<Rating, RatingDto> {
 
     @Autowired
     private RatingRepository ratingRepository;
+
+    @Autowired
+    private VendorController vendorController;
 
     @Override
     public List<RatingDto> findAll() {
@@ -92,20 +97,6 @@ public class RatingService implements IDefaultService<Rating, RatingDto> {
         return mapDtoToObject(ratingDto, new Rating());
     }
 
-    /**
-     * @return die maximale Anzahl an Rating Objekte
-     */
-    public Integer getRatingCount(){
-        return this.findAll().size();
-    }
-
-    /**
-     *
-     * @return den durchschnitt aller ratingScores.
-     */
-    public double getArithmeticMeanRating(){
-        return this.findAll().stream().mapToDouble(RatingDto::getRatingScore).average().orElse(Double.NaN);
-    }
 
 }
 

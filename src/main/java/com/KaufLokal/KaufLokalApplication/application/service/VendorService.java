@@ -225,13 +225,7 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
      }
 
 
-    private double getArithmeticMeanRating(Set<Rating> ratings)
-    {
-        double summe = 0;
-        for (Rating r: ratings) {
-            summe += r.getRatingScore();
-        }
-
-        return summe / ratings.size();
+    private double getArithmeticMeanRating(Set<Rating> ratings) {
+        return ratings.stream().mapToDouble(Rating::getRatingScore).average().orElse(Double.NaN);
     }
 }
