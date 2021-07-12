@@ -1,11 +1,8 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.*;
-import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
-import com.KaufLokal.KaufLokalApplication.domain.model.Message;
-import com.KaufLokal.KaufLokalApplication.domain.model.OpeningTime;
+import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
-import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.VendorRepository;
 import org.modelmapper.ModelMapper;
@@ -146,7 +143,7 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
             }
         }
 
-
+        vendorDto.setVendorScore(getArithmeticMeanRating(vendor.getRatings()));
 
         return vendorDto;
     }
@@ -226,4 +223,15 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
          }
          return false;
      }
+
+
+    private double getArithmeticMeanRating(Set<Rating> ratings)
+    {
+        double summe = 0;
+        for (Rating r: ratings) {
+            summe += r.getRatingScore();
+        }
+
+        return summe / ratings.size();
+    }
 }

@@ -12,7 +12,7 @@ public class VendorDto {
     private UUID id;
     private String name;
     private Integer offerAmount;
-    private Integer vendorScore;
+    private double vendorScore;
     private String logo;
     private String websiteURL;
     private String color;
