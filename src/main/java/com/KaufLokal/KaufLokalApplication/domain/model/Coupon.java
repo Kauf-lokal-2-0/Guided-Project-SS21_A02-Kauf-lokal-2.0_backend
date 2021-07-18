@@ -1,7 +1,5 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import com.KaufLokal.KaufLokalApplication.common.serializer.CouponSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
@@ -11,7 +9,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "COUPON")
 @Data
-@JsonSerialize(using = CouponSerializer.class)
 public class Coupon {
 
     @Id
@@ -36,4 +33,25 @@ public class Coupon {
     private Double value;
 
     private Date created;
+
+    public Double getValue() {
+        if (value == null) {
+            return -1.0;
+        }
+        return value;
+    }
+
+    public Date getExpiryDate() {
+        if (expiryDate == null) {
+            return new Date();
+        }
+        return expiryDate;
+    }
+
+    public Date getCreated() {
+        if (created == null) {
+            return new Date();
+        }
+        return created;
+    }
 }

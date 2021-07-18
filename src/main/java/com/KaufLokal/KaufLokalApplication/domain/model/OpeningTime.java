@@ -33,7 +33,4 @@ public class OpeningTime {
         this.sunday = sunday;
 
     }
-
-
-
 }

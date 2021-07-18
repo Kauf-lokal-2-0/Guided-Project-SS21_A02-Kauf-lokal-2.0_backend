@@ -29,4 +29,21 @@ public class Message {
 
     private Date created;
 
+    public String getTitle() {
+        if (title == null)
+            return "";
+        return title;
+    }
+
+    public String getImageURL() {
+        if (imageURL == null)
+            return "";
+        return imageURL;
+    }
+
+    public Date getCreated() {
+        if (created == null)
+            return new Date();
+        return created;
+    }
 }

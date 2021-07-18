@@ -23,6 +23,7 @@ public class Event {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
+    @Column(nullable = false)
     private EventTypes eventTypes;
 
     private UUID refId;
@@ -30,4 +31,10 @@ public class Event {
     private UUID vendorId;
 
     private Date created;
+
+    public Date getCreated() {
+        if (created == null)
+            return new Date();
+        return created;
+    }
 }

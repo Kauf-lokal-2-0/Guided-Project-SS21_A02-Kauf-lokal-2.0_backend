@@ -8,13 +8,9 @@ import javax.persistence.*;
 public class Address {
 
     private String street;
-
     private String houseNr;
-
     private String place;
-
     private String zipCode;
-
     private String country;
 
     public Address() {
@@ -26,7 +22,5 @@ public class Address {
         this.place = place;
         this.zipCode = zipCode;
         this.country = country;
-
-
     }
 }
