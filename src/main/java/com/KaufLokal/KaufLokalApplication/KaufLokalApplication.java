@@ -36,15 +36,6 @@ public class KaufLokalApplication {
 			user_0.setLastName("LastName");
 			user_0.setEmail("test@test.de");
 
-			Event event_0 = new Event();
-			event_0.setCreated(new Date());
-			event_0.setEventTypes(EventTypes.MESSAGE);
-			event_0.setCreated(new Date());
-			Event event0 = eventRepository.save(event_0);
-
-			Set<Event> eventSet_0 = new HashSet<>();
-			eventSet_0.add(event0);
-
 			Set<String> detailImagesMayerscheGummersbach = new HashSet<>();
 			detailImagesMayerscheGummersbach.add("https://lh5.googleusercontent.com/p/AF1QipPWXgoi-dUHFzzMMXVTG2mzWMNUrCNBo7nGQMPZ=w1080-k-no");
 			detailImagesMayerscheGummersbach.add("https://www.schreibwerkstatt-gm.de/wp-content/gallery/2019-lesung-mayersche/190912-04.JPG");
@@ -143,7 +134,6 @@ public class KaufLokalApplication {
 			vendor_0.setMessages(messages);
 			vendor_0.setLogo("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
 			vendor_0.setDetailImages(detailImagesMayerscheGummersbach);
-			vendor_0.setEvents(eventSet_0);
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
 
@@ -170,6 +160,7 @@ public class KaufLokalApplication {
 			vendor1.setWebsiteURL("https://www.forum-gummersbach.info");
 			vendor1.setLogo("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
 			vendor1.setDetailImages(detailImagesForumGummersbach);
+			vendor1.setOpeningTime(openingTime);
 			Address address1 = new Address();
 			address1.setStreet("Steinmüllerallee");
 			address1.setHouseNr("5");
@@ -187,6 +178,7 @@ public class KaufLokalApplication {
 			vendor2.setCategory(VendorCategory.CLOTHES);
 			vendor2.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
 			vendor2.setDetailImages(detailImagesStreetOneRetailGmbH);
+			vendor2.setOpeningTime(openingTime);
 			Address address2 = new Address();
 			address2.setStreet("Steinmüllerallee");
 			address2.setHouseNr("5");
@@ -205,6 +197,7 @@ public class KaufLokalApplication {
 			vendor3.setLogo("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
 			vendor3.setDetailImages(detailImagesAlanyaRestaurantGummersbach);
 			vendor3.setCategory(VendorCategory.RESTAURANT);
+			vendor3.setOpeningTime(openingTime);
 			Address address3 = new Address();
 			address3.setStreet("Hindenburgstraße");
 			address3.setHouseNr("10-12");
@@ -220,6 +213,7 @@ public class KaufLokalApplication {
 			vendor4.setEmailAddress("info@ic-verwaltungsgruppe.de");
 			vendor4.setWebsiteURL("ic-verwaltungsgruppe.de");
 			vendor4.setColor("#A5C715");
+			vendor4.setOpeningTime(openingTime);
 			vendor4.setLogo("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
 			vendor4.setDetailImages(detailImagesBergischerHof);
 			Address address4 = new Address();
@@ -239,6 +233,7 @@ public class KaufLokalApplication {
 			//vendor5.setColor("#056118");
 			vendor5.setLogo("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
 			vendor5.setDetailImages(detailImagesEngbers);
+			vendor5.setOpeningTime(openingTime);
 			Address address5 = new Address();
 			address5.setStreet("Steinmüllerallee");
 			address5.setHouseNr("5");
