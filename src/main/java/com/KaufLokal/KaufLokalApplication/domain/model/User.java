@@ -29,11 +29,7 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    private Integer userScore; // Gamification
-
     private Address address;
-
-    private String profilePicture;
 
     @OneToMany
     private Set<Vendor> favoriteVendors = new HashSet<>();
@@ -44,4 +40,10 @@ public class User {
     @OneToMany
     private Set<Rating> ratings;
 
+    public Address getAddress() {
+        if (address == null)
+            return new Address("","","","","");
+
+        return address;
+    }
 }

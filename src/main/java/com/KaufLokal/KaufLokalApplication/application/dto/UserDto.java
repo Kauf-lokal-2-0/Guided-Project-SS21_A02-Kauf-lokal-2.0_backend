@@ -15,8 +15,6 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
-    private Integer userScore;
-    private String profilePicture;
     private Address address;
     private Set<Rating> ratings;
     private Set<UUID> favoriteVendorsIDs = new HashSet<>();

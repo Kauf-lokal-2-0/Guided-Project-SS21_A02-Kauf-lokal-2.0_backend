@@ -26,10 +26,12 @@ public class Vendor {
 
     private Integer vendorScore;
 
+    @Column(nullable = false)
     private Address address;
 
     private String logo;
 
+    @Column(nullable = false)
     private String emailAddress;
 
     private OpeningTime openingTime;
@@ -38,6 +40,7 @@ public class Vendor {
 
     private String color;
 
+    @Column(nullable = false)
     private VendorCategory category;
 
     @ElementCollection
@@ -48,9 +51,6 @@ public class Vendor {
 
     @OneToMany
     private Set<Rating> ratings;
-
-    @OneToMany
-    private Set<Product> products;
 
     @OneToMany
     private Set<Message> messages;
@@ -64,7 +64,7 @@ public class Vendor {
     public Vendor(String name, Integer vendorScore, Address address, String logo,
                   String emailAddress, OpeningTime openingTime, String websiteURL,
                   String color, VendorCategory category, Set<Coupon> coupons,
-                  Set<Rating> ratings, Set<Product> products, Set<Message> messages,
+                  Set<Rating> ratings,  Set<Message> messages,
                   Set<Event> events, Set<String> detailImages) {
         this.name = name;
         this.vendorScore = vendorScore;
@@ -78,8 +78,56 @@ public class Vendor {
         this.category = category;
         this.coupons = coupons;
         this.ratings = ratings;
-        this.products = products;
         this.messages = messages;
         this.events = events;
     }
+
+    public String getName() {
+        if (name == null)
+            return "";
+
+        return name;
+    }
+
+    public Integer getVendorScore() {
+        if (vendorScore == null)
+            return -1;
+
+        return vendorScore;
+    }
+
+    public String getLogo() {
+        if (logo == null)
+            return "";
+
+        return logo;
+    }
+
+    public String getEmailAddress() {
+        if (emailAddress == null)
+            return "";
+
+        return emailAddress;
+    }
+
+    public OpeningTime getOpeningTime() {
+        return openingTime;
+    }
+
+    public String getWebsiteURL() {
+        if (websiteURL == null)
+            return "";
+
+        return websiteURL;
+    }
+
+    public String getColor() {
+        if (color == null)
+            return "";
+
+        return color;
+    }
+
+
+
 }

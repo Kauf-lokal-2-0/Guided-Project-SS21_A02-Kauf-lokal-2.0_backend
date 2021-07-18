@@ -26,7 +26,6 @@ public class KaufLokalApplication {
 								  CouponRepository couponRepository,
 								  RatingRepository ratingRepository,
 								  UserRepository userRepository,
-								  ProductRepository productRepository,
 								  MessageRepository messageRepository,
 								  EventRepository eventRepository
 	) {
@@ -118,15 +117,6 @@ public class KaufLokalApplication {
 			user0.setFavoriteCoupons(couponSet);
 			User user1 = userRepository.save(user_0);
 
-			Product product_0 = new Product();
-			product_0.setName("Brot");
-			product_0.setDescription("Trokenes Brot");
-			product_0.setPrice(2.00);
-			Product product0 = productRepository.save(product_0);
-
-			Set<Product> productSet = new HashSet<>();
-			productSet.add(product0);
-
 			Message message_0 = new Message();
 			message_0.setMessage("Nachricht 1 ");
 			message_0.setCreated(new Date());
@@ -150,7 +140,6 @@ public class KaufLokalApplication {
 			vendor_0.setCoupons(couponSet);
 			vendor_0.setColor("#FFFFFF");
 			vendor_0.setRatings(ratingSet);
-			vendor_0.setProducts(productSet);
 			vendor_0.setMessages(messages);
 			vendor_0.setLogo("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
 			vendor_0.setDetailImages(detailImagesMayerscheGummersbach);
@@ -175,6 +164,7 @@ public class KaufLokalApplication {
 
 			Vendor vendor1 = new Vendor();
 			vendor1.setName("Forum Gummersbach");
+			vendor1.setCategory(VendorCategory.GENERAL);
 			vendor1.setEmailAddress("info@forum-gummersbach.info");
 			vendor1.setColor("#e2a363");
 			vendor1.setWebsiteURL("https://www.forum-gummersbach.info");
@@ -194,6 +184,7 @@ public class KaufLokalApplication {
 			vendor2.setEmailAddress("onlineshop@kundenservice.streetone.de");
 			vendor2.setWebsiteURL("https://streetone.de");
 			vendor2.setColor("#FD0000");
+			vendor2.setCategory(VendorCategory.CLOTHES);
 			vendor2.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2015/08/Street-One_170927_Forum_Gummersbach_0022.jpg");
 			vendor2.setDetailImages(detailImagesStreetOneRetailGmbH);
 			Address address2 = new Address();
@@ -207,6 +198,7 @@ public class KaufLokalApplication {
 
 			Vendor vendor3 = new Vendor();
 			vendor3.setName("Alanya Restaurant Gummersbach");
+			vendor3.setCategory(VendorCategory.RESTAURANT);
 			vendor3.setEmailAddress("alanya-restaurant@web.de");
 			vendor3.setColor("#610505");
 			vendor3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
@@ -223,6 +215,7 @@ public class KaufLokalApplication {
 			vendorRepository.save(vendor3);
 
 			Vendor vendor4 = new Vendor();
+			vendor4.setCategory(VendorCategory.RESTAURANT);
 			vendor4.setName("Bergischer Hof");
 			vendor4.setEmailAddress("info@ic-verwaltungsgruppe.de");
 			vendor4.setWebsiteURL("ic-verwaltungsgruppe.de");
@@ -239,10 +232,11 @@ public class KaufLokalApplication {
 			vendorRepository.save(vendor4);
 
 			Vendor vendor5 = new Vendor();
+			vendor5.setCategory(VendorCategory.CLOTHES);
 			vendor5.setName("Engbers");
 			vendor5.setEmailAddress("shop@engbers.com");
 			vendor5.setWebsiteURL("engbers.com");
-			vendor5.setColor("#056118");
+			//vendor5.setColor("#056118");
 			vendor5.setLogo("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
 			vendor5.setDetailImages(detailImagesEngbers);
 			Address address5 = new Address();
@@ -254,47 +248,6 @@ public class KaufLokalApplication {
 			vendor5.setAddress(address5);
 			vendorRepository.save(vendor5);
 
-			Vendor vendor6 = new Vendor();
-			vendor6.setName("TAKKO FASHION Gummersbach");
-			vendor6.setEmailAddress("support@takko.de");
-			vendor6.setLogo("https://static0.tiendeo.de/images/tiendas/18910/catalogos/745590/paginas/mid2/00001.jpg");
-			vendor6.setDetailImages(detailImagesTakkoFashionGummersbach);
-			Address address6 = new Address();
-			address6.setStreet("Kaiserstraße");
-			address6.setHouseNr("35");
-			address6.setZipCode("51643");
-			address6.setPlace("Gummersbach");
-			address6.setCountry("Germany");
-			vendor6.setAddress(address6);
-			vendorRepository.save(vendor6);
-
-			Vendor vendor7 = new Vendor();
-			vendor7.setName("CECIL Partner Store Gummersbach");
-			vendor7.setEmailAddress("support@takko.de");
-			vendor7.setLogo("https://www.forum-gummersbach.info/wp-content/uploads/sites/2/2018/10/Cecil_DSC00427.jpg");
-			vendor7.setDetailImages(detailImagesCecilPartnerStoreGummersbach);
-			Address address7 = new Address();
-			address7.setStreet("Steinmüllerallee");
-			address7.setHouseNr("25");
-			address7.setZipCode("51643");
-			address7.setPlace("Gummersbach");
-			address7.setCountry("Germany");
-			vendor7.setAddress(address7);
-			vendorRepository.save(vendor7);
-
-			Vendor vendor8 = new Vendor();
-			vendor8.setName("KULT");
-			vendor8.setEmailAddress("info@goergens-gruppe.de");
-			vendor8.setLogo("https://www.kult-olymp-hades.de/media/image/d7/cc/9e/kult_vintage_logo.png");
-			vendor8.setDetailImages(detailImagesKult);
-			Address address8 = new Address();
-			address8.setStreet("Steinmüllerallee");
-			address8.setHouseNr("5");
-			address8.setZipCode("51643");
-			address8.setPlace("Gummersbach");
-			address8.setCountry("Germany");
-			vendor8.setAddress(address8);
-			vendorRepository.save(vendor8);
 		};
 	}
 }

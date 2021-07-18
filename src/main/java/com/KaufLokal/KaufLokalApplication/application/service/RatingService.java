@@ -2,9 +2,7 @@ package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.controller.VendorController;
 import com.KaufLokal.KaufLokalApplication.application.dto.RatingDto;
-import com.KaufLokal.KaufLokalApplication.domain.model.Product;
 import com.KaufLokal.KaufLokalApplication.domain.model.Rating;
-import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.repository.RatingRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

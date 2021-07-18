@@ -22,7 +22,6 @@ public class VendorDto {
     private Set<String> detailImages;
     private Set<Coupon> coupons;
     private Set<Rating> ratings;
-    private Set<Product> products;
     private Set<Message> messages;
     private Set<Event> events;
 }

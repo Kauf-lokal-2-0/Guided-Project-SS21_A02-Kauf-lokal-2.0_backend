@@ -19,12 +19,19 @@ public class Rating {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
-    private double ratingScore;
+    private Double ratingScore;
 
     public Rating() {
     }
 
-    public Rating(float ratingScore) {
+    public Rating(Double ratingScore) {
         this.ratingScore = ratingScore;
+    }
+
+    public Double getRatingScore() {
+        if(ratingScore == null)
+            return 0.0;
+
+        return ratingScore;
     }
 }
