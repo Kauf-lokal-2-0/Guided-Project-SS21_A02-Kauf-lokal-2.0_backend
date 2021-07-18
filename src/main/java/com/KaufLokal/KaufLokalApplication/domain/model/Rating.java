@@ -30,7 +30,7 @@ public class Rating {
 
     public Double getRatingScore() {
         if(ratingScore == null)
-            return 0.0;
+            return -1.0;
 
         return ratingScore;
     }
