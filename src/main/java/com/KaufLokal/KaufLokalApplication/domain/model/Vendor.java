@@ -58,6 +58,10 @@ public class Vendor {
     @OneToMany
     private Set<Event> events;
 
+    @OneToMany
+    private Set<Voting> votings;
+
+
     public Vendor() {
     }
 

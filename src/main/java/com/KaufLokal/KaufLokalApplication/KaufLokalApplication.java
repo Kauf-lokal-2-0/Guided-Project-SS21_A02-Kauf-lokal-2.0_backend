@@ -2,7 +2,6 @@ package com.KaufLokal.KaufLokalApplication;
 
 
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
-import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.*;
 import org.springframework.boot.CommandLineRunner;
@@ -27,7 +26,9 @@ public class KaufLokalApplication {
 								  RatingRepository ratingRepository,
 								  UserRepository userRepository,
 								  MessageRepository messageRepository,
-								  EventRepository eventRepository
+								  EventRepository eventRepository,
+								  VotingRepository votingRepository,
+								  VotingOptionRepository votingOptionRepository
 	) {
 		return (args) -> {
 
@@ -79,6 +80,38 @@ public class KaufLokalApplication {
 			ratingsSet_0.add(rating0);
 			user_0.setRatings(ratingsSet_0);
 			User user0 = userRepository.save(user_0);
+
+
+
+			///Voting
+			Set<VotingOption> votingOptions = new HashSet<>();
+
+			VotingOption votingOption0 = new VotingOption();
+			votingOption0.setTitle("Glücksrad");
+			Set<User> userSet = new HashSet<>();
+			userSet.add(user0);
+			votingOption0.setUsers(userSet);
+			VotingOption votingOption_0 = votingOptionRepository.save(votingOption0);
+			votingOptions.add(votingOption_0);
+
+			VotingOption votingOption1 = new VotingOption();
+			votingOption1.setTitle("Lose ziehen");
+			VotingOption votingOption_1 = votingOptionRepository.save(votingOption1);
+			votingOptions.add(votingOption_1);
+
+			VotingOption votingOption2 = new VotingOption();
+			votingOption2.setTitle("Quiz");
+			VotingOption votingOption_2 = votingOptionRepository.save(votingOption2);
+			votingOptions.add(votingOption_2);
+
+			Voting voting0 = new Voting();
+			voting0.setTitle("Welche der Aktionen finden Sie am besten ?");
+
+			Voting voting_0 = votingRepository.save(voting0);
+			voting_0.setVotingOptions(votingOptions);
+			votingRepository.save(voting_0);
+
+
 
 			User user_1 = new User();
 			user_1.setFirstName("Firstname2");
