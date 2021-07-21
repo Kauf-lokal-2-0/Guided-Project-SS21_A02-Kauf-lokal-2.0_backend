@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"string\",\r\n    \"company\":\"company\",\r\n    \"address\": {\r\n        \"street\":\"testStr\",\r\n        \"houseNr\":\"3a\",\r\n        \"place\":\"Köln\",\r\n        \"zipCode\":\"51148\",\r\n        \"country\":\"DE\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"name\": \"string\",\r\n    \"company\":\"company\",\r\n    \"address\": {\r\n        \"street\":\"testStr\",\r\n        \"houseNr\":\"3a\",\r\n        \"place\":\"Köln\",\r\n        \"zipCode\":\"51148\",\r\n        \"country\":\"DE\"\r\n    },\r\n    \"category\": \"NONE\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -211,7 +211,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/vendor/82876d2b-6912-4648-a29f-1c22e459ce12/message",
+							"raw": "http://localhost:8080/vendor/f5d93374-b3a5-4d32-ad51-8d1b1b7097d8/message",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -219,7 +219,7 @@
 							"port": "8080",
 							"path": [
 								"vendor",
-								"82876d2b-6912-4648-a29f-1c22e459ce12",
+								"f5d93374-b3a5-4d32-ad51-8d1b1b7097d8",
 								"message"
 							]
 						}
@@ -456,7 +456,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/event?vendorId=a492cb5a-7565-4ae7-bfea-b1d3120f790e",
+							"raw": "http://localhost:8080/event?vendorId=f5d93374-b3a5-4d32-ad51-8d1b1b7097d8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -468,7 +468,7 @@
 							"query": [
 								{
 									"key": "vendorId",
-									"value": "a492cb5a-7565-4ae7-bfea-b1d3120f790e"
+									"value": "f5d93374-b3a5-4d32-ad51-8d1b1b7097d8"
 								}
 							]
 						}
@@ -655,6 +655,80 @@
 							"path": [
 								"message",
 								"13bee964-233b-4325-bba1-fd9593900b48"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Voting",
+			"item": [
+				{
+					"name": "GetAllVoting",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/voting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVotingById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/voting/a9e83367-6ca6-4b77-8511-afdddcf329e1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voting",
+								"a9e83367-6ca6-4b77-8511-afdddcf329e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VoteForOption",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": \"dbea9ee7-6210-43ce-80ce-a4e5a3ddd0b3\",\r\n        \"firstName\": \"Firstname\",\r\n        \"lastName\": \"LastName\",\r\n        \"email\": \"test@test.de\",\r\n        \"address\": {\r\n            \"street\": \"\",\r\n            \"houseNr\": \"\",\r\n            \"place\": \"\",\r\n            \"zipCode\": \"\",\r\n            \"country\": \"\"\r\n        },\r\n        \"ratings\": [\r\n            {\r\n                \"id\": \"c70b22aa-1cc0-4f0f-a8c9-809be5fb501b\",\r\n                \"ratingScore\": 4.5\r\n            }\r\n        ],\r\n        \"favoriteVendorsIDs\": [\r\n            \"c2dacdda-03b4-4c42-a926-97cd6ebedd96\"\r\n        ],\r\n        \"favoriteCouponIDs\": [\r\n            \"923ab07a-5b82-4109-94c5-9db37edcbf66\"\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/voting/vote/f5c36d33-8cec-45e7-8c3a-56e2e0306562",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voting",
+								"vote",
+								"f5c36d33-8cec-45e7-8c3a-56e2e0306562"
 							]
 						}
 					},
