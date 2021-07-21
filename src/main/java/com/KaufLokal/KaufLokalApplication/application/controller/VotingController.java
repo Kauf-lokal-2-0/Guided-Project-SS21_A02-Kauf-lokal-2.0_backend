@@ -43,9 +43,9 @@ public class VotingController {
 
 
     @ApiOperation(value = "User votes an option")
-    @PostMapping("/voting/vote/{voteOptionId}")
-    public ResponseEntity<VotingDto> getVendorById(@PathVariable UUID voteOptionId,@RequestBody UserDto userDto)  {
+    @PostMapping("/voting/{voteId}/vote/{voteOptionId}")
+    public ResponseEntity<VotingDto> getVendorById(@PathVariable UUID voteId,@PathVariable UUID voteOptionId,@RequestBody UserDto userDto)  {
         logger.debug("GET: UserVotesAnOption");
-        return new ResponseEntity<>(votingService.userVotesAnOption(voteOptionId,userDto), HttpStatus.OK);
+        return new ResponseEntity<>(votingService.userVotesAnOption(voteId,voteOptionId,userDto), HttpStatus.OK);
     }
 }

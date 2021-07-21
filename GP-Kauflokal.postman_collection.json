@@ -711,7 +711,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"id\": \"dbea9ee7-6210-43ce-80ce-a4e5a3ddd0b3\",\r\n        \"firstName\": \"Firstname\",\r\n        \"lastName\": \"LastName\",\r\n        \"email\": \"test@test.de\",\r\n        \"address\": {\r\n            \"street\": \"\",\r\n            \"houseNr\": \"\",\r\n            \"place\": \"\",\r\n            \"zipCode\": \"\",\r\n            \"country\": \"\"\r\n        },\r\n        \"ratings\": [\r\n            {\r\n                \"id\": \"c70b22aa-1cc0-4f0f-a8c9-809be5fb501b\",\r\n                \"ratingScore\": 4.5\r\n            }\r\n        ],\r\n        \"favoriteVendorsIDs\": [\r\n            \"c2dacdda-03b4-4c42-a926-97cd6ebedd96\"\r\n        ],\r\n        \"favoriteCouponIDs\": [\r\n            \"923ab07a-5b82-4109-94c5-9db37edcbf66\"\r\n        ]\r\n    }",
+							"raw": "    {\r\n        \"id\": \"cb22ca49-8020-4e21-b7a0-05ac97e54afe\",\r\n        \"firstName\": \"Firstname\",\r\n        \"lastName\": \"LastName\",\r\n        \"email\": \"test@test.de\",\r\n        \"address\": {\r\n            \"street\": \"\",\r\n            \"houseNr\": \"\",\r\n            \"place\": \"\",\r\n            \"zipCode\": \"\",\r\n            \"country\": \"\"\r\n        },\r\n        \"ratings\": [\r\n            {\r\n                \"id\": \"c70b22aa-1cc0-4f0f-a8c9-809be5fb501b\",\r\n                \"ratingScore\": 4.5\r\n            }\r\n        ],\r\n        \"favoriteVendorsIDs\": [\r\n            \"c2dacdda-03b4-4c42-a926-97cd6ebedd96\"\r\n        ],\r\n        \"favoriteCouponIDs\": [\r\n            \"923ab07a-5b82-4109-94c5-9db37edcbf66\"\r\n        ]\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -719,7 +719,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/voting/vote/f5c36d33-8cec-45e7-8c3a-56e2e0306562",
+							"raw": "http://localhost:8080/voting/2866bf4d-0a04-4df1-a692-b801805c1524/vote/21f09253-7aff-4057-b1e9-1016ec8e5cf3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -727,8 +727,9 @@
 							"port": "8080",
 							"path": [
 								"voting",
+								"2866bf4d-0a04-4df1-a692-b801805c1524",
 								"vote",
-								"f5c36d33-8cec-45e7-8c3a-56e2e0306562"
+								"21f09253-7aff-4057-b1e9-1016ec8e5cf3"
 							]
 						}
 					},

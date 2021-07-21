@@ -9,5 +9,6 @@ import java.util.UUID;
 public class VotingDto {
     private UUID id;
     private String title;
+    private int totalAmountVoters;
     private Set<VotingOptionDto> votingOptions;
 }

@@ -82,7 +82,6 @@ public class VotingService implements IDefaultService<Voting, VotingDto> {
         TypeMap<Voting, VotingDto> typeWife = modelMapper.createTypeMap(Voting.class, VotingDto.class);
         typeWife.addMappings(mapper -> mapper.skip(VotingDto::setVotingOptions));
         modelMapper.map(voting, votingDto);
-
         Set<VotingOptionDto> votingOptions = new HashSet<>();
         for (VotingOption votingOption: voting.getVotingOptions()) {
 
@@ -101,6 +100,13 @@ public class VotingService implements IDefaultService<Voting, VotingDto> {
         }
 
         votingDto.setVotingOptions(votingOptions);
+
+        int totalAmountVoters = 0;
+        for (VotingOptionDto votingOptionDto : votingDto.getVotingOptions()) {
+           totalAmountVoters = totalAmountVoters + votingOptionDto.getTotalAmountVoters();
+        }
+
+        votingDto.setTotalAmountVoters(totalAmountVoters);
         return votingDto;
     }
 
@@ -116,7 +122,8 @@ public class VotingService implements IDefaultService<Voting, VotingDto> {
         return mapDtoToObject(votingDto, new Voting());
     }
 
-    public VotingDto userVotesAnOption(UUID voteOptionId, UserDto userDto) {
+    public VotingDto userVotesAnOption(UUID voteId, UUID voteOptionId, UserDto userDto) {
+
         Optional<VotingOption> votingOption = votingOptionRepository.findById(voteOptionId);
         if (votingOption.isPresent())
         {
@@ -125,6 +132,33 @@ public class VotingService implements IDefaultService<Voting, VotingDto> {
             {
                 votingOption.get().getUsers().add(user.get());
                 votingOptionRepository.save(votingOption.get());
+
+                return findById(voteId);
+            }
+            else
+            {
+                //todo Exception
+            }
+        }
+        return null;
+    }
+
+    public VotingDto removeUserVote(UUID voteId,UUID voteOptionId, UserDto userDto) {
+        Optional<VotingOption> votingOption = votingOptionRepository.findById(voteOptionId);
+        if (votingOption.isPresent())
+        {
+            Optional<User> user = userRepository.findById(userDto.getId());
+            if(user.isPresent())
+            {
+                for (User userItem: votingOption.get().getUsers()) {
+                    if(userDto.getId() == userItem.getId())
+                    {
+                        votingOption.get().getUsers().remove(userItem);
+                        votingOptionRepository.save(votingOption.get());
+                        break;
+                    }
+                }
+                return null;
             }
             else
             {
