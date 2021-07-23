@@ -1,6 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
@@ -32,6 +33,7 @@ public class Coupon {
 
     private Double value;
 
+    @CreationTimestamp
     private Date created;
 
     public Double getValue() {
