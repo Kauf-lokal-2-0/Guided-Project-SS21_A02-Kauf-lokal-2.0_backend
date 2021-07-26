@@ -115,7 +115,7 @@ public class KaufLokalApplication {
 			Message message0 = messageRepository.save(message_0);
 
 			Set<Message> messages = new HashSet<>();
-			messages.add(message_0);
+			messages.add(message0);
 
 			Event event_0 = new Event();
 			event_0.setCreated(new Date());
@@ -145,14 +145,13 @@ public class KaufLokalApplication {
 			vendor_0.setMessages(messages);
 			vendor_0.setLogo("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
 			vendor_0.setDetailImages(detailImagesMayerscheGummersbach);
-
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
-
 			Vendor vendor0 = vendorRepository.save(vendor_0);
-
-
 			coupon0 = couponRepository.save(coupon0);
+
+			event_0.setVendorId(vendor0.getId());
+			event_0 = eventRepository.save(event_0);
 
 			Event eventCoupon_0 = new Event();
 			eventCoupon_0.setCreated(new Date());
@@ -163,14 +162,14 @@ public class KaufLokalApplication {
 			Event eventCoupon0 = eventRepository.save(eventCoupon_0);
 			eventSet_0.add(eventCoupon0);
 
-
 			Event eventUpdate_0 = new Event();
 			eventUpdate_0.setCreated(new Date());
 			eventUpdate_0.setEventTypes(EventTypes.UPDATE);
 			eventUpdate_0.setCreated(new Date());
 			eventUpdate_0.setVendorId(vendor0.getId());
+			eventUpdate_0.setRefId(message0.getId());
 			Event eventUpdate0 = eventRepository.save(eventUpdate_0);
-			eventSet_0.add(eventUpdate_0);
+			eventSet_0.add(eventUpdate0);
 
 			///Voting
 			Set<VotingOption> votingOptions = new HashSet<>();
@@ -209,23 +208,23 @@ public class KaufLokalApplication {
 			Event eventVoting0 = eventRepository.save(eventVoting_0);
 			eventSet_0.add(eventVoting0);
 
-
 			vendor0.setEvents(eventSet_0);
 
 
-
-
-
+			// Vendor favorisieren
 			Set<Vendor> vendorSet0 = new HashSet<>();
 			vendorSet0.add(vendor0);
 			user0.setFavoriteVendors(vendorSet0);
-
 			user0 = userRepository.save(user0);
-
 			Set<Vendor> vendorSet = new HashSet<>();
 			vendorSet.add(vendor0);
 			user0.setFavoriteVendors(vendorSet);
 			userRepository.save(user_0);
+
+
+
+
+			/// Beispiel 1
 
 			Vendor vendor1 = new Vendor();
 			vendor1.setName("Forum Gummersbach");
@@ -262,61 +261,6 @@ public class KaufLokalApplication {
 			address2.setCountry("Germany");
 			vendor2.setAddress(address2);
 			vendorRepository.save(vendor2);
-
-			Vendor vendor3 = new Vendor();
-			vendor3.setName("Alanya Restaurant Gummersbach");
-			vendor3.setCategory(VendorCategory.RESTAURANT);
-			vendor3.setEmailAddress("alanya-restaurant@web.de");
-			vendor3.setColor("#610505");
-			vendor3.setWebsiteURL("https://www.facebook.com/alanyarestaurant");
-			vendor3.setLogo("https://media-cdn.tripadvisor.com/media/photo-s/11/77/d7/59/das-richtige-restaurant.jpg");
-			vendor3.setDetailImages(detailImagesAlanyaRestaurantGummersbach);
-			vendor3.setCategory(VendorCategory.RESTAURANT);
-			vendor3.setOpeningTime(openingTime);
-			Address address3 = new Address();
-			address3.setStreet("Hindenburgstraße");
-			address3.setHouseNr("10-12");
-			address3.setZipCode("51643");
-			address3.setPlace("Gummersbach");
-			address3.setCountry("Germany");
-			vendor3.setAddress(address3);
-			vendorRepository.save(vendor3);
-
-			Vendor vendor4 = new Vendor();
-			vendor4.setCategory(VendorCategory.RESTAURANT);
-			vendor4.setName("Bergischer Hof");
-			vendor4.setEmailAddress("info@ic-verwaltungsgruppe.de");
-			vendor4.setWebsiteURL("ic-verwaltungsgruppe.de");
-			vendor4.setColor("#A5C715");
-			vendor4.setOpeningTime(openingTime);
-			vendor4.setLogo("https://infax.org/hotelrestaurantbergischerhof/wp-content/uploads/sites/157/2020/08/IMG_4312_bergischer_hof_bei_Nacht.jpg");
-			vendor4.setDetailImages(detailImagesBergischerHof);
-			Address address4 = new Address();
-			address4.setStreet("Kaiserstraße");
-			address4.setHouseNr("35");
-			address4.setZipCode("51643");
-			address4.setPlace("Gummersbach");
-			address4.setCountry("Germany");
-			vendor4.setAddress(address4);
-			vendorRepository.save(vendor4);
-
-			Vendor vendor5 = new Vendor();
-			vendor5.setCategory(VendorCategory.CLOTHES);
-			vendor5.setName("Engbers");
-			vendor5.setEmailAddress("shop@engbers.com");
-			vendor5.setWebsiteURL("engbers.com");
-			//vendor5.setColor("#056118");
-			vendor5.setLogo("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Engbers_%28Unternehmen%29_logo.svg/1200px-Engbers_%28Unternehmen%29_logo.svg.png");
-			vendor5.setDetailImages(detailImagesEngbers);
-			vendor5.setOpeningTime(openingTime);
-			Address address5 = new Address();
-			address5.setStreet("Steinmüllerallee");
-			address5.setHouseNr("5");
-			address5.setZipCode("51643");
-			address5.setPlace("Gummersbach");
-			address5.setCountry("Germany");
-			vendor5.setAddress(address5);
-			vendorRepository.save(vendor5);
 
 		};
 	}
