@@ -82,39 +82,6 @@ public class KaufLokalApplication {
 			user_0.setRatings(ratingsSet_0);
 			User user0 = userRepository.save(user_0);
 
-
-
-
-			///Voting
-			Set<VotingOption> votingOptions = new HashSet<>();
-
-			VotingOption votingOption0 = new VotingOption();
-			votingOption0.setTitle("Glücksrad");
-			Set<User> userSet = new HashSet<>();
-			userSet.add(user0);
-			votingOption0.setUsers(userSet);
-			VotingOption votingOption_0 = votingOptionRepository.save(votingOption0);
-			votingOptions.add(votingOption_0);
-
-			VotingOption votingOption1 = new VotingOption();
-			votingOption1.setTitle("Lose ziehen");
-			VotingOption votingOption_1 = votingOptionRepository.save(votingOption1);
-			votingOptions.add(votingOption_1);
-
-			VotingOption votingOption2 = new VotingOption();
-			votingOption2.setTitle("Quiz");
-			VotingOption votingOption_2 = votingOptionRepository.save(votingOption2);
-			votingOptions.add(votingOption_2);
-
-			Voting voting0 = new Voting();
-			voting0.setTitle("Welche der Aktionen finden Sie am besten ?");
-
-			Voting voting_0 = votingRepository.save(voting0);
-			voting_0.setVotingOptions(votingOptions);
-			votingRepository.save(voting_0);
-
-
-
 			User user_1 = new User();
 			user_1.setFirstName("Firstname2");
 			user_1.setLastName("LastName2");
@@ -126,7 +93,6 @@ public class KaufLokalApplication {
 			Set<Rating> ratingSet_1 = new HashSet<>();
 			ratingSet_1.add(rating_1);
 			user_1.setRatings(ratingSet_1);
-
 
 			Set<Rating> ratingSet = new HashSet<>();
 			ratingSet.add(rating0);
@@ -155,7 +121,9 @@ public class KaufLokalApplication {
 			event_0.setCreated(new Date());
 			event_0.setEventTypes(EventTypes.MESSAGE);
 			event_0.setCreated(new Date());
+			event_0.setRefId(message0.getId());
 			Event event0 = eventRepository.save(event_0);
+			
 
 			Set<Event> eventSet_0 = new HashSet<>();
 			eventSet_0.add(event0);
@@ -182,18 +150,69 @@ public class KaufLokalApplication {
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
 
-
 			Vendor vendor0 = vendorRepository.save(vendor_0);
 
-			eventSet_0.forEach(event -> {
+			Event eventCoupon_0 = new Event();
+			eventCoupon_0.setCreated(new Date());
+			eventCoupon_0.setEventTypes(EventTypes.COUPON);
+			eventCoupon_0.setCreated(new Date());
+			eventCoupon_0.setRefId(coupon0.getId());
+			eventCoupon_0.setVendorId(vendor0.getId());
+			Event eventCoupon0 = eventRepository.save(eventCoupon_0);
+			eventSet_0.add(eventCoupon0);
 
-				event.setVendorId(vendor0.getId());
-				event.setRefId(message0.getId());
-				eventRepository.save(event);
-			});
+
+			Event eventUpdate_0 = new Event();
+			eventUpdate_0.setCreated(new Date());
+			eventUpdate_0.setEventTypes(EventTypes.UPDATE);
+			eventUpdate_0.setCreated(new Date());
+			eventUpdate_0.setVendorId(vendor0.getId());
+			Event eventUpdate0 = eventRepository.save(eventUpdate_0);
+			eventSet_0.add(eventUpdate_0);
+
+			///Voting
+			Set<VotingOption> votingOptions = new HashSet<>();
+
+			VotingOption votingOption0 = new VotingOption();
+			votingOption0.setTitle("Glücksrad");
+			Set<User> userSet = new HashSet<>();
+			userSet.add(user0);
+			votingOption0.setUsers(userSet);
+			VotingOption votingOption_0 = votingOptionRepository.save(votingOption0);
+			votingOptions.add(votingOption_0);
+
+			VotingOption votingOption1 = new VotingOption();
+			votingOption1.setTitle("Lose ziehen");
+			VotingOption votingOption_1 = votingOptionRepository.save(votingOption1);
+			votingOptions.add(votingOption_1);
+
+			VotingOption votingOption2 = new VotingOption();
+			votingOption2.setTitle("Quiz");
+			VotingOption votingOption_2 = votingOptionRepository.save(votingOption2);
+			votingOptions.add(votingOption_2);
+
+			Voting voting0 = new Voting();
+			voting0.setTitle("Welche der Aktionen finden Sie am besten ?");
+
+			Voting voting_0 = votingRepository.save(voting0);
+			voting_0.setVotingOptions(votingOptions);
+			voting_0 = votingRepository.save(voting_0);
+
+			Event eventVoting_0 = new Event();
+			eventVoting_0.setCreated(new Date());
+			eventVoting_0.setEventTypes(EventTypes.POLL);
+			eventVoting_0.setCreated(new Date());
+			eventVoting_0.setRefId(voting_0.getId());
+			eventVoting_0.setVendorId(vendor0.getId());
+			Event eventVoting0 = eventRepository.save(eventVoting_0);
+			eventSet_0.add(eventVoting0);
 
 
 			vendor0.setEvents(eventSet_0);
+
+
+
+
 
 			Set<Vendor> vendorSet0 = new HashSet<>();
 			vendorSet0.add(vendor0);
