@@ -2,6 +2,7 @@ package com.KaufLokal.KaufLokalApplication;
 
 
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
+import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.*;
 import org.springframework.boot.CommandLineRunner;
@@ -83,6 +84,7 @@ public class KaufLokalApplication {
 
 
 
+
 			///Voting
 			Set<VotingOption> votingOptions = new HashSet<>();
 
@@ -144,10 +146,19 @@ public class KaufLokalApplication {
 			Message message_0 = new Message();
 			message_0.setMessage("Nachricht 1 ");
 			message_0.setCreated(new Date());
-			messageRepository.save(message_0);
+			Message message0 = messageRepository.save(message_0);
 
 			Set<Message> messages = new HashSet<>();
 			messages.add(message_0);
+
+			Event event_0 = new Event();
+			event_0.setCreated(new Date());
+			event_0.setEventTypes(EventTypes.MESSAGE);
+			event_0.setCreated(new Date());
+			Event event0 = eventRepository.save(event_0);
+
+			Set<Event> eventSet_0 = new HashSet<>();
+			eventSet_0.add(event0);
 
 			Vendor vendor_0 = new Vendor();
 			vendor_0.setName("Mayersche Gummersbach");
@@ -167,18 +178,28 @@ public class KaufLokalApplication {
 			vendor_0.setMessages(messages);
 			vendor_0.setLogo("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
 			vendor_0.setDetailImages(detailImagesMayerscheGummersbach);
+
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
 
+
 			Vendor vendor0 = vendorRepository.save(vendor_0);
 
+			eventSet_0.forEach(event -> {
+
+				event.setVendorId(vendor0.getId());
+				event.setRefId(message0.getId());
+				eventRepository.save(event);
+			});
+
+
+			vendor0.setEvents(eventSet_0);
 
 			Set<Vendor> vendorSet0 = new HashSet<>();
 			vendorSet0.add(vendor0);
 			user0.setFavoriteVendors(vendorSet0);
 
 			user0 = userRepository.save(user0);
-
 
 			Set<Vendor> vendorSet = new HashSet<>();
 			vendorSet.add(vendor0);
