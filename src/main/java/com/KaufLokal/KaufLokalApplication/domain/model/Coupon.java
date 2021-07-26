@@ -1,5 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
+import com.KaufLokal.KaufLokalApplication.application.dto.VendorDto;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;

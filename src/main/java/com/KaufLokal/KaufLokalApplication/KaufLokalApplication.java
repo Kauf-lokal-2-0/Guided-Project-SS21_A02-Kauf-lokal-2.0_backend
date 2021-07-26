@@ -123,7 +123,6 @@ public class KaufLokalApplication {
 			event_0.setCreated(new Date());
 			event_0.setRefId(message0.getId());
 			Event event0 = eventRepository.save(event_0);
-			
 
 			Set<Event> eventSet_0 = new HashSet<>();
 			eventSet_0.add(event0);
@@ -151,6 +150,9 @@ public class KaufLokalApplication {
 			vendor_0.setOpeningTime(openingTime);
 
 			Vendor vendor0 = vendorRepository.save(vendor_0);
+
+
+			coupon0 = couponRepository.save(coupon0);
 
 			Event eventCoupon_0 = new Event();
 			eventCoupon_0.setCreated(new Date());

@@ -18,6 +18,9 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
     @Autowired
     private EventService eventService;
 
+    @Autowired
+    private VendorService vendorService;
+
     @Override
     public List<CouponDto> findAll() {
         couponRepository.findAll();
@@ -71,10 +74,18 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
         return couponDtos;
     }
 
-    public CouponDto mapToDto(Coupon product){
+    public CouponDto mapToDto(Coupon coupon){
         ModelMapper modelMapper = new ModelMapper();
         CouponDto couponDto = new CouponDto();
-        modelMapper.map(product,couponDto);
+        modelMapper.map(coupon,couponDto);
+
+        vendorService.findAll().forEach(vendorDto -> vendorDto.getCoupons().forEach(coupon1 -> {
+            if(coupon1.getId() == coupon.getId())
+            {
+                couponDto.setVendorId(vendorDto.getId());
+            }
+        }));
+
         return couponDto;
     }
 

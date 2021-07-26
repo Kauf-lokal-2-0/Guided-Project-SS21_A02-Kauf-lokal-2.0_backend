@@ -226,6 +226,6 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
 
 
     private double getArithmeticMeanRating(Set<Rating> ratings) {
-        return ratings.stream().mapToDouble(Rating::getRatingScore).average().orElse(Double.NaN);
+        return ratings.stream().mapToDouble(Rating::getRatingScore).average().orElse(0.0);
     }
 }
