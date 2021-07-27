@@ -34,7 +34,6 @@ public class Coupon {
 
     private Double value;
 
-    @CreationTimestamp
     private Date created;
 
     public Double getValue() {
