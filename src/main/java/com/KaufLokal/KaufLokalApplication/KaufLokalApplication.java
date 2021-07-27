@@ -28,8 +28,8 @@ public class KaufLokalApplication {
 								  UserRepository userRepository,
 								  MessageRepository messageRepository,
 								  EventRepository eventRepository,
-								  VotingRepository votingRepository,
-								  VotingOptionRepository votingOptionRepository
+								  PollRepository pollRepository,
+								  PollOptionRepository pollOptionRepository
 	) {
 		return (args) -> {
 
@@ -172,38 +172,38 @@ public class KaufLokalApplication {
 			eventSet_0.add(eventUpdate0);
 
 			///Voting
-			Set<VotingOption> votingOptions = new HashSet<>();
+			Set<PollOption> pollOptions = new HashSet<>();
 
-			VotingOption votingOption0 = new VotingOption();
-			votingOption0.setTitle("Glücksrad");
+			PollOption pollOption0 = new PollOption();
+			pollOption0.setTitle("Glücksrad");
 			Set<User> userSet = new HashSet<>();
 			userSet.add(user0);
-			votingOption0.setUsers(userSet);
-			VotingOption votingOption_0 = votingOptionRepository.save(votingOption0);
-			votingOptions.add(votingOption_0);
+			pollOption0.setUsers(userSet);
+			PollOption pollOption_0 = pollOptionRepository.save(pollOption0);
+			pollOptions.add(pollOption_0);
 
-			VotingOption votingOption1 = new VotingOption();
-			votingOption1.setTitle("Lose ziehen");
-			VotingOption votingOption_1 = votingOptionRepository.save(votingOption1);
-			votingOptions.add(votingOption_1);
+			PollOption pollOption1 = new PollOption();
+			pollOption1.setTitle("Lose ziehen");
+			PollOption pollOption_1 = pollOptionRepository.save(pollOption1);
+			pollOptions.add(pollOption_1);
 
-			VotingOption votingOption2 = new VotingOption();
-			votingOption2.setTitle("Quiz");
-			VotingOption votingOption_2 = votingOptionRepository.save(votingOption2);
-			votingOptions.add(votingOption_2);
+			PollOption pollOption2 = new PollOption();
+			pollOption2.setTitle("Quiz");
+			PollOption pollOption_2 = pollOptionRepository.save(pollOption2);
+			pollOptions.add(pollOption_2);
 
-			Voting voting0 = new Voting();
-			voting0.setTitle("Welche der Aktionen finden Sie am besten ?");
-
-			Voting voting_0 = votingRepository.save(voting0);
-			voting_0.setVotingOptions(votingOptions);
-			voting_0 = votingRepository.save(voting_0);
+			Poll poll0 = new Poll();
+			poll0.setTitle("Welche der Aktionen finden Sie am besten ?");
+			poll0.setVendor(vendor0);
+			Poll poll_0 = pollRepository.save(poll0);
+			poll_0.setPollOptions(pollOptions);
+			poll_0 = pollRepository.save(poll_0);
 
 			Event eventVoting_0 = new Event();
 			eventVoting_0.setCreated(new Date());
 			eventVoting_0.setEventTypes(EventTypes.POLL);
 			eventVoting_0.setCreated(new Date());
-			eventVoting_0.setRefId(voting_0.getId());
+			eventVoting_0.setRefId(poll_0.getId());
 			eventVoting_0.setVendorId(vendor0.getId());
 			Event eventVoting0 = eventRepository.save(eventVoting_0);
 			eventSet_0.add(eventVoting0);

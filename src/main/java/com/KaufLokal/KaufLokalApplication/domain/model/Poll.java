@@ -1,5 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
+import com.KaufLokal.KaufLokalApplication.application.service.VendorService;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,9 +9,9 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Voting")
+@Table(name = "Poll")
 @Data
-public class Voting {
+public class Poll {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -24,5 +25,8 @@ public class Voting {
     private String title;
 
     @OneToMany
-    private Set<VotingOption> votingOptions;
+    private Set<PollOption> pollOptions;
+
+    @ManyToOne
+    private Vendor vendor;
 }

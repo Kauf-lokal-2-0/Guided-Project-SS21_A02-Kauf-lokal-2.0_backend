@@ -8,9 +8,9 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "VotingOptions")
+@Table(name = "PollOptions")
 @Data
-public class VotingOption {
+public class PollOption {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(

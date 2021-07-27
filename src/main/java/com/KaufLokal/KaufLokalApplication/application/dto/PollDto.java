@@ -6,9 +6,10 @@ import java.util.Set;
 import java.util.UUID;
 
 @Data
-public class VotingDto {
+public class PollDto {
     private UUID id;
     private String title;
     private int totalAmountVoters;
-    private Set<VotingOptionDto> votingOptions;
+    private UUID vendorId;
+    private Set<PollOptionDto> votingOptions;
 }

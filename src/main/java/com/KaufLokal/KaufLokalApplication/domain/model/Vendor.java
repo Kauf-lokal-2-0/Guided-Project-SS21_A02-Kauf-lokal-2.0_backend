@@ -59,7 +59,7 @@ public class Vendor {
     private Set<Event> events;
 
     @OneToMany
-    private Set<Voting> votings;
+    private Set<Poll> polls;
 
 
     public Vendor() {

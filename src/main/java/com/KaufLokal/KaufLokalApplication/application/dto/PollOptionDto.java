@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Data
-public class VotingOptionDto {
+public class PollOptionDto {
     private UUID id;
     private String title;
     private int totalAmountVoters;

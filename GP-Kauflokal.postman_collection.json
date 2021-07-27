@@ -663,41 +663,41 @@
 			]
 		},
 		{
-			"name": "Voting",
+			"name": "Poll",
 			"item": [
 				{
-					"name": "GetAllVoting",
+					"name": "GetAllPoll",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/voting",
+							"raw": "http://localhost:8080/poll",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"voting"
+								"poll"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "GetVotingById",
+					"name": "GetPollById",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/voting/a9e83367-6ca6-4b77-8511-afdddcf329e1",
+							"raw": "http://localhost:8080/poll/a9e83367-6ca6-4b77-8511-afdddcf329e1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"voting",
+								"poll",
 								"a9e83367-6ca6-4b77-8511-afdddcf329e1"
 							]
 						}
@@ -719,14 +719,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/voting/2866bf4d-0a04-4df1-a692-b801805c1524/vote/21f09253-7aff-4057-b1e9-1016ec8e5cf3",
+							"raw": "http://localhost:8080/poll/2866bf4d-0a04-4df1-a692-b801805c1524/vote/21f09253-7aff-4057-b1e9-1016ec8e5cf3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"voting",
+								"poll",
 								"2866bf4d-0a04-4df1-a692-b801805c1524",
 								"vote",
 								"21f09253-7aff-4057-b1e9-1016ec8e5cf3"
