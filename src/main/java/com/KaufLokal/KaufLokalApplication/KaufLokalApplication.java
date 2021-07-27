@@ -33,6 +33,164 @@ public class KaufLokalApplication {
 	) {
 		return (args) -> {
 
+
+			User user_10 = new User();
+			user_10.setFirstName("Firstname10");
+			user_10.setLastName("LastName10");
+			user_10.setEmail("test10@test.de");
+			User user10 = userRepository.save(user_10);
+
+			User user_11 = new User();
+			user_11.setFirstName("Firstname11");
+			user_11.setLastName("LastName11");
+			user_11.setEmail("test11@test.de");
+			User user11 = userRepository.save(user_11);
+
+			User user_12 = new User();
+			user_12.setFirstName("Firstname12");
+			user_12.setLastName("LastName12");
+			user_12.setEmail("test12@test.de");
+			User user12 = userRepository.save(user_12);
+
+			User user_13 = new User();
+			user_13.setFirstName("Firstname13");
+			user_13.setLastName("LastName13");
+			user_13.setEmail("test13@test.de");
+			User user13 = userRepository.save(user_13);
+
+			User user_14 = new User();
+			user_14.setFirstName("Firstname14");
+			user_14.setLastName("LastName14");
+			user_14.setEmail("test14@test.de");
+			User user14 = userRepository.save(user_14);
+
+			User user_15 = new User();
+			user_15.setFirstName("Firstname15");
+			user_15.setLastName("LastName15");
+			user_15.setEmail("test15@test.de");
+			User user15 = userRepository.save(user_15);
+
+			User user_16 = new User();
+			user_16.setFirstName("Firstname16");
+			user_16.setLastName("LastName16");
+			user_16.setEmail("test16@test.de");
+			User user16 = userRepository.save(user_16);
+
+			User user_17 = new User();
+			user_17.setFirstName("Firstname17");
+			user_17.setLastName("LastName17");
+			user_17.setEmail("test17@test.de");
+			User user17 = userRepository.save(user_17);
+
+			User user_18 = new User();
+			user_18.setFirstName("Firstname18");
+			user_18.setLastName("LastName18");
+			user_18.setEmail("test18@test.de");
+			User user18 = userRepository.save(user_18);
+
+			User user_19 = new User();
+			user_19.setFirstName("Firstname19");
+			user_19.setLastName("LastName19");
+			user_19.setEmail("test19@test.de");
+			User user19 = userRepository.save(user_19);
+
+			User user_20 = new User();
+			user_20.setFirstName("Firstname20");
+			user_20.setLastName("LastName20");
+			user_20.setEmail("test20@test.de");
+			User user20 = userRepository.save(user_20);
+
+			User user_21 = new User();
+			user_21.setFirstName("Firstname20");
+			user_21.setLastName("LastName20");
+			user_21.setEmail("test2@test.de");
+			User user21 = userRepository.save(user_21);
+
+			User user_22 = new User();
+			user_22.setFirstName("Firstname2");
+			user_22.setLastName("LastName2");
+			user_22.setEmail("test2@test.de");
+			User user22 = userRepository.save(user_22);
+
+			User user_23 = new User();
+			user_23.setFirstName("Firstname");
+			user_23.setLastName("LastName");
+			user_23.setEmail("test@test.de");
+			User user23 = userRepository.save(user_23);
+
+			User user_24 = new User();
+			user_24.setFirstName("Firstname");
+			user_24.setLastName("LastName");
+			user_24.setEmail("test@test.de");
+			User user24 = userRepository.save(user_24);
+
+			User user_25 = new User();
+			user_25.setFirstName("Firstname");
+			user_25.setLastName("LastName");
+			user_25.setEmail("test@test.de");
+			User user25 = userRepository.save(user_25);
+
+			User user_26 = new User();
+			user_26.setFirstName("Firstname");
+			user_26.setLastName("LastName");
+			user_26.setEmail("test@test.de");
+			User user26 = userRepository.save(user_26);
+
+			User user_27 = new User();
+			user_27.setFirstName("Firstname");
+			user_27.setLastName("LastName");
+			user_27.setEmail("test@test.de");
+			User user27 = userRepository.save(user_27);
+
+			User user_28 = new User();
+			user_28.setFirstName("Firstname");
+			user_28.setLastName("LastName");
+			user_28.setEmail("test@test.de");
+			User user28 = userRepository.save(user_28);
+
+			User user_29 = new User();
+			user_29.setFirstName("Firstname");
+			user_29.setLastName("LastName");
+			user_29.setEmail("test@test.de");
+			User user29 = userRepository.save(user_29);
+
+			User user_30 = new User();
+			user_30.setFirstName("Firstname");
+			user_30.setLastName("LastName");
+			user_30.setEmail("test@test.de");
+			User user30 = userRepository.save(user_30);
+
+
+
+			Set<User> userSet_poll1 = new HashSet<>();
+			userSet_poll1.add(user28);
+			userSet_poll1.add(user27);
+			userSet_poll1.add(user24);
+			userSet_poll1.add(user15);
+			userSet_poll1.add(user23);
+			userSet_poll1.add(user18);
+			userSet_poll1.add(user16);
+			userSet_poll1.add(user10);
+			userSet_poll1.add(user19);
+			userSet_poll1.add(user17);
+
+			Set<User> userSet_poll2 = new HashSet<>();
+			userSet_poll2.add(user29);
+			userSet_poll2.add(user_30);
+			userSet_poll2.add(user22);
+
+			Set<User> userSet_poll3 = new HashSet<>();
+			userSet_poll3.add(user26);
+			userSet_poll3.add(user25);
+			userSet_poll3.add(user12);
+			userSet_poll3.add(user13);
+			userSet_poll3.add(user21);
+			userSet_poll3.add(user20);
+			userSet_poll3.add(user11);
+			userSet_poll3.add(user14);
+
+
+
 			User user_0 = new User();
 			user_0.setFirstName("Firstname");
 			user_0.setLastName("LastName");
@@ -176,19 +334,23 @@ public class KaufLokalApplication {
 
 			PollOption pollOption0 = new PollOption();
 			pollOption0.setTitle("Glücksrad");
-			Set<User> userSet = new HashSet<>();
-			userSet.add(user0);
-			pollOption0.setUsers(userSet);
+
+
+
+
+			pollOption0.setUsers(userSet_poll1);
 			PollOption pollOption_0 = pollOptionRepository.save(pollOption0);
 			pollOptions.add(pollOption_0);
 
 			PollOption pollOption1 = new PollOption();
 			pollOption1.setTitle("Lose ziehen");
+			pollOption1.setUsers(userSet_poll2);
 			PollOption pollOption_1 = pollOptionRepository.save(pollOption1);
 			pollOptions.add(pollOption_1);
 
 			PollOption pollOption2 = new PollOption();
 			pollOption2.setTitle("Quiz");
+			pollOption2.setUsers(userSet_poll3);
 			PollOption pollOption_2 = pollOptionRepository.save(pollOption2);
 			pollOptions.add(pollOption_2);
 
@@ -198,6 +360,7 @@ public class KaufLokalApplication {
 			Poll poll_0 = pollRepository.save(poll0);
 			poll_0.setPollOptions(pollOptions);
 			poll_0 = pollRepository.save(poll_0);
+			poll_0.setImageURL("https://st2.depositphotos.com/1005979/8844/i/950/depositphotos_88446424-stock-photo-poll-survey-results-voting.jpg");
 
 			Event eventVoting_0 = new Event();
 			eventVoting_0.setCreated(new Date());

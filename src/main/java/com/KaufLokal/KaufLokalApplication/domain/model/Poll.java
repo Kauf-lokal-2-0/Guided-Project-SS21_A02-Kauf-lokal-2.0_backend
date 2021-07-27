@@ -24,6 +24,9 @@ public class Poll {
     @Column(nullable = false)
     private String title;
 
+    @Column
+    private String imageURL;
+
     @OneToMany
     private Set<PollOption> pollOptions;
 

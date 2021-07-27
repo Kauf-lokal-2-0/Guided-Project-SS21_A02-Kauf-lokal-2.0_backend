@@ -10,6 +10,7 @@ public class PollDto {
     private UUID id;
     private String title;
     private int totalAmountVoters;
+    private String imageURL;
     private UUID vendorId;
     private Set<PollOptionDto> votingOptions;
 }
