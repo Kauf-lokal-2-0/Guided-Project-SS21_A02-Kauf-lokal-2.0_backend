@@ -269,6 +269,9 @@ public class KaufLokalApplication {
 
 			Message message_0 = new Message();
 			message_0.setMessage("Nachricht 1 ");
+			message_0.setTitle("Nachricht Title");
+			message_0.setImageURL("https://www.message-networks.com/wp-content/uploads/2020/01/android_messages_rcs.png");
+
 			message_0.setCreated(new Date());
 			Message message0 = messageRepository.save(message_0);
 
@@ -306,6 +309,10 @@ public class KaufLokalApplication {
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
 			Vendor vendor0 = vendorRepository.save(vendor_0);
+
+			//message0.setVendor(vendor0);
+			messageRepository.save(message0);
+
 			coupon0 = couponRepository.save(coupon0);
 
 			event_0.setVendorId(vendor0.getId());
@@ -424,6 +431,7 @@ public class KaufLokalApplication {
 			address2.setCountry("Germany");
 			vendor2.setAddress(address2);
 			vendorRepository.save(vendor2);
+
 
 		};
 	}

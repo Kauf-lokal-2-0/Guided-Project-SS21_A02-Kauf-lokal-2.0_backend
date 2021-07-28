@@ -2,9 +2,11 @@ package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Event;
+import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Message;
 import com.KaufLokal.KaufLokalApplication.domain.repository.MessageRepository;
+import com.KaufLokal.KaufLokalApplication.domain.repository.VendorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,9 @@ public class MessageService implements IDefaultService<Message, MessageDto>{
 
     @Autowired
     EventService eventService;
+
+    @Autowired
+    VendorRepository vendorRepository;
 
     @Override
     public List<MessageDto> findAll() {
@@ -79,6 +84,8 @@ public class MessageService implements IDefaultService<Message, MessageDto>{
         ModelMapper modelMapper = new ModelMapper();
         MessageDto messageDto = new MessageDto();
         modelMapper.map(message, messageDto);
+        Vendor vendor = vendorRepository.findVendorsByMessages(message);
+        messageDto.setVendorId(vendor.getId());
         return messageDto;
     }
 

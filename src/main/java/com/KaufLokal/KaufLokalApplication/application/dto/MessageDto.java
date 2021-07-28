@@ -11,5 +11,6 @@ public class MessageDto {
     private String title;
     private String message;
     private String imageURL;
+    private UUID vendorId;
     private Date created;
 }
