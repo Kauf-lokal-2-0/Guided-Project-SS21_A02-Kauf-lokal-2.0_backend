@@ -19,6 +19,7 @@ import java.util.*;
 @Service
 public class PollService implements IDefaultService<Poll, PollDto> {
 
+    //TODO Hier weiter
     @Autowired
     private PollRepository pollRepository;
 
@@ -26,13 +27,7 @@ public class PollService implements IDefaultService<Poll, PollDto> {
     PollOptionRepository pollOptionRepository;
 
     @Autowired
-    private PollOptionService pollOptionService;
-
-    @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private UserService userService;
 
     @Override
     public List<PollDto> findAll() {

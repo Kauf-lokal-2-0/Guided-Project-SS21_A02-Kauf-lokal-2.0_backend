@@ -2,6 +2,7 @@ package com.KaufLokal.KaufLokalApplication.controller;
 
 import com.KaufLokal.KaufLokalApplication.application.controller.UserController;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
+import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,7 @@ public class UserControllerTest {
         userDto.setAddress(address);
         ratings.add(new Rating(5.0));
         userDto.setRatings(ratings);
-        vendors.add(new Vendor("EIN NAME", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", VendorCategory.RESTAURANT, coupons, ratings, messages, events,detailImages));
+        vendors.add(new Vendor("EIN NAME", 1 , address, "EIN LINK", "EINE MAIL", new OpeningTime(), "EINE URL", "EINE FARBE", VendorCategory.RESTAURANT, detailImages, coupons, ratings, messages, events));
         //userDto.setFavoriteVendors(vendors);
 
         ResponseEntity<UserDto> createUserDto = userController.createUser(userDto);

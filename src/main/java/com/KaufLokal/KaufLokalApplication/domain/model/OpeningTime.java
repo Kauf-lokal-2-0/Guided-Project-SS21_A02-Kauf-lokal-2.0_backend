@@ -1,36 +1,32 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Embeddable;
-import java.util.Calendar;
-import java.util.Date;
+
 
 @Data
 @Embeddable
+@NoArgsConstructor
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class OpeningTime {
+
+    @NonNull
     private String monday;
+    @NonNull
     private String tuesday;
+    @NonNull
     private String wednesday;
+    @NonNull
     private String thursday;
+    @NonNull
     private String friday;
+    @NonNull
     private String saturday;
+    @NonNull
     private String sunday;
+
     private Boolean isOpen;
 
-
-    public OpeningTime() {
-
-    }
-
-    public OpeningTime(String monday, String tuesday, String wednesday, String thursday, String friday, String saturday, String sunday) {
-        this.monday = monday;
-        this.tuesday = tuesday;
-        this.wednesday = wednesday;
-        this.thursday = thursday;
-        this.friday = friday;
-        this.saturday = saturday;
-        this.sunday = sunday;
-
-    }
 }

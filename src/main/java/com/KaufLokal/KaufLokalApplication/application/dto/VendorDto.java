@@ -1,5 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
+import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import lombok.Data;

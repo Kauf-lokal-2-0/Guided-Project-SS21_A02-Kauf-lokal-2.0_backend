@@ -1,7 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
+import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -18,7 +18,7 @@ public class User {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
     @Column(nullable = false)
@@ -35,22 +35,16 @@ public class User {
     @Column(nullable = false)
     private Integer level = 1;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Vendor> favoriteVendors = new HashSet<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Coupon> favoriteCoupons = new HashSet<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Experience> experiences;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Rating> ratings;
 
-    public Address getAddress() {
-        if (address == null)
-            return new Address("","","","","");
-
-        return address;
-    }
 }

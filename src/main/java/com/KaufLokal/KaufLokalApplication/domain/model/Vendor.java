@@ -1,7 +1,8 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
+import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,6 +12,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "VENDOR")
 @Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Vendor {
 
     @Id
@@ -18,120 +21,62 @@ public class Vendor {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
     @Column(nullable = false)
+    @NonNull
     private String name;
 
+    @NonNull
     private Integer vendorScore;
 
     @Column(nullable = false)
+    @NonNull
     private Address address;
 
+    @NonNull
     private String logo;
 
     @Column(nullable = false)
-    private String emailAddress;
+    @NonNull
+    private String email;
 
+    @NonNull
     private OpeningTime openingTime;
 
+    @NonNull
     private String websiteURL;
 
+    @NonNull
     private String color;
 
     @Column(nullable = false)
+    @Enumerated
+    @NonNull
     private VendorCategory category;
 
     @ElementCollection
+    @NonNull
     private Set<String> detailImages;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @NonNull
     private Set<Coupon> coupons;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @NonNull
     private Set<Rating> ratings;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @NonNull
     private Set<Message> messages;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @NonNull
     private Set<Event> events;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Poll> polls;
-
-
-    public Vendor() {
-    }
-
-    public Vendor(String name, Integer vendorScore, Address address, String logo,
-                  String emailAddress, OpeningTime openingTime, String websiteURL,
-                  String color, VendorCategory category, Set<Coupon> coupons,
-                  Set<Rating> ratings,  Set<Message> messages,
-                  Set<Event> events, Set<String> detailImages) {
-        this.name = name;
-        this.vendorScore = vendorScore;
-        this.address = address;
-        this.logo = logo;
-        this.detailImages = detailImages;
-        this.emailAddress = emailAddress;
-        this.openingTime = openingTime;
-        this.websiteURL = websiteURL;
-        this.color = color;
-        this.category = category;
-        this.coupons = coupons;
-        this.ratings = ratings;
-        this.messages = messages;
-        this.events = events;
-    }
-
-    public String getName() {
-        if (name == null)
-            return "";
-
-        return name;
-    }
-
-    public Integer getVendorScore() {
-        if (vendorScore == null)
-            return -1;
-
-        return vendorScore;
-    }
-
-    public String getLogo() {
-        if (logo == null)
-            return "";
-
-        return logo;
-    }
-
-    public String getEmailAddress() {
-        if (emailAddress == null)
-            return "";
-
-        return emailAddress;
-    }
-
-    public OpeningTime getOpeningTime() {
-        return openingTime;
-    }
-
-    public String getWebsiteURL() {
-        if (websiteURL == null)
-            return "";
-
-        return websiteURL;
-    }
-
-    public String getColor() {
-        if (color == null)
-            return "";
-
-        return color;
-    }
-
-
 
 }

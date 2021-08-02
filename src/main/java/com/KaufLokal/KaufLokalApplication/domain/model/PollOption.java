@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "PollOptions")
+@Table(name = "POLL_OPTIONS")
 @Data
 public class PollOption {
     @Id
@@ -16,7 +16,7 @@ public class PollOption {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
     @Column(nullable = false)
@@ -25,6 +25,6 @@ public class PollOption {
     @Column
     private int totalAmountVoters;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<User> users;
 }

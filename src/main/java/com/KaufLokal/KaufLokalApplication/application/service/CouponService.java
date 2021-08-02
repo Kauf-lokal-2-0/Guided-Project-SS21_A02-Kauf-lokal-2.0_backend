@@ -1,8 +1,11 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
+import com.KaufLokal.KaufLokalApplication.common.execptions.coupon.CouponIsEmptyException;
+import com.KaufLokal.KaufLokalApplication.common.execptions.coupon.CouponNotFoundException;
 import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
 import com.KaufLokal.KaufLokalApplication.domain.repository.CouponRepository;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,81 +19,68 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
     private CouponRepository couponRepository;
 
     @Autowired
-    private EventService eventService;
-
-    @Autowired
     private VendorService vendorService;
+
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public List<CouponDto> findAll() {
-        couponRepository.findAll();
+        if (couponRepository.findAll().isEmpty()){
+            throw new CouponIsEmptyException("Coupons are empty");
+        }
         return mapToDto(couponRepository.findAll());
     }
 
     @Override
     public CouponDto findById(UUID id) {
-        Optional<Coupon> couponOptional = couponRepository.findById(id);
-        if (couponOptional.isPresent())
-        {
-            return mapToDto(couponOptional.get());
-        }
-        return null;
+        return mapToDto(couponRepository.findById(id).orElseThrow(() -> new CouponNotFoundException("Coupon by id " + id.toString() + " was not found")));
     }
 
     @Override
-    public CouponDto create(CouponDto couponDto) {
-        couponDto.setCreated(new Date());
+    public CouponDto create(@NonNull CouponDto couponDto) {
         return mapToDto(couponRepository.save(mapDtoToObject(couponDto)));
     }
 
     @Override
-    public CouponDto update(CouponDto couponDto) {
-        Optional<Coupon> couponOptional = couponRepository.findById(couponDto.getId());
-        if (couponOptional.isPresent())
-        {
-            Coupon product = couponOptional.get();
-            ModelMapper modelMapper = new ModelMapper();
-            modelMapper.map(couponDto, product);
-            couponRepository.save(product);
-            return mapToDto(product);
+    public CouponDto update(@NonNull CouponDto couponDto) {
+        var coupon = couponRepository.findById(couponDto.getId());
+        if (coupon.isPresent()) {
+            modelMapper.map(couponDto, coupon);
+            couponRepository.save(coupon.get());
+            return mapToDto(coupon.get());
         }
-        return couponDto;
+        else
+            throw new CouponNotFoundException("Coupon by id " + coupon.get().getId().toString() + " was not found");
     }
 
     @Override
     public void delete(UUID id) {
-        Optional<Coupon> couponOptional = couponRepository.findById(id);
-        if (couponOptional.isPresent()) {
-            Coupon coupon = couponOptional.get();
-            couponRepository.delete(coupon);
+        var couponToDelete = couponRepository.findById(id);
+        if (couponToDelete.isPresent()) {
+            couponRepository.delete(couponToDelete.get());
         }
+        else
+            throw new CouponNotFoundException("Coupon by id " + id.toString() + " was not found");
     }
 
     public List<CouponDto> mapToDto(List<Coupon> coupons) {
         List<CouponDto> couponDtos = new ArrayList<>();
-        for (Coupon product: coupons) {
-            couponDtos.add(mapToDto(product));
-        }
+        coupons.forEach(e -> couponDtos.add(mapToDto(e)));
         return couponDtos;
     }
 
     public CouponDto mapToDto(Coupon coupon){
-        ModelMapper modelMapper = new ModelMapper();
-        CouponDto couponDto = new CouponDto();
+        var couponDto = new CouponDto();
         modelMapper.map(coupon,couponDto);
-
-        vendorService.findAll().forEach(vendorDto -> vendorDto.getCoupons().forEach(coupon1 -> {
-            if(coupon1.getId() == coupon.getId())
-            {
+        vendorService.findAll().forEach(vendorDto -> vendorDto.getCoupons().forEach(couponToMap -> {
+            if(couponToMap.getId().equals(coupon.getId())) {
                 couponDto.setVendorId(vendorDto.getId());
             }
         }));
-
         return couponDto;
     }
 
     public Coupon mapDtoToObject(CouponDto couponDto, Coupon coupon) {
-        ModelMapper modelMapper = new ModelMapper();
         modelMapper.map(couponDto, coupon);
         return coupon;
     }

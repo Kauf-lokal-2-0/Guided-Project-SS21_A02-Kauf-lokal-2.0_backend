@@ -16,7 +16,9 @@ public class PollOptionService implements IDefaultService<PollOption, PollOption
 
 
     @Autowired
-    PollOptionRepository pollOptionRepository;
+    private PollOptionRepository pollOptionRepository;
+
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public List<PollOptionDto> findAll() {
@@ -46,15 +48,12 @@ public class PollOptionService implements IDefaultService<PollOption, PollOption
     @Override
     public List<PollOptionDto> mapToDto(List<PollOption> pollOptionOptions) {
         List<PollOptionDto> pollOptionOptionDtos = new ArrayList<>();
-        for (PollOption pollOption : pollOptionOptions) {
-            pollOptionOptionDtos.add(mapToDto(pollOption));
-        }
+        pollOptionOptions.forEach(pollOption -> pollOptionOptionDtos.add(mapToDto(pollOption)));
         return pollOptionOptionDtos;
     }
 
     @Override
     public PollOptionDto mapToDto(PollOption pollOption) {
-        ModelMapper modelMapper = new ModelMapper();
         PollOptionDto pollOptionOptionDto = new PollOptionDto();
         modelMapper.map(pollOption, pollOptionOptionDto);
         return pollOptionOptionDto;
@@ -62,7 +61,6 @@ public class PollOptionService implements IDefaultService<PollOption, PollOption
 
     @Override
     public PollOption mapDtoToObject(PollOptionDto pollOptionOptionDto, PollOption pollOption) {
-        ModelMapper modelMapper = new ModelMapper();
         modelMapper.map(pollOptionOptionDto, pollOption);
         return pollOption;
     }

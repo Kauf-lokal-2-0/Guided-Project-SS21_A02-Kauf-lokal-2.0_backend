@@ -2,6 +2,7 @@ package com.KaufLokal.KaufLokalApplication.domain.model;
 
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -20,9 +21,10 @@ public class Event {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
+    @Enumerated
     @Column(nullable = false)
     private EventTypes eventTypes;
 
@@ -30,11 +32,7 @@ public class Event {
 
     private UUID vendorId;
 
+    @CreationTimestamp
     private Date created;
 
-    public Date getCreated() {
-        if (created == null)
-            return new Date();
-        return created;
-    }
 }

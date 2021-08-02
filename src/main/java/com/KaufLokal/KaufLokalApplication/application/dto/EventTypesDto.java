@@ -5,6 +5,5 @@ import lombok.Data;
 
 @Data
 public class EventTypesDto {
-
     private EventTypes eventTypes;
 }

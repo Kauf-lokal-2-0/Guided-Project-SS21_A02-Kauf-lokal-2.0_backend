@@ -1,6 +1,7 @@
 package com.KaufLokal.KaufLokalApplication;
 
 
+import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
@@ -290,7 +291,7 @@ public class KaufLokalApplication {
 			User user1 = userRepository.save(user_0);
 
 			Message message_0 = new Message();
-			message_0.setMessage("Nachricht 1 ");
+			message_0.setContentMessage("Nachricht 1 ");
 			message_0.setTitle("Nachricht Title");
 			message_0.setImageURL("https://www.message-networks.com/wp-content/uploads/2020/01/android_messages_rcs.png");
 
@@ -312,7 +313,7 @@ public class KaufLokalApplication {
 
 			Vendor vendor_0 = new Vendor();
 			vendor_0.setName("Mayersche Gummersbach");
-			vendor_0.setEmailAddress("info-gummersbach@mayersche.de");
+			vendor_0.setEmail("info-gummersbach@mayersche.de");
 			vendor_0.setWebsiteURL("https://www.thalia.de/");
 			vendor_0.setCategory(VendorCategory.GENERAL);
 			Address address0 = new Address();
@@ -340,7 +341,7 @@ public class KaufLokalApplication {
 			experience_0.setCreated(new Date());
 			experience_0.setVendor(vendor0);
 			experience_0.setDescription("Einkauf für 300 Euro");
-			experience_0.setExperience(150);
+			experience_0.setUserExperience(150);
 			experienceRepository.save(experience_0);
 
 
@@ -436,7 +437,7 @@ public class KaufLokalApplication {
 			Vendor vendor1 = new Vendor();
 			vendor1.setName("Forum Gummersbach");
 			vendor1.setCategory(VendorCategory.GENERAL);
-			vendor1.setEmailAddress("info@forum-gummersbach.info");
+			vendor1.setEmail("info@forum-gummersbach.info");
 			vendor1.setColor("#e2a363");
 			vendor1.setWebsiteURL("https://www.forum-gummersbach.info");
 			vendor1.setLogo("https://www.hbb.de/wp-content/uploads/2020/08/HBB_Gummersbach_header-1024x427.jpeg");
@@ -453,7 +454,7 @@ public class KaufLokalApplication {
 
 			Vendor vendor2 = new Vendor();
 			vendor2.setName("Street One Retail GmbH");
-			vendor2.setEmailAddress("onlineshop@kundenservice.streetone.de");
+			vendor2.setEmail("onlineshop@kundenservice.streetone.de");
 			vendor2.setWebsiteURL("https://streetone.de");
 			vendor2.setColor("#FD0000");
 			vendor2.setCategory(VendorCategory.CLOTHES);

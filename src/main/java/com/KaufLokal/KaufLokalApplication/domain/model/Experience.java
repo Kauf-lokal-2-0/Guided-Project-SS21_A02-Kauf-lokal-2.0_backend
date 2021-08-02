@@ -1,7 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import io.swagger.models.auth.In;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -18,20 +18,20 @@ public class Experience {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Vendor vendor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
 
-    private Integer experience;
+    private Integer userExperience;
 
     private String description;
 
+    @CreationTimestamp
     private Date created;
-
 
 }

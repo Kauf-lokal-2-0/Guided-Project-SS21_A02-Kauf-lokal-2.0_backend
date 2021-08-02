@@ -1,6 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,6 +9,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "RATING")
 @Data
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class Rating {
 
     @Id
@@ -16,22 +18,13 @@ public class Rating {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
+    @NonNull
     private Double ratingScore;
 
-    public Rating() {
-    }
-
-    public Rating(Double ratingScore) {
-        this.ratingScore = ratingScore;
-    }
-
     public Double getRatingScore() {
-        if(ratingScore == null)
-            return -1.0;
-
-        return ratingScore;
+        return ratingScore == null ? Double.NEGATIVE_INFINITY : ratingScore;
     }
 }

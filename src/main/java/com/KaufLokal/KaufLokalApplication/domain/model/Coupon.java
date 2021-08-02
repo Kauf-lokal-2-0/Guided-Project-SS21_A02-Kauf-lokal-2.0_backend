@@ -1,6 +1,5 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import com.KaufLokal.KaufLokalApplication.application.dto.VendorDto;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -18,7 +17,7 @@ public class Coupon {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
     @Column(nullable = false)
@@ -34,26 +33,7 @@ public class Coupon {
 
     private Double value;
 
+    @CreationTimestamp
     private Date created;
 
-    public Double getValue() {
-        if (value == null) {
-            return -1.0;
-        }
-        return value;
-    }
-
-    public Date getExpiryDate() {
-        if (expiryDate == null) {
-            return new Date();
-        }
-        return expiryDate;
-    }
-
-    public Date getCreated() {
-        if (created == null) {
-            return new Date();
-        }
-        return created;
-    }
 }

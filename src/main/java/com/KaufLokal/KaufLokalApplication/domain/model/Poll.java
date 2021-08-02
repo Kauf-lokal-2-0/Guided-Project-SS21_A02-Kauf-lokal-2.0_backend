@@ -1,7 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import com.KaufLokal.KaufLokalApplication.application.service.VendorService;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Poll")
+@Table(name = "POLL")
 @Data
 public class Poll {
 
@@ -18,7 +18,7 @@ public class Poll {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
     @Column(nullable = false)
@@ -27,9 +27,9 @@ public class Poll {
     @Column
     private String imageURL;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<PollOption> pollOptions;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Vendor vendor;
 }

@@ -1,6 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -17,33 +18,17 @@ public class Message {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false, insertable = false)
     private UUID id;
 
     private String title;
 
     @Column(nullable = false)
-    private String message;
+    private String contentMessage;
 
     private String imageURL;
 
+    @CreationTimestamp
     private Date created;
 
-    public String getTitle() {
-        if (title == null)
-            return "";
-        return title;
-    }
-
-    public String getImageURL() {
-        if (imageURL == null)
-            return "";
-        return imageURL;
-    }
-
-    public Date getCreated() {
-        if (created == null)
-            return new Date();
-        return created;
-    }
 }
