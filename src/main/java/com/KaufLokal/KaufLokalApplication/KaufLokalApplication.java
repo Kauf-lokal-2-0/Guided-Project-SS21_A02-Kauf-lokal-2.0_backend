@@ -323,7 +323,7 @@ public class KaufLokalApplication {
 			address0.setCountry("Germany");
 			vendor_0.setAddress(address0);
 			vendor_0.setCoupons(couponSet);
-			vendor_0.setColor("#FFFFFF");
+			vendor_0.setColor("#59F362");
 			vendor_0.setRatings(ratingSet);
 			vendor_0.setMessages(messages);
 			vendor_0.setLogo("https://upload.wikimedia.org/wikipedia/commons/4/44/Logo_Mayersche_Buchhandlung.png");
