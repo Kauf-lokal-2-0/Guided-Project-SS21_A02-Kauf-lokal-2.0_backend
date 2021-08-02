@@ -1,6 +1,7 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -31,11 +32,17 @@ public class User {
 
     private Address address;
 
+    @Column(nullable = false)
+    private Integer level = 1;
+
     @OneToMany
     private Set<Vendor> favoriteVendors = new HashSet<>();
 
     @OneToMany
     private Set<Coupon> favoriteCoupons = new HashSet<>();
+
+    @OneToMany
+    private Set<Experience> experiences;
 
     @OneToMany
     private Set<Rating> ratings;

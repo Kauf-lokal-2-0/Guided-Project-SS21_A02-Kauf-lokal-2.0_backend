@@ -29,7 +29,8 @@ public class KaufLokalApplication {
 								  MessageRepository messageRepository,
 								  EventRepository eventRepository,
 								  PollRepository pollRepository,
-								  PollOptionRepository pollOptionRepository
+								  PollOptionRepository pollOptionRepository,
+								  ExperienceRepository experienceRepository
 	) {
 		return (args) -> {
 
@@ -38,126 +39,147 @@ public class KaufLokalApplication {
 			user_10.setFirstName("Firstname10");
 			user_10.setLastName("LastName10");
 			user_10.setEmail("test10@test.de");
+			user_10.setLevel(14);
 			User user10 = userRepository.save(user_10);
 
 			User user_11 = new User();
 			user_11.setFirstName("Firstname11");
 			user_11.setLastName("LastName11");
 			user_11.setEmail("test11@test.de");
+			user_11.setLevel(11);
 			User user11 = userRepository.save(user_11);
 
 			User user_12 = new User();
 			user_12.setFirstName("Firstname12");
 			user_12.setLastName("LastName12");
 			user_12.setEmail("test12@test.de");
+			user_12.setLevel(9);
 			User user12 = userRepository.save(user_12);
 
 			User user_13 = new User();
 			user_13.setFirstName("Firstname13");
 			user_13.setLastName("LastName13");
 			user_13.setEmail("test13@test.de");
+			user_13.setLevel(91);
 			User user13 = userRepository.save(user_13);
 
 			User user_14 = new User();
 			user_14.setFirstName("Firstname14");
 			user_14.setLastName("LastName14");
 			user_14.setEmail("test14@test.de");
+			user_14.setLevel(72);
 			User user14 = userRepository.save(user_14);
 
 			User user_15 = new User();
 			user_15.setFirstName("Firstname15");
 			user_15.setLastName("LastName15");
 			user_15.setEmail("test15@test.de");
+			user_15.setLevel(45);
 			User user15 = userRepository.save(user_15);
 
 			User user_16 = new User();
 			user_16.setFirstName("Firstname16");
 			user_16.setLastName("LastName16");
 			user_16.setEmail("test16@test.de");
+			user_16.setLevel(36);
 			User user16 = userRepository.save(user_16);
 
 			User user_17 = new User();
 			user_17.setFirstName("Firstname17");
 			user_17.setLastName("LastName17");
 			user_17.setEmail("test17@test.de");
+			user_17.setLevel(39);
 			User user17 = userRepository.save(user_17);
 
 			User user_18 = new User();
 			user_18.setFirstName("Firstname18");
 			user_18.setLastName("LastName18");
 			user_18.setEmail("test18@test.de");
+			user_18.setLevel(19);
 			User user18 = userRepository.save(user_18);
 
 			User user_19 = new User();
 			user_19.setFirstName("Firstname19");
 			user_19.setLastName("LastName19");
 			user_19.setEmail("test19@test.de");
+			user_19.setLevel(159);
 			User user19 = userRepository.save(user_19);
 
 			User user_20 = new User();
 			user_20.setFirstName("Firstname20");
 			user_20.setLastName("LastName20");
 			user_20.setEmail("test20@test.de");
+			user_20.setLevel(168);
 			User user20 = userRepository.save(user_20);
 
 			User user_21 = new User();
 			user_21.setFirstName("Firstname20");
 			user_21.setLastName("LastName20");
 			user_21.setEmail("test2@test.de");
+			user_21.setLevel(98);
 			User user21 = userRepository.save(user_21);
 
 			User user_22 = new User();
 			user_22.setFirstName("Firstname2");
 			user_22.setLastName("LastName2");
 			user_22.setEmail("test2@test.de");
+			user_22.setLevel(98);
 			User user22 = userRepository.save(user_22);
 
 			User user_23 = new User();
 			user_23.setFirstName("Firstname");
 			user_23.setLastName("LastName");
 			user_23.setEmail("test@test.de");
+			user_23.setLevel(18);
 			User user23 = userRepository.save(user_23);
 
 			User user_24 = new User();
 			user_24.setFirstName("Firstname");
 			user_24.setLastName("LastName");
 			user_24.setEmail("test@test.de");
+			user_24.setLevel(128);
 			User user24 = userRepository.save(user_24);
 
 			User user_25 = new User();
 			user_25.setFirstName("Firstname");
 			user_25.setLastName("LastName");
 			user_25.setEmail("test@test.de");
+			user_25.setLevel(128);
 			User user25 = userRepository.save(user_25);
 
 			User user_26 = new User();
 			user_26.setFirstName("Firstname");
 			user_26.setLastName("LastName");
 			user_26.setEmail("test@test.de");
+			user_26.setLevel(128);
 			User user26 = userRepository.save(user_26);
 
 			User user_27 = new User();
 			user_27.setFirstName("Firstname");
 			user_27.setLastName("LastName");
 			user_27.setEmail("test@test.de");
+			user_27.setLevel(12);
 			User user27 = userRepository.save(user_27);
 
 			User user_28 = new User();
 			user_28.setFirstName("Firstname");
 			user_28.setLastName("LastName");
 			user_28.setEmail("test@test.de");
+			user_28.setLevel(124);
 			User user28 = userRepository.save(user_28);
 
 			User user_29 = new User();
 			user_29.setFirstName("Firstname");
 			user_29.setLastName("LastName");
 			user_29.setEmail("test@test.de");
+			user_29.setLevel(134);
 			User user29 = userRepository.save(user_29);
 
 			User user_30 = new User();
 			user_30.setFirstName("Firstname");
 			user_30.setLastName("LastName");
 			user_30.setEmail("test@test.de");
+			user_30.setLevel(135);
 			User user30 = userRepository.save(user_30);
 
 
@@ -192,7 +214,7 @@ public class KaufLokalApplication {
 
 
 			User user_0 = new User();
-			user_0.setFirstName("Firstname");
+			user_0.setFirstName("Falah");
 			user_0.setLastName("LastName");
 			user_0.setEmail("test@test.de");
 
@@ -309,6 +331,21 @@ public class KaufLokalApplication {
 			OpeningTime openingTime = new OpeningTime("8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-20:00","8:00-18:00","Closed");
 			vendor_0.setOpeningTime(openingTime);
 			Vendor vendor0 = vendorRepository.save(vendor_0);
+
+			// USER EXP
+
+
+			Experience experience_0 = new Experience();
+			experience_0.setUser(user0);
+			experience_0.setCreated(new Date());
+			experience_0.setVendor(vendor0);
+			experience_0.setDescription("Einkauf für 300 Euro");
+			experience_0.setExperience(150);
+			experienceRepository.save(experience_0);
+
+
+
+
 
 			//message0.setVendor(vendor0);
 			messageRepository.save(message0);

@@ -4,8 +4,10 @@ import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.VendorDto;
 import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
+import com.KaufLokal.KaufLokalApplication.domain.model.Experience;
 import com.KaufLokal.KaufLokalApplication.domain.model.User;
 import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
+import com.KaufLokal.KaufLokalApplication.domain.repository.ExperienceRepository;
 import com.KaufLokal.KaufLokalApplication.domain.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class UserService implements IDefaultService<User, UserDto>{
 
     @Autowired
     private VendorService vendorService;
+
+    @Autowired
+    private ExperienceRepository experienceRepository;
 
     @Override
     public List<UserDto> findAll() {
@@ -121,6 +126,7 @@ public class UserService implements IDefaultService<User, UserDto>{
             userDto.getFavoriteCouponIDs().add(coupon.getId());
         }
 
+        userDto.setExperiences(experienceRepository.findAllExperienceByUser(user));
         return userDto;
     }
 
