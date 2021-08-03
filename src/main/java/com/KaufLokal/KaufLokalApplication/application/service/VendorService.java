@@ -1,11 +1,17 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.*;
+import com.KaufLokal.KaufLokalApplication.common.execptions.vendor.VendorIsEmptyException;
+import com.KaufLokal.KaufLokalApplication.common.execptions.vendor.VendorNotFoundException;
+import com.KaufLokal.KaufLokalApplication.common.utils.ObjectUtils;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import com.KaufLokal.KaufLokalApplication.domain.repository.VendorRepository;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,166 +23,127 @@ import java.util.*;
 public class VendorService implements IDefaultService<Vendor, VendorDto> {
 
     @Autowired
-    VendorRepository vendorRepository;
+    private VendorRepository vendorRepository;
 
     @Autowired
-    CouponService couponService;
+    private CouponService couponService;
 
     @Autowired
-    EventService eventService;
+    private EventService eventService;
 
     @Autowired
-    MessageService messageService;
+    private MessageService messageService;
+
+    private final EventDto eventDto = new EventDto();
+    private final ModelMapper modelMapper = new ModelMapper();
+    private static final Logger logger = LoggerFactory.getLogger(VendorService.class);
 
     public List<VendorDto> findAll() {
-        vendorRepository.findAll();
-        return mapToDto(vendorRepository.findAll());
+        return Optional.ofNullable(mapToDto(vendorRepository.findAll()))
+                .orElseThrow(() -> new VendorIsEmptyException("Vendors are empty"));
     }
 
-    public VendorDto findById(UUID id)  {
-        Optional<Vendor> vendorOptional = vendorRepository.findById(id);
-        if (vendorOptional.isPresent())
-        {
-            return mapToDto(vendorOptional.get());
-        }
-        return null;
+    public VendorDto findById(@NonNull UUID id) {
+        return mapToDto(vendorRepository.findById(id)
+                .orElseThrow(() -> new VendorNotFoundException("Vendor by id: " + id.toString() + "was not found")));
     }
 
-    public VendorDto create(VendorDto vendorDto) {
-
+    public VendorDto create(@NonNull VendorDto vendorDto) {
         return mapToDto(vendorRepository.save(mapDtoToObject(vendorDto)));
     }
 
     public VendorDto update(VendorDto vendorDto) {
-
-        Optional<Vendor> vendorOptional = vendorRepository.findById(vendorDto.getId());
-        if (vendorOptional.isPresent())
-        {
-            Vendor vendor = vendorOptional.get();
-            ModelMapper modelMapper = new ModelMapper();
-            modelMapper.map(vendorDto, vendor);
+        var vendor = vendorRepository.findById(vendorDto.getId()).get();
+        if (ObjectUtils.isNotNull(vendor)) {
+            this.modelMapper.map(vendorDto, vendor);
             vendorRepository.save(vendor);
             return mapToDto(vendor);
         }
-        return vendorDto;
+        throw new VendorNotFoundException("Vendor by id: " + vendor.getId().toString() + "was not found");
     }
 
-    public void delete(UUID id) {
-        Optional<Vendor> vendorOptional = vendorRepository.findById(id);
-        if (vendorOptional.isPresent()) {
-            Vendor vendor = vendorOptional.get();
-            vendorRepository.delete(vendor);
-        }
+    public void delete(@NonNull UUID id) {
+        vendorRepository.delete(vendorRepository.findById(id)
+                .orElseThrow(() -> new VendorNotFoundException("Vendor by id: " + id.toString() + "was not found")));
     }
 
-    public VendorDto addCoupon(UUID vendorId, CouponDto couponDto)
-    {
-        Optional<Vendor> vendorOptional = vendorRepository.findById(vendorId);
-        if (vendorOptional.isPresent())
-        {
-
-            Coupon coupon = couponService.mapDtoToObject(couponService.create(couponDto));
-            vendorOptional.get().getCoupons().add(coupon);
-            vendorRepository.save(vendorOptional.get());
-
-            EventDto eventDto = new EventDto();
+    public VendorDto addCoupon(UUID vendorId, @NonNull CouponDto couponDto) {
+        var vendor = vendorRepository.findById(vendorId).get();
+        if (ObjectUtils.isNotNull(vendor)) {
+            var coupon = couponService.mapDtoToObject(couponService.create(couponDto));
+            vendor.getCoupons().add(coupon);
+            vendorRepository.save(vendor);
             eventDto.setEventTypes(EventTypes.COUPON);
-            eventDto.setCreated(new Date());
             eventDto.setRefId(coupon.getId());
             eventDto.setVendorId(vendorId);
             eventService.create(eventDto);
-
-            return mapToDto(vendorOptional.get());
+            return mapToDto(vendor);
         }
-        else
-        {
-            //TODO throw Exception.
-            return null;
-        }
+       throw new VendorNotFoundException("Vendor by id: " + vendorId.toString() + " and coupon id" + couponDto.getId() + " was not found");
     }
 
 
-    public VendorDto addMessage(UUID vendorId, MessageDto messageDto)
-    {
-        Optional<Vendor> vendorOptional = vendorRepository.findById(vendorId);
-        if (vendorOptional.isPresent())
-        {
-            Message message = messageService.mapDtoToObject(messageService.create(messageDto));
-            vendorOptional.get().getMessages().add(message);
-            vendorRepository.save(vendorOptional.get());
-
-            EventDto eventDto = new EventDto();
+    public VendorDto addMessage(UUID vendorId, @NonNull MessageDto messageDto) {
+        var vendor = vendorRepository.findById(vendorId).get();
+        if (ObjectUtils.isNotNull(vendor)) {
+            var message = messageService.mapDtoToObject(messageService.create(messageDto));
+            vendor.getMessages().add(message);
+            vendorRepository.save(vendor);
             eventDto.setEventTypes(EventTypes.MESSAGE);
-            eventDto.setCreated(new Date());
             eventDto.setRefId(message.getId());
             eventDto.setVendorId(vendorId);
             eventService.create(eventDto);
-
-            return mapToDto(vendorOptional.get());
+            return mapToDto(vendor);
         }
-        else
-        {
-            //TODO throw Exception.
-            return null;
-        }
+        throw new VendorNotFoundException("Vendor by id " + vendorId.toString() + " and massage id" + messageDto.getId().toString() + " was not found");
     }
 
-    public List<VendorDto> mapToDto(List<Vendor> vendors) {
+    public List<VendorDto> mapToDto(@NonNull List<Vendor> vendors) {
         List<VendorDto> vendorDtos = new ArrayList<>();
-        for (Vendor vendor : vendors) {
-            vendorDtos.add(mapToDto(vendor));
-        }
+        vendors.forEach(vendor -> vendorDtos.add(mapToDto(vendor)));
         return vendorDtos;
     }
 
-    public VendorDto mapToDto(Vendor vendor){
-        ModelMapper modelMapper = new ModelMapper();
-        VendorDto vendorDto = new VendorDto();
+    public VendorDto mapToDto(@NonNull Vendor vendor){
+        var vendorDto = new VendorDto();
         modelMapper.map(vendor, vendorDto);
-
-        if(vendorDto.getOpeningTime() != null)
-        {
             try {
-                vendorDto.getOpeningTime().setIsOpen(isOpen(vendorDto.getOpeningTime()));
+                if(ObjectUtils.isNotNull(vendorDto.getOpeningTime())) {
+                    vendorDto.getOpeningTime().setIsOpen(isOpen(vendorDto.getOpeningTime()));
+                }
             } catch (ParseException e) {
                 e.printStackTrace();
+            }catch (VendorNotFoundException e){
+                logger.debug(e.getMessage());
             }
-        }
-
         vendorDto.setVendorScore(getArithmeticMeanRating(vendor.getRatings()));
-
         return vendorDto;
     }
 
-    public Vendor mapDtoToObject(VendorDto vendorDto, Vendor vendor) {
-        ModelMapper modelMapper = new ModelMapper();
+    public Vendor mapDtoToObject(@NonNull VendorDto vendorDto, @NonNull Vendor vendor) {
         modelMapper.map(vendorDto, vendor);
         return vendor;
     }
 
-    public Vendor mapDtoToObject(VendorDto vendorDto) {
+    public Vendor mapDtoToObject(@NonNull VendorDto vendorDto) {
         return mapDtoToObject(vendorDto, new Vendor());
     }
 
-    public List<VendorCategoryDto> getCategories()
-    {
+    public List<VendorCategoryDto> getCategories() {
         List<VendorCategoryDto> vendorCategoriesDto = new ArrayList<>();
-        for (VendorCategory vendorCategory : VendorCategory.values()) {
-            VendorCategoryDto vendorCategoryDto = new VendorCategoryDto();
+        Arrays.stream(VendorCategory.values()).forEach(vendorCategory -> {
+            var vendorCategoryDto = new VendorCategoryDto();
             vendorCategoryDto.setVendorCategory(vendorCategory);
             vendorCategoriesDto.add(vendorCategoryDto);
-        }
+        });
         return vendorCategoriesDto;
     }
 
 
-     private boolean isOpen(OpeningTime openingTime) throws ParseException {
-
-         Calendar calendar = Calendar.getInstance();
+     private boolean isOpen(@NonNull OpeningTime openingTime) throws ParseException {
+         var calendar = Calendar.getInstance();
          calendar.setTime(new Date());
-
          String actualOpeningTime = "";
-
          switch (calendar.get(Calendar.DAY_OF_WEEK)){
              case Calendar.MONDAY:
                  actualOpeningTime = openingTime.getMonday();
@@ -203,29 +170,25 @@ public class VendorService implements IDefaultService<Vendor, VendorDto> {
                 return false;
          }
 
-         if(actualOpeningTime.equalsIgnoreCase("Closed"))
-         {
+         if(actualOpeningTime.equalsIgnoreCase("Closed")) {
             return false;
          }
 
          String[] times = actualOpeningTime.split("-");
-         if(times.length == 2)
-         {
+         if(times.length == 2) {
              String openTime = times[0];
              String closeTime = times[1];
-             Date openTimeDate = new SimpleDateFormat("HH:mm").parse(openTime);
-             Date closeTimeDate = new SimpleDateFormat("HH:mm").parse(closeTime);
-             Calendar currentTime = Calendar.getInstance();
+             var openTimeDate = new SimpleDateFormat("HH:mm").parse(openTime);
+             var closeTimeDate = new SimpleDateFormat("HH:mm").parse(closeTime);
+             var currentTime = Calendar.getInstance();
              currentTime.set(1970,0,1);
-             Date currentTimeDate = currentTime.getTime();
-
+             var currentTimeDate = currentTime.getTime();
              return currentTimeDate.after(openTimeDate) && currentTimeDate.before(closeTimeDate);
          }
          return false;
      }
 
-
-    private double getArithmeticMeanRating(Set<Rating> ratings) {
+    private double getArithmeticMeanRating(@NonNull Set<Rating> ratings) {
         return ratings.stream().mapToDouble(Rating::getRatingScore).average().orElse(0.0);
     }
 }

@@ -14,6 +14,5 @@ public class CouponDto {
     private Date expiryDate;
     private Float value;
     private Date created;
-    //TODO warum das?
     private UUID vendorId;
 }

@@ -3,6 +3,7 @@ package com.KaufLokal.KaufLokalApplication.application.service;
 import com.KaufLokal.KaufLokalApplication.application.dto.CouponDto;
 import com.KaufLokal.KaufLokalApplication.common.execptions.coupon.CouponIsEmptyException;
 import com.KaufLokal.KaufLokalApplication.common.execptions.coupon.CouponNotFoundException;
+import com.KaufLokal.KaufLokalApplication.common.utils.ObjectUtils;
 import com.KaufLokal.KaufLokalApplication.domain.model.Coupon;
 import com.KaufLokal.KaufLokalApplication.domain.repository.CouponRepository;
 import lombok.NonNull;
@@ -25,14 +26,12 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
 
     @Override
     public List<CouponDto> findAll() {
-        if (couponRepository.findAll().isEmpty()){
-            throw new CouponIsEmptyException("Coupons are empty");
-        }
-        return mapToDto(couponRepository.findAll());
+        return Optional.ofNullable(mapToDto(couponRepository.findAll()))
+                .orElseThrow(() -> new CouponIsEmptyException("Coupons are empty"));
     }
 
     @Override
-    public CouponDto findById(UUID id) {
+    public CouponDto findById(@NonNull UUID id) {
         return mapToDto(couponRepository.findById(id).orElseThrow(() -> new CouponNotFoundException("Coupon by id " + id.toString() + " was not found")));
     }
 
@@ -42,36 +41,31 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
     }
 
     @Override
-    public CouponDto update(@NonNull CouponDto couponDto) {
-        var coupon = couponRepository.findById(couponDto.getId());
-        if (coupon.isPresent()) {
-            modelMapper.map(couponDto, coupon);
-            couponRepository.save(coupon.get());
-            return mapToDto(coupon.get());
+    public CouponDto update(CouponDto couponDto) {
+        var coupon = couponRepository.findById(couponDto.getId()).get();
+        if (ObjectUtils.isNotNull(coupon)) {
+            this.modelMapper.map(couponDto, coupon);
+            couponRepository.save(coupon);
+            return mapToDto(coupon);
         }
-        else
-            throw new CouponNotFoundException("Coupon by id " + coupon.get().getId().toString() + " was not found");
+            throw new CouponNotFoundException("Coupon by id " + coupon.getId().toString() + " was not found");
     }
 
     @Override
-    public void delete(UUID id) {
-        var couponToDelete = couponRepository.findById(id);
-        if (couponToDelete.isPresent()) {
-            couponRepository.delete(couponToDelete.get());
-        }
-        else
-            throw new CouponNotFoundException("Coupon by id " + id.toString() + " was not found");
+    public void delete(@NonNull UUID id) {
+        couponRepository.delete(couponRepository.findById(id)
+                .orElseThrow(() -> new CouponNotFoundException("Coupon by id " + id.toString() + " was not found") ));
     }
 
     public List<CouponDto> mapToDto(List<Coupon> coupons) {
         List<CouponDto> couponDtos = new ArrayList<>();
-        coupons.forEach(e -> couponDtos.add(mapToDto(e)));
+        coupons.forEach(coupon -> couponDtos.add(mapToDto(coupon)));
         return couponDtos;
     }
 
     public CouponDto mapToDto(Coupon coupon){
         var couponDto = new CouponDto();
-        modelMapper.map(coupon,couponDto);
+        this.modelMapper.map(coupon,couponDto);
         vendorService.findAll().forEach(vendorDto -> vendorDto.getCoupons().forEach(couponToMap -> {
             if(couponToMap.getId().equals(coupon.getId())) {
                 couponDto.setVendorId(vendorDto.getId());
@@ -81,7 +75,7 @@ public class CouponService implements IDefaultService<Coupon, CouponDto>{
     }
 
     public Coupon mapDtoToObject(CouponDto couponDto, Coupon coupon) {
-        modelMapper.map(couponDto, coupon);
+        this.modelMapper.map(couponDto, coupon);
         return coupon;
     }
 

@@ -22,9 +22,8 @@ public class PollOption {
     @Column(nullable = false)
     private String title;
 
-    @Column
-    private int totalAmountVoters;
+    private Integer totalAmountVoters;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private Set<User> users;
 }

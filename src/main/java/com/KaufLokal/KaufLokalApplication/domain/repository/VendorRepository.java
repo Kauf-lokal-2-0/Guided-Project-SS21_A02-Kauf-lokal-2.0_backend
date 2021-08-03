@@ -11,5 +11,4 @@ import java.util.UUID;
 public interface VendorRepository extends JpaRepository<Vendor, UUID> {
 
     Vendor findVendorsByMessages(Message message);
-
 }

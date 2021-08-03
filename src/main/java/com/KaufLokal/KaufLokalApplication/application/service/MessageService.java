@@ -1,12 +1,14 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
 import com.KaufLokal.KaufLokalApplication.application.dto.MessageDto;
-import com.KaufLokal.KaufLokalApplication.domain.model.Event;
+import com.KaufLokal.KaufLokalApplication.common.execptions.message.MessageIsEmptyException;
+import com.KaufLokal.KaufLokalApplication.common.execptions.message.MessageNotFoundException;
+import com.KaufLokal.KaufLokalApplication.common.utils.ObjectUtils;
 import com.KaufLokal.KaufLokalApplication.domain.model.Vendor;
-import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.Message;
 import com.KaufLokal.KaufLokalApplication.domain.repository.MessageRepository;
 import com.KaufLokal.KaufLokalApplication.domain.repository.VendorRepository;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,44 +19,39 @@ import java.util.*;
 public class MessageService implements IDefaultService<Message, MessageDto>{
 
     @Autowired
-    MessageRepository messageRepository;
+    private MessageRepository messageRepository;
 
     @Autowired
-    EventService eventService;
+    private EventService eventService;
 
     @Autowired
-    VendorRepository vendorRepository;
+    private VendorRepository vendorRepository;
+
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public List<MessageDto> findAll() {
-        messageRepository.findAll();
-        return mapToDto(messageRepository.findAll());
+        return Optional.ofNullable(mapToDto(messageRepository.findAll()))
+                .orElseThrow(() -> new MessageIsEmptyException("Messages are empty"));
     }
 
     @Override
-    public MessageDto findById(UUID id) {
-        Optional<Message> newsfeedOptional = messageRepository.findById(id);
-        if (newsfeedOptional.isPresent())
-        {
-            return mapToDto(newsfeedOptional.get());
-        }
-        return null;
+    public MessageDto findById(@NonNull UUID id) {
+        return mapToDto(messageRepository.findById(id)
+                .orElseThrow(() -> new MessageNotFoundException("Message by id "+ id.toString() + " was not found")));
     }
 
     @Override
-    public MessageDto create(MessageDto messageDto) {
-        messageDto.setCreated(new Date());
+    public MessageDto create(@NonNull MessageDto messageDto) {
         return mapToDto(messageRepository.save(mapDtoToObject(messageDto)));
     }
 
     @Override
     public MessageDto update(MessageDto messageDto) {
-        Optional<Message> newsfeedOptional = messageRepository.findById(messageDto.getId());
-        if (newsfeedOptional.isPresent())
-        {
-            Message message = newsfeedOptional.get();
-            ModelMapper modelMapper = new ModelMapper();
-            modelMapper.map(messageDto, message);
+        var messageToUpdate = messageRepository.findById(messageDto.getId()).get();
+        if (ObjectUtils.isNotNull(messageToUpdate)) {
+            Message message = messageToUpdate;
+            this.modelMapper.map(messageDto, message);
             messageRepository.save(message);
             return mapToDto(message);
         }
@@ -62,42 +59,35 @@ public class MessageService implements IDefaultService<Message, MessageDto>{
     }
 
     @Override
-    public void delete(UUID id) {
-        Optional<Message> newsfeedOptional = messageRepository.findById(id);
-        if (newsfeedOptional.isPresent()) {
-            Message message = newsfeedOptional.get();
-            messageRepository.delete(message);
-        }
+    public void delete(@NonNull UUID id) {
+        messageRepository.delete(messageRepository.findById(id)
+                .orElseThrow(() -> new MessageNotFoundException("Message by id "+ id.toString() + " was not found")));
     }
 
     @Override
-    public List<MessageDto> mapToDto(List<Message> messages) {
+    public List<MessageDto> mapToDto(@NonNull List<Message> messages) {
         List<MessageDto> messageDtos = new ArrayList<>();
-        for (Message message : messages) {
-            messageDtos.add(mapToDto(message));
-        }
+        messages.forEach(message -> messageDtos.add(mapToDto(message)));
         return messageDtos;
     }
 
     @Override
-    public MessageDto mapToDto(Message message) {
-        ModelMapper modelMapper = new ModelMapper();
-        MessageDto messageDto = new MessageDto();
-        modelMapper.map(message, messageDto);
-        Vendor vendor = vendorRepository.findVendorsByMessages(message);
+    public MessageDto mapToDto(@NonNull Message message) {
+        var messageDto = new MessageDto();
+        this.modelMapper.map(message, messageDto);
+        var vendor = vendorRepository.findVendorsByMessages(message);
         messageDto.setVendorId(vendor.getId());
         return messageDto;
     }
 
     @Override
-    public Message mapDtoToObject(MessageDto messageDto, Message message) {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(messageDto, message);
+    public Message mapDtoToObject(@NonNull MessageDto messageDto, @NonNull Message message) {
+        this.modelMapper.map(messageDto, message);
         return message;
     }
 
     @Override
-    public Message mapDtoToObject(MessageDto messageDto) {
+    public Message mapDtoToObject(@NonNull MessageDto messageDto) {
         return mapDtoToObject(messageDto, new Message());
     }
 }

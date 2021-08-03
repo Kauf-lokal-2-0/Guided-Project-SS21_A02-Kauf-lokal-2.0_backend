@@ -9,6 +9,6 @@ import java.util.UUID;
 public class PollOptionDto {
     private UUID id;
     private String title;
-    private int totalAmountVoters;
+    private Integer totalAmountVoters;
     private Set<UUID> users;
 }

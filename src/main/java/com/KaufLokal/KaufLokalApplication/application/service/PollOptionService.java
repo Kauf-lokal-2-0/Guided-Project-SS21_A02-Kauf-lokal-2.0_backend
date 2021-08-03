@@ -55,13 +55,13 @@ public class PollOptionService implements IDefaultService<PollOption, PollOption
     @Override
     public PollOptionDto mapToDto(PollOption pollOption) {
         PollOptionDto pollOptionOptionDto = new PollOptionDto();
-        modelMapper.map(pollOption, pollOptionOptionDto);
+        this.modelMapper.map(pollOption, pollOptionOptionDto);
         return pollOptionOptionDto;
     }
 
     @Override
     public PollOption mapDtoToObject(PollOptionDto pollOptionOptionDto, PollOption pollOption) {
-        modelMapper.map(pollOptionOptionDto, pollOption);
+        this.modelMapper.map(pollOptionOptionDto, pollOption);
         return pollOption;
     }
 

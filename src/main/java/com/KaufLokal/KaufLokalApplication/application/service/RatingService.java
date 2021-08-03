@@ -1,17 +1,17 @@
 package com.KaufLokal.KaufLokalApplication.application.service;
 
-import com.KaufLokal.KaufLokalApplication.application.controller.VendorController;
 import com.KaufLokal.KaufLokalApplication.application.dto.RatingDto;
+import com.KaufLokal.KaufLokalApplication.common.execptions.rating.RatingIsEmptyException;
+import com.KaufLokal.KaufLokalApplication.common.execptions.rating.RatingNotFoundException;
+import com.KaufLokal.KaufLokalApplication.common.utils.ObjectUtils;
 import com.KaufLokal.KaufLokalApplication.domain.model.Rating;
 import com.KaufLokal.KaufLokalApplication.domain.repository.RatingRepository;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class RatingService implements IDefaultService<Rating, RatingDto> {
@@ -19,79 +19,63 @@ public class RatingService implements IDefaultService<Rating, RatingDto> {
     @Autowired
     private RatingRepository ratingRepository;
 
-    @Autowired
-    private VendorController vendorController;
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public List<RatingDto> findAll() {
-        ratingRepository.findAll();
-        return mapToDto(ratingRepository.findAll());
+      return Optional.ofNullable(mapToDto(ratingRepository.findAll()))
+               .orElseThrow(() -> new RatingIsEmptyException("Ratings is empty"));
     }
 
     @Override
-    public RatingDto findById(UUID id)  {
-        Optional<Rating> ratingOptional = ratingRepository.findById(id);
-        if (ratingOptional.isPresent())
-        {
-            return mapToDto(ratingOptional.get());
-        }
-        return null;
+    public RatingDto findById(@NonNull UUID id)  {
+        return mapToDto(ratingRepository.findById(id).orElseThrow(() -> new RatingNotFoundException("Rating by id " + id.toString()+ " was not found")));
     }
 
     @Override
-    public RatingDto create(RatingDto dto) {
+    public RatingDto create(@NonNull RatingDto dto) {
         return mapToDto(ratingRepository.save(mapDtoToObject(dto)));
     }
 
     @Override
     public RatingDto update(RatingDto dto) {
-        Optional<Rating> optionalRating = ratingRepository.findById(dto.getId());
-        if (optionalRating.isPresent())
-        {
-            Rating rating = optionalRating.get();
-            ModelMapper modelMapper = new ModelMapper();
-            modelMapper.map(dto, rating);
+        var rating = ratingRepository.findById(dto.getId()).get();
+        if (ObjectUtils.isNotNull(rating)) {
+            this.modelMapper.map(dto, rating);
             ratingRepository.save(rating);
             return mapToDto(rating);
         }
-        return dto;
+        throw new RatingNotFoundException("Rating by Id" + rating.getId().toString() + " was not found");
     }
 
     @Override
-    public void delete(UUID id) {
-        Optional<Rating> optionalRating = ratingRepository.findById(id);
-        if (optionalRating.isPresent()) {
-            Rating rating = optionalRating.get();
-            ratingRepository.delete(rating);
-        }
+    public void delete(@NonNull UUID id) {
+        ratingRepository.delete(ratingRepository.findById(id)
+                .orElseThrow(() -> new RatingNotFoundException("Rating by id " + id.toString() + " was not found")));
     }
 
     @Override
-    public List<RatingDto> mapToDto(List<Rating> ratings) {
+    public List<RatingDto> mapToDto(@NonNull List<Rating> ratings) {
         List<RatingDto> ratingDtos = new ArrayList<>();
-        for (Rating rating: ratings) {
-            ratingDtos.add(mapToDto(rating));
-        }
+        ratings.forEach(rating -> ratingDtos.add(mapToDto(rating)));
         return ratingDtos;
     }
 
     @Override
-    public RatingDto mapToDto(Rating rating){
-        ModelMapper modelMapper = new ModelMapper();
+    public RatingDto mapToDto(@NonNull Rating rating){
         RatingDto ratingDto = new RatingDto();
-        modelMapper.map(rating,ratingDto);
+        this.modelMapper.map(rating,ratingDto);
         return ratingDto;
     }
 
     @Override
-    public Rating mapDtoToObject(RatingDto ratingDto, Rating rating) {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(ratingDto, rating);
+    public Rating mapDtoToObject(@NonNull RatingDto ratingDto, @NonNull Rating rating) {
+        this.modelMapper.map(ratingDto, rating);
         return rating;
     }
 
     @Override
-    public Rating mapDtoToObject(RatingDto ratingDto) {
+    public Rating mapDtoToObject(@NonNull RatingDto ratingDto) {
         return mapDtoToObject(ratingDto, new Rating());
     }
 

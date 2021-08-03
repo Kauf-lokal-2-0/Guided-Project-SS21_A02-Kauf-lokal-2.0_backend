@@ -295,16 +295,13 @@ public class KaufLokalApplication {
 			message_0.setTitle("Nachricht Title");
 			message_0.setImageURL("https://www.message-networks.com/wp-content/uploads/2020/01/android_messages_rcs.png");
 
-			message_0.setCreated(new Date());
 			Message message0 = messageRepository.save(message_0);
 
 			Set<Message> messages = new HashSet<>();
 			messages.add(message0);
 
 			Event event_0 = new Event();
-			event_0.setCreated(new Date());
 			event_0.setEventTypes(EventTypes.MESSAGE);
-			event_0.setCreated(new Date());
 			event_0.setRefId(message0.getId());
 			Event event0 = eventRepository.save(event_0);
 
@@ -338,7 +335,6 @@ public class KaufLokalApplication {
 
 			Experience experience_0 = new Experience();
 			experience_0.setUser(user0);
-			experience_0.setCreated(new Date());
 			experience_0.setVendor(vendor0);
 			experience_0.setDescription("Einkauf für 300 Euro");
 			experience_0.setUserExperience(150);
@@ -357,18 +353,14 @@ public class KaufLokalApplication {
 			event_0 = eventRepository.save(event_0);
 
 			Event eventCoupon_0 = new Event();
-			eventCoupon_0.setCreated(new Date());
 			eventCoupon_0.setEventTypes(EventTypes.COUPON);
-			eventCoupon_0.setCreated(new Date());
 			eventCoupon_0.setRefId(coupon0.getId());
 			eventCoupon_0.setVendorId(vendor0.getId());
 			Event eventCoupon0 = eventRepository.save(eventCoupon_0);
 			eventSet_0.add(eventCoupon0);
 
 			Event eventUpdate_0 = new Event();
-			eventUpdate_0.setCreated(new Date());
 			eventUpdate_0.setEventTypes(EventTypes.UPDATE);
-			eventUpdate_0.setCreated(new Date());
 			eventUpdate_0.setVendorId(vendor0.getId());
 			eventUpdate_0.setRefId(message0.getId());
 			Event eventUpdate0 = eventRepository.save(eventUpdate_0);
@@ -408,9 +400,7 @@ public class KaufLokalApplication {
 			poll_0.setImageURL("https://st2.depositphotos.com/1005979/8844/i/950/depositphotos_88446424-stock-photo-poll-survey-results-voting.jpg");
 
 			Event eventVoting_0 = new Event();
-			eventVoting_0.setCreated(new Date());
 			eventVoting_0.setEventTypes(EventTypes.POLL);
-			eventVoting_0.setCreated(new Date());
 			eventVoting_0.setRefId(poll_0.getId());
 			eventVoting_0.setVendorId(vendor0.getId());
 			Event eventVoting0 = eventRepository.save(eventVoting_0);

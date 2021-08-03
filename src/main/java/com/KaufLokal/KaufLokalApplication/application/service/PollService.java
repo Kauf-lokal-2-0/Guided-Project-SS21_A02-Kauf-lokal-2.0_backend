@@ -3,12 +3,16 @@ package com.KaufLokal.KaufLokalApplication.application.service;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.PollDto;
 import com.KaufLokal.KaufLokalApplication.application.dto.PollOptionDto;
+import com.KaufLokal.KaufLokalApplication.common.execptions.poll.PollIsEmptyException;
+import com.KaufLokal.KaufLokalApplication.common.execptions.poll.PollNotFoundException;
+import com.KaufLokal.KaufLokalApplication.common.utils.ObjectUtils;
 import com.KaufLokal.KaufLokalApplication.domain.model.User;
 import com.KaufLokal.KaufLokalApplication.domain.model.Poll;
 import com.KaufLokal.KaufLokalApplication.domain.model.PollOption;
 import com.KaufLokal.KaufLokalApplication.domain.repository.UserRepository;
 import com.KaufLokal.KaufLokalApplication.domain.repository.PollOptionRepository;
 import com.KaufLokal.KaufLokalApplication.domain.repository.PollRepository;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +23,6 @@ import java.util.*;
 @Service
 public class PollService implements IDefaultService<Poll, PollDto> {
 
-    //TODO Hier weiter
     @Autowired
     private PollRepository pollRepository;
 
@@ -29,20 +32,17 @@ public class PollService implements IDefaultService<Poll, PollDto> {
     @Autowired
     private UserRepository userRepository;
 
+    private ModelMapper modelMapper = new ModelMapper();
+
     @Override
     public List<PollDto> findAll() {
-        pollRepository.findAll();
-        return mapToDto(pollRepository.findAll());
+        return Optional.ofNullable(mapToDto(pollRepository.findAll()))
+                .orElseThrow(() -> new PollIsEmptyException("Poll is empty"));
     }
 
     @Override
-    public PollDto findById(UUID id) {
-        Optional<Poll> pollOptional = pollRepository.findById(id);
-        if (pollOptional.isPresent())
-        {
-            return mapToDto(pollOptional.get());
-        }
-        return null;
+    public PollDto findById(@NonNull UUID id) {
+        return mapToDto(pollRepository.findById(id).orElseThrow(() -> new PollIsEmptyException("Poll by id " + id.toString() + " was not found")));
     }
 
     @Override
@@ -56,111 +56,61 @@ public class PollService implements IDefaultService<Poll, PollDto> {
     }
 
     @Override
-    public void delete(UUID id) {
-
-    }
+    public void delete(UUID id) {}
 
     @Override
-    public List<PollDto> mapToDto(List<Poll> polls) {
+    public List<PollDto> mapToDto(@NonNull List<Poll> polls) {
         List<PollDto> pollDtos = new ArrayList<>();
-        for (Poll poll : polls) {
-            pollDtos.add(mapToDto(poll));
-        }
+        polls.forEach(poll -> pollDtos.add(mapToDto(poll)));
         return pollDtos;
     }
 
     @Override
-    public PollDto mapToDto(Poll poll) {
-        ModelMapper modelMapper = new ModelMapper();
+    public PollDto mapToDto(@NonNull Poll poll) {
         PollDto pollDto = new PollDto();
-
         TypeMap<Poll, PollDto> typeWife = modelMapper.createTypeMap(Poll.class, PollDto.class);
         typeWife.addMappings(mapper -> mapper.skip(PollDto::setVotingOptions));
-        modelMapper.map(poll, pollDto);
+        this.modelMapper.map(poll, pollDto);
         Set<PollOptionDto> pollOptions = new HashSet<>();
-        for (PollOption pollOption : poll.getPollOptions()) {
-
+        poll.getPollOptions().forEach(pollOption -> {
             PollOptionDto pollOptionDto = new PollOptionDto();
             pollOptionDto.setId(pollOption.getId());
             pollOptionDto.setTitle(pollOption.getTitle());
             pollOptionDto.setTotalAmountVoters(pollOption.getUsers().size());
-
-            Set<UUID> userUUID = new HashSet<>();
-            for (User user: pollOption.getUsers())
-            {
-                userUUID.add(user.getId());
-            }
-            pollOptionDto.setUsers(userUUID);
+            Set<UUID> users = new HashSet<>();
+            pollOption.getUsers().forEach(user -> users.add(user.getId()));
+            pollOptionDto.setUsers(users);
             pollOptions.add(pollOptionDto);
-        }
-
+        });
         pollDto.setVotingOptions(pollOptions);
-
         int totalAmountVoters = 0;
         for (PollOptionDto pollOptionDto : pollDto.getVotingOptions()) {
            totalAmountVoters = totalAmountVoters + pollOptionDto.getTotalAmountVoters();
         }
-
         pollDto.setTotalAmountVoters(totalAmountVoters);
         pollDto.setVendorId(poll.getVendor().getId());
         return pollDto;
     }
 
     @Override
-    public Poll mapDtoToObject(PollDto pollDto, Poll poll) {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(pollDto, poll);
+    public Poll mapDtoToObject(@NonNull PollDto pollDto, @NonNull Poll poll) {
+        this.modelMapper.map(pollDto, poll);
         return poll;
     }
 
     @Override
-    public Poll mapDtoToObject(PollDto pollDto) {
+    public Poll mapDtoToObject(@NonNull PollDto pollDto) {
         return mapDtoToObject(pollDto, new Poll());
     }
 
-    public PollDto userVotesAnOption(UUID pollId, UUID voteOptionId, UserDto userDto) {
-
-        Optional<PollOption> pollOption = pollOptionRepository.findById(voteOptionId);
-        if (pollOption.isPresent())
-        {
-            Optional<User> user = userRepository.findById(userDto.getId());
-            if(user.isPresent())
-            {
-                pollOption.get().getUsers().add(user.get());
-                pollOptionRepository.save(pollOption.get());
-
-                return findById(pollId);
-            }
-            else
-            {
-                //todo Exception
-            }
+    public PollDto userVotesAnOption(@NonNull UUID pollId, UUID voteOptionId, UserDto userDto) {
+        var pollOption = pollOptionRepository.findById(voteOptionId).get();
+        var user = userRepository.findById(userDto.getId()).get();
+        if (ObjectUtils.isNotNull(pollOption,user)) {
+            pollOption.getUsers().add(user);
+            pollOptionRepository.save(pollOption);
+            return findById(pollId);
         }
-        return null;
-    }
-
-    public PollDto removeUserPoll(UUID pollId, UUID voteOptionId, UserDto userDto) {
-        Optional<PollOption> pollOption = pollOptionRepository.findById(voteOptionId);
-        if (pollOption.isPresent())
-        {
-            Optional<User> user = userRepository.findById(userDto.getId());
-            if(user.isPresent())
-            {
-                for (User userItem: pollOption.get().getUsers()) {
-                    if(userDto.getId() == userItem.getId())
-                    {
-                        pollOption.get().getUsers().remove(userItem);
-                        pollOptionRepository.save(pollOption.get());
-                        break;
-                    }
-                }
-                return null;
-            }
-            else
-            {
-                //todo Exception
-            }
-        }
-        return null;
+        throw new PollNotFoundException("Poll by id " + pollId.toString() + " and vote id " + voteOptionId.toString() + " was not found." );
     }
 }

@@ -54,14 +54,14 @@ public class UserController {
     }
 
 
-    @ApiOperation(value = "Add Coupon as Favorite")
+    @ApiOperation(value = "Add coupon as Favorite")
     @PostMapping("/user/{id}/coupon")
     public ResponseEntity<UserDto> addCouponAsFavorites(@PathVariable UUID id, @RequestBody CouponDto couponDto) {
         logger.debug("POST: Add Coupon as Favorite");
         return new ResponseEntity<>(userService.addCouponAsFavorites(id,couponDto), HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "Add Coupon as Favorite")
+    @ApiOperation(value = "Add vendor as Favorite")
     @PostMapping("/user/{id}/vendor")
     public ResponseEntity<UserDto> addVendorAsFavorites(@PathVariable UUID id, @RequestBody VendorDto vendorDto) {
         logger.debug("POST: Add Coupon as Favorite");
