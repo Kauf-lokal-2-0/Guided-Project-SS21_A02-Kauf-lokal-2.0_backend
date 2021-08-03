@@ -20,10 +20,10 @@ import java.util.*;
 public class EventService implements IDefaultService<Event, EventDto>{
 
     @Autowired
-    EventRepository eventRepository;
+    private EventRepository eventRepository;
 
     @Autowired
-    VendorRepository vendorRepository;
+    private VendorRepository vendorRepository;
 
     private ModelMapper modelMapper = new ModelMapper();
 

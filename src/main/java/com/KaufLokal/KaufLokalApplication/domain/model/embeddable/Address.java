@@ -1,4 +1,4 @@
-package com.KaufLokal.KaufLokalApplication.domain.embeddable;
+package com.KaufLokal.KaufLokalApplication.domain.model.embeddable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -27,7 +27,7 @@ public class PollService implements IDefaultService<Poll, PollDto> {
     private PollRepository pollRepository;
 
     @Autowired
-    PollOptionRepository pollOptionRepository;
+    private PollOptionRepository pollOptionRepository;
 
     @Autowired
     private UserRepository userRepository;

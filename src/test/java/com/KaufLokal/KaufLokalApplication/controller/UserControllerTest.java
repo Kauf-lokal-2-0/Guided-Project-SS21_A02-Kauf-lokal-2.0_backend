@@ -2,7 +2,7 @@ package com.KaufLokal.KaufLokalApplication.controller;
 
 import com.KaufLokal.KaufLokalApplication.application.controller.UserController;
 import com.KaufLokal.KaufLokalApplication.application.dto.UserDto;
-import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
+import com.KaufLokal.KaufLokalApplication.domain.model.embeddable.Address;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.application.dto;
 
-import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
+import com.KaufLokal.KaufLokalApplication.domain.model.embeddable.Address;
 import com.KaufLokal.KaufLokalApplication.domain.model.Experience;
 import com.KaufLokal.KaufLokalApplication.domain.model.Rating;
 import lombok.Data;

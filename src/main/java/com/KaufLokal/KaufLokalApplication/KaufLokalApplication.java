@@ -1,7 +1,7 @@
 package com.KaufLokal.KaufLokalApplication;
 
 
-import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
+import com.KaufLokal.KaufLokalApplication.domain.model.embeddable.Address;
 import com.KaufLokal.KaufLokalApplication.domain.model.*;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.EventTypes;
 import com.KaufLokal.KaufLokalApplication.domain.model.enums.VendorCategory;
@@ -11,7 +11,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 

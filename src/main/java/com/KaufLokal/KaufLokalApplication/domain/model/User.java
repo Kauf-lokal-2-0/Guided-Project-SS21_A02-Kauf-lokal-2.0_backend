@@ -1,6 +1,6 @@
 package com.KaufLokal.KaufLokalApplication.domain.model;
 
-import com.KaufLokal.KaufLokalApplication.domain.embeddable.Address;
+import com.KaufLokal.KaufLokalApplication.domain.model.embeddable.Address;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
