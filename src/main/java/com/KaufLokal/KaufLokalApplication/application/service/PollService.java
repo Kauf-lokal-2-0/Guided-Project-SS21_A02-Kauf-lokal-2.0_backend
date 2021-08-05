@@ -17,6 +17,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.*;
 
@@ -112,5 +113,22 @@ public class PollService implements IDefaultService<Poll, PollDto> {
             return findById(pollId);
         }
         throw new PollNotFoundException("Poll by id " + pollId.toString() + " and vote id " + voteOptionId.toString() + " was not found." );
+    }
+
+    public Boolean getUserVoted(@NonNull UUID pollId, @NonNull UUID userId) {
+        var pollOptional = pollRepository.findById(pollId);
+        if(pollOptional.isPresent())
+        {
+            var poll = pollOptional.get();
+            for (PollOption pollOptions:poll.getPollOptions()) {
+                for (User user: pollOptions.getUsers()) {
+                    return Boolean.TRUE;
+                }
+            }
+            return Boolean.FALSE;
+        }
+        return false;
+
+
     }
 }

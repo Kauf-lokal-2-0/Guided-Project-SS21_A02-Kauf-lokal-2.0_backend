@@ -115,4 +115,12 @@ public class UserService implements IDefaultService<User, UserDto>{
         return user;
     }
 
+    public UserDto getDummyUser() {
+        UserDto userDto = new UserDto();
+        userDto.setFirstName("Firstname11");
+        userDto.setLastName("LastName11");
+        userDto.setEmail("test11@test.de");
+        userDto.setLevel(11);
+        return create(userDto);
+    }
 }
