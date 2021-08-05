@@ -32,6 +32,13 @@ public class UserController {
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "get dummy user")
+    @GetMapping("/user/dummy")
+    public ResponseEntity<UserDto> getDummyUser() {
+        logger.debug("GET: getDummyUser");
+        return new ResponseEntity<>(userService.getDummyUser(), HttpStatus.OK);
+    }
+
     @ApiOperation(value = "Get user by ID")
     @GetMapping("/user/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable UUID id) {
@@ -52,7 +59,6 @@ public class UserController {
         logger.debug("PUT: User");
         return new ResponseEntity<>(userService.update(userDto), HttpStatus.OK);
     }
-
 
     @ApiOperation(value = "Add Coupon as Favorite")
     @PostMapping("/user/{id}/coupon")

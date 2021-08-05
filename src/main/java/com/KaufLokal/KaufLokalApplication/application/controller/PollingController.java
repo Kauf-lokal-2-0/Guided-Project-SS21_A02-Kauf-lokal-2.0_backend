@@ -32,6 +32,13 @@ public class PollingController {
         return new ResponseEntity<>(pollService.findAll(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Get all user voted")
+    @GetMapping("/userVoted/{voteId}/{userId}")
+    public ResponseEntity<Boolean> getUserVoted(@PathVariable UUID voteId, @PathVariable UUID userId) {
+        logger.debug("GET: getUserVoted");
+        return new ResponseEntity<>(pollService.getUserVoted(voteId,userId), HttpStatus.OK);
+    }
+
     @ApiOperation(value = "Get Voting by ID")
     @GetMapping("/poll/{id}")
     public ResponseEntity<PollDto> getVendorById(@PathVariable UUID id)  {

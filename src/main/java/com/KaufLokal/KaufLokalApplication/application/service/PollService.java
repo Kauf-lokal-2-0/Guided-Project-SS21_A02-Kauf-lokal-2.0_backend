@@ -9,6 +9,7 @@ import com.KaufLokal.KaufLokalApplication.domain.model.PollOption;
 import com.KaufLokal.KaufLokalApplication.domain.repository.UserRepository;
 import com.KaufLokal.KaufLokalApplication.domain.repository.PollOptionRepository;
 import com.KaufLokal.KaufLokalApplication.domain.repository.PollRepository;
+import lombok.NonNull;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -168,4 +169,20 @@ public class PollService implements IDefaultService<Poll, PollDto> {
         }
         return null;
     }
+
+    public Boolean getUserVoted(@NonNull UUID pollId, @NonNull UUID userId) {
+        var pollOptional = pollRepository.findById(pollId);
+        if(pollOptional.isPresent())
+        {
+            var poll = pollOptional.get();
+            for (PollOption pollOptions:poll.getPollOptions()) {
+                for (User user: pollOptions.getUsers()) {
+                    return Boolean.TRUE;
+                }
+            }
+            return Boolean.FALSE;
+        }
+        return false;
+    }
+
 }

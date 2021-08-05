@@ -405,6 +405,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GetDUMMYUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/dummy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"dummy"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -730,6 +750,27 @@
 								"2866bf4d-0a04-4df1-a692-b801805c1524",
 								"vote",
 								"21f09253-7aff-4057-b1e9-1016ec8e5cf3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserVoted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/userVoted/3802d767-8d6d-4ea4-bfed-df1617a8dce1/33e2faa0-5a2d-46a2-b479-99d400176587",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"userVoted",
+								"3802d767-8d6d-4ea4-bfed-df1617a8dce1",
+								"33e2faa0-5a2d-46a2-b479-99d400176587"
 							]
 						}
 					},
