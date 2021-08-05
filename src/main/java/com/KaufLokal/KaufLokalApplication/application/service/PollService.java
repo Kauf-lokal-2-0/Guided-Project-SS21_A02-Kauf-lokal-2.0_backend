@@ -122,7 +122,9 @@ public class PollService implements IDefaultService<Poll, PollDto> {
             var poll = pollOptional.get();
             for (PollOption pollOptions:poll.getPollOptions()) {
                 for (User user: pollOptions.getUsers()) {
-                    return Boolean.TRUE;
+                    if(user.getId().equals(userId)){
+                        return Boolean.TRUE;
+                    }
                 }
             }
             return Boolean.FALSE;
