@@ -218,6 +218,13 @@ public class KaufLokalApplication {
 			user_0.setLastName("LastName");
 			user_0.setEmail("test@test.de");
 
+			User dummy0 = new User();
+			dummy0.setFirstName("DummyUser");
+			dummy0.setLastName("DummyUser");
+			dummy0.setEmail("DummyUser@DummyUser.de");
+			dummy0.setLevel((int)Math.random());
+			userRepository.save(dummy0);
+
 			Set<String> detailImagesMayerscheGummersbach = new HashSet<>();
 			detailImagesMayerscheGummersbach.add("https://lh5.googleusercontent.com/p/AF1QipPWXgoi-dUHFzzMMXVTG2mzWMNUrCNBo7nGQMPZ=w1080-k-no");
 			detailImagesMayerscheGummersbach.add("https://www.schreibwerkstatt-gm.de/wp-content/gallery/2019-lesung-mayersche/190912-04.JPG");

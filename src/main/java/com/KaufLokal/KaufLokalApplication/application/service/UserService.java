@@ -137,12 +137,7 @@ public class UserService implements IDefaultService<User, UserDto>{
     }
 
     public UserDto getDummyUser() {
-        UserDto userDto = new UserDto();
-        userDto.setFirstName("DUMMMY"+Math.random());
-        userDto.setLastName("LastName"+Math.random());
-        userDto.setEmail("test11@test.de");
-        userDto.setLevel((int)Math.random());
-        return create(userDto);
+        return mapToDto(userRepository.findByFirstName("DummyUser"));
     }
 
 }
